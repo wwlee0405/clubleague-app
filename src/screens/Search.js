@@ -1,4 +1,5 @@
 import React from "react";
+import { TouchableOpacity } from "react-native";
 import styled from "styled-components";
 
 const View = styled.View`
@@ -9,8 +10,10 @@ const View = styled.View`
 
 const Text = styled.Text``;
 
-export default () => (
+export default ({ navigation }) => (
   <View>
-    <Text>Search</Text>
+    <TouchableOpacity onPress={() => navigation.navigate("Details")}>
+      <Text>Search!</Text>
+    </TouchableOpacity>
   </View>
 );
