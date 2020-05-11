@@ -9,9 +9,11 @@ import Home from "../screens/Home";
 import Details from "../screens/Details";
 import Details2 from "../screens/Details2";
 import Details3 from "../screens/Details3";
-import Search from "../screens/Search";
+import Match from "../screens/Match/Match";
+import Writing from "../screens/Match/Writing";
 import Notifications from "../screens/Notifications";
 import Profile from "../screens/Profile/Profile";
+import SearchClub from "../screens/Search/SearchClub";
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from "../../colors"
 
@@ -45,10 +47,10 @@ function BottomTabs() {
         }}
       />
       <BottomTab.Screen
-        name="Search"
-        component={CreateSearchStack}
+        name="Match"
+        component={CreateMatchStack}
         options={{
-          tabBarLabel: 'Search',
+          tabBarLabel: 'Match',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="soccer-field" color={color} size={size} />
           ),
@@ -80,13 +82,13 @@ const CreateHomeStack = ({navigation}) => (
           <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
               onPress={() => navigation.navigate('SearchClub')}
-              title="profile"
+              title="SearchClub"
             >
               <Feather name="search" size={25} style={{ paddingRight: 20, color: colors.sacramento }} />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => navigation.navigate('Profile')}
-              title="profile"
+              title="Profile"
             >
               <Feather name="user" size={25} style={{ paddingRight: 10, color: colors.sacramento }} />
             </TouchableOpacity>
@@ -95,14 +97,30 @@ const CreateHomeStack = ({navigation}) => (
       }}
     />
     <Stack.Screen name ="Profile" component={Profile} />
+    <Stack.Screen name ="SearchClub" component={SearchClub} />
     <Stack.Screen name ="Details" component={CreateMaterialTopTab} />
   </Stack.Navigator>
 );
 
-const CreateSearchStack = () => (
-  <Stack.Navigator headerMode="none" >
-    <Stack.Screen name ="Search" component={Search} />
-    <Stack.Screen name ="profile" component={Profile} />
+const CreateMatchStack = ({navigation}) => (
+  <Stack.Navigator >
+    <Stack.Screen
+      name ="Match"
+      component={Match}
+      options={{
+        headerLeft: () => (<MaterialCommunityIcons name="soccer" size={30} style={{ paddingLeft: 10, color: colors.sacramento }} />),
+        headerTitle: <Text style={{ fontWeight: 'bold', fontSize: 18, color: colors.sacramento }}>Clubleague</Text>,
+        headerRight: () => (
+          <TouchableOpacity
+          onPress={() => navigation.navigate('Writing')}
+          title="Writing"
+        >
+          <Feather name="edit" size={25} style={{ paddingRight: 10, color: colors.sacramento }} />
+        </TouchableOpacity>
+        )
+      }}
+    />
+    <Stack.Screen name ="Writing" component={Writing} />
     <Stack.Screen name ="Details" component={CreateMaterialTopTab} />
   </Stack.Navigator>
 );

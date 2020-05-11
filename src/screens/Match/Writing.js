@@ -13,7 +13,7 @@ const Text = styled.Text``;
 export default ({ navigation }) => (
   <View>
     <TouchableOpacity onPress={() => navigation.navigate("Details")}>
-      <Text>Search!</Text>
+      <Text>Writing!</Text>
     </TouchableOpacity>
   </View>
 );
