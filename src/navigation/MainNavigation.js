@@ -120,7 +120,7 @@ const CreateMatchStack = ({navigation}) => (
         )
       }}
     />
-    <Stack.Screen name ="Writing" component={Writing} />
+    <Stack.Screen name ="Writing" component={Writing} options={Writing.navigationOptions} />
     <Stack.Screen name ="Details" component={CreateMaterialTopTab} />
   </Stack.Navigator>
 );

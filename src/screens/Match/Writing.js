@@ -1,19 +1,37 @@
 import React from "react";
-import { TouchableOpacity } from "react-native";
-import styled from "styled-components";
+import { StyleSheet, Text, View, TextInput , TouchableOpacity, Dimensions } from "react-native";
+import { Feather } from '@expo/vector-icons';
+import colors from '../../../colors';
 
-const View = styled.View`
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-`;
+class Writing extends React.Component {
 
-const Text = styled.Text``;
+  static navigationOptions = ({ navigation }) => {
+    
+      headerRight: (
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Match')}
+          title="submit"
+        >
+          <Feather name="check" size={25} style={{ paddingRight: 10 }} />
+        </TouchableOpacity>
+      )
 
-export default ({ navigation }) => (
-  <View>
-    <TouchableOpacity onPress={() => navigation.navigate("Details")}>
-      <Text>Writing!</Text>
-    </TouchableOpacity>
-  </View>
-);
+  };
+
+  render() {
+    return (
+      <View>
+        <Text>details3</Text>
+      </View>
+    )
+  }
+}
+
+export default Writing;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.white,
+  },
+});

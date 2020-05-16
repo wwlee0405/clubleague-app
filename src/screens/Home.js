@@ -8,7 +8,7 @@ import categoriesList from "../data/categories";
 import FeedCard from "../components/contents/FeedCard";
 import feedcard from "../data/feedcard";
 
-class HomeScreen extends React.Component {
+class Home extends React.Component {
 
   renderFeedCard() {
     const { onPress, navigation } = this.props;
@@ -74,7 +74,7 @@ class HomeScreen extends React.Component {
   }
 }
 
-export default HomeScreen;
+export default Home;
 
 const styles = StyleSheet.create({
   container: {
