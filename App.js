@@ -1,63 +1,120 @@
-import React, { useState, useEffect } from "react";
-import { Ionicons } from "@expo/vector-icons";
-import { AppLoading } from "expo";
+import React, { useEffect } from "react";
+import { View, ActivityIndicator } from "react-native";
 import { Asset } from "expo-asset";
-import * as Font from "expo-font";
-import { AsyncStorage } from "react-native";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { persistCache } from "apollo-cache-persist";
-import ApolloClient from "apollo-boost";
-import { ThemeProvider } from "styled-components";
-import { ApolloProvider } from "react-apollo-hooks";
-import apolloClientOptions from "./apollo";
-import NavController from "./src/components/NavController";
-import { AuthProvider } from "./AuthContext";
-import colors from "./colors";
 
-export default function App() {
-  const [loaded, setLoaded] = useState(false);
-  const [client, setClient] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
-  const preLoad = async () => {
-    try {
-      await Font.loadAsync({
-        ...Ionicons.font
-      });
-      await Asset.loadAsync([require("./assets/icon.png")]);
-      const cache = new InMemoryCache();
-      await persistCache({
-        cache,
-        storage: AsyncStorage
-      });
-      const client = new ApolloClient({
-        cache,
-        ...apolloClientOptions
-      });
-      const isLoggedIn = await AsyncStorage.getItem("isLoggedIn");
-      if (!isLoggedIn || isLoggedIn === "false") {
-        setIsLoggedIn(false);
-      } else {
-        setIsLoggedIn(true);
-      }
-      setLoaded(true);
-      setClient(client);
-    } catch (e) {
-      console.log(e);
+import { NavigationContainer } from '@react-navigation/native';
+import { AuthContext } from "./src/components/context";
+import AsyncStorage from "react-native";
+
+import MainNavigation from "./src/navigation/MainNavigation";
+import RootNavigation from "./src/navigation/RootNavigation";
+
+const App = () => {
+
+  // const [isLoading, setIsLoading] = React.useState(true);
+  // const [userToken, setUserToken] = React.useState(null);
+
+  const initialLoginState = {
+    isLoading: true,
+    userName: null,
+    userToken: null,
+  };
+
+  const loginReducer = (prevState, action) => {
+    switch( action.type ) {
+      case 'RETRIEVE_TOKEN':
+        return {
+          ...prevState,
+          userToken: action.token,
+          isLoading: false,
+        };
+      case 'LOGIN':
+        return {
+          ...prevState,
+          userName: action.id,
+          userToken: action.token,
+          isLoading: false,
+        };
+      case 'LOGOUT':
+        return {
+          ...prevState,
+          userName: null,
+          userToken: null,
+          isLoading: false,
+        };
+      case 'REGISTER':
+        return {
+          ...prevState,
+          userName: action.id,
+          userToken: action.token,
+          isLoading: false,
+        };
     }
   };
+
+  const [loginState, dispatch] = React.useReducer(loginReducer, initialLoginState);
+
+  const authContext = React.useMemo(() => ({
+    signIn: async(foundUser) => {
+      // setUserToken('fgkj');
+      // setIsLoading(false);
+      const userToken = String(foundUser[0].userToken);
+      const userName = foundUser[0].username;
+
+      try {
+        await AsyncStorage.setItem('userToken', userToken);
+      } catch(e) {
+        console.log(e);
+      }
+      // console.log('user token: ', userToken);
+      dispatch({ type: 'LOGIN', id: userName, token: userToken });
+    },
+    signOut: async() => {
+      // setUserToken(null);
+      // setIsLoading(false);
+      try {
+        await AsyncStorage.removeItem('userToken');
+      } catch(e) {
+        console.log(e);
+      }
+      dispatch({ type: 'LOGOUT' });
+    },
+    signUp: () => {
+      // setUserToken('fgkj');
+      // setIsLoading(false);
+    },
+  }), []);
+
   useEffect(() => {
-    preLoad();
+    setTimeout(async() => {
+      // setIsLoading(false);
+      let userToken;
+      userToken = null;
+      try {
+        userToken = await AsyncStorage.getItem('userToken');
+      } catch(e) {
+        console.log(e);
+      }
+      // console.log('user token: ', userToken);
+      dispatch({ type: 'RETRIEVE_TOKEN', token: userToken });
+    }, 1000);
   }, []);
 
-  return loaded && client && isLoggedIn !== null ? (
-    <ApolloProvider client={client}>
-      <ThemeProvider theme={colors}>
-        <AuthProvider isLoggedIn={isLoggedIn}>
-          <NavController />
-        </AuthProvider>
-      </ThemeProvider>
-    </ApolloProvider>
-  ) : (
-    <AppLoading />
+  if ( loginState.isLoading ) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+
+  return (
+    <AuthContext.Provider value={authContext}>
+    <NavigationContainer>
+      { loginState.userToken !== null ? <MainNavigation /> : <RootNavigation /> }
+    </NavigationContainer>
+    </AuthContext.Provider>
   );
 }
+
+export default App;

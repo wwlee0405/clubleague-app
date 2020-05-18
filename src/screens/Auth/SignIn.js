@@ -8,58 +8,62 @@ import {
   Dimensions,
   Image,
   Platform,
-  StatusBar
+  StatusBar,
+  Alert
 } from "react-native";
 import { Feather } from '@expo/vector-icons';
 import colors from "../../../colors"
 
-const SignUp  = ({ navigation }) => {
+import { AuthContext } from "../../components/context";
+
+import Users from '../../../model/users';
+
+const SignIn  = ({ navigation }) => {
 
   const [data, setData] = React.useState({
     username: '',
     password: '',
-    confirm_password: '',
     check_textInputChange: false,
     secureTextEntry: true,
-    confirm_secureTextEntry: true
+    isValidUser: true,
+    isValidPassword: true,
   });
 
+  const { signIn } = React.useContext(AuthContext);
+
   const textInputChange = (val) => {
-    if( val.length !== 0 ) {
+    if( val.trim().length >= 4 ) {
       setData({
         ...data,
         username: val,
-        check_textInputChange: true
+        check_textInputChange: true,
+        isValidUser: true
       });
     } else {
       setData({
         ...data,
         username: val,
-        check_textInputChange: false
+        check_textInputChange: false,
+        isValidUser: false
       });
     }
   }
 
   const handlePasswordChange = (val) => {
-    setData({
-      ...data,
-      password: val
-    });
-  }
-
-  const handleConfirmPasswordChange = (val) => {
-    setData({
-      ...data,
-      confirm_password: val
-    });
-  }
-
-  const updateConfirmSecureTextEntry = () => {
-    setData({
-      ...data,
-      confirm_secureTextEntry: !data.confirm_secureTextEntry
-    });
-  }
+        if( val.trim().length >= 8 ) {
+            setData({
+                ...data,
+                password: val,
+                isValidPassword: true
+            });
+        } else {
+            setData({
+                ...data,
+                password: val,
+                isValidPassword: false
+            });
+        }
+    }
 
   const updateSecureTextEntry = () => {
     setData({
@@ -68,13 +72,48 @@ const SignUp  = ({ navigation }) => {
     });
   }
 
+  const handleValidUser = (val) => {
+        if( val.trim().length >= 4 ) {
+            setData({
+                ...data,
+                isValidUser: true
+            });
+        } else {
+            setData({
+                ...data,
+                isValidUser: false
+            });
+        }
+    }
+
+  const loginHandle = (userName, password) => {
+
+        const foundUser = Users.filter( item => {
+            return userName == item.username && password == item.password;
+        } );
+
+        if ( data.username.length == 0 || data.password.length == 0 ) {
+            Alert.alert('Wrong Input!', 'Username or password field cannot be empty.', [
+                {text: 'Okay'}
+            ]);
+            return;
+        }
+
+        if ( foundUser.length == 0 ) {
+            Alert.alert('Invalid User!', 'Username or password is incorrect.', [
+                {text: 'Okay'}
+            ]);
+            return;
+        }
+        signIn(foundUser);
+    }
+
   return (
     <View style={styles.container}>
         <StatusBar backgroundColor={colors.emerald} barStyle="light-content" />
       <View style={styles.header}>
-        <Text style={styles.text_header}>Register Now!</Text>
+        <Text style={styles.text_header}>Welcom!</Text>
       </View>
-
       <View style={styles.footer}>
         <Text style={styles.text_footer}>Username</Text>
         <View style={styles.action}>
@@ -88,6 +127,7 @@ const SignUp  = ({ navigation }) => {
             style={styles.textInput}
             autoCapitalize="none"
             onChangeText={(val) => textInputChange(val)}
+            onEndEditing={(e)=>handleValidUser(e.nativeEvent.text)}
           />
           {data.check_textInputChange ?
           <Feather
@@ -97,7 +137,9 @@ const SignUp  = ({ navigation }) => {
           />
           : null}
         </View>
-
+        { data.isValidUser ? null :
+        <Text style={styles.errorMsg}>Username must be 4 characters long.</Text>
+        }
         <Text style={[styles.text_footer, { marginTop: 35 }]}>Password</Text>
         <View style={styles.action}>
           <Feather
@@ -128,49 +170,24 @@ const SignUp  = ({ navigation }) => {
             }
           </TouchableOpacity>
         </View>
-
-        <Text style={[styles.text_footer, { marginTop: 35 }]}>Confirm Password</Text>
-        <View style={styles.action}>
-          <Feather
-            name="lock"
-            color="#05375a"
-            size={20}
-          />
-          <TextInput
-            placeholder="Confirm Your Password"
-            secureTextEntry={data.confirm_secureTextEntry ? true : false}
-            style={styles.textInput}
-            autoCapitalize="none"
-            onChangeText={(val) => handleConfirmPasswordChange(val)}
-          />
-          <TouchableOpacity onPress={updateConfirmSecureTextEntry}>
-            {data.confirm_secureTextEntry ?
-            <Feather
-              name="eye-off"
-              color="grey"
-              size={20}
-            />
-            :
-            <Feather
-              name="eye"
-              color="grey"
-              size={20}
-            />
-            }
-          </TouchableOpacity>
-        </View>
-
+        { data.isValidPassword ? null :
+        <Text style={styles.errorMsg}>Password must be 8 characters long.</Text>
+        }
+        <TouchableOpacity>
+          <Text style={{color: colors.emerald, marginTop: 15}}>Forgot Password?</Text>
+        </TouchableOpacity>
         <View style={styles.button}>
           <TouchableOpacity
+            onPress={() => {loginHandle( data.username, data.password )}}
             style={[styles.signIn, { backgroundColor: colors.emerald }]}
           >
-            <Text style={styles.textSign}>Sign Up</Text>
+            <Text style={styles.textSign}>Sign In</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.goBack()}
+            onPress={() => navigation.navigate('SignUp')}
             style={[styles.signIn, { borderColor: colors.emerald, borderWidth: 1, marginTop: 15 }]}
           >
-            <Text style={[styles.textSign, { color: colors.emerald }]}>Sign In</Text>
+            <Text style={[styles.textSign, { color: colors.emerald }]}>Sign Up</Text>
           </TouchableOpacity>
         </View>
 
@@ -178,7 +195,7 @@ const SignUp  = ({ navigation }) => {
     </View>
   );
 };
-export default SignUp;
+export default SignIn;
 
 const styles = StyleSheet.create({
   container: {
@@ -220,6 +237,10 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS ==='ios' ? 0 : -12,
     paddingLeft: 10,
     color: '#05375a',
+  },
+  errorMsg: {
+    color: '#FF0000',
+    fontSize: 14,
   },
   button: {
     alignItems: 'center',
