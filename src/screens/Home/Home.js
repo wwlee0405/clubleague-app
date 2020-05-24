@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View, ScrollView , TouchableOpacity } from "react-native";
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
-import colors from '../../colors';
-import Categories from "../components/contents/Categories";
+import colors from '../../../colors';
+import Categories from "../../components/contents/Categories";
 
-import categoriesList from "../data/categories";
-import FeedCard from "../components/contents/FeedCard";
-import feedcard from "../data/feedcard";
+import categoriesList from "../../data/categories";
+import FeedCard from "../../components/contents/FeedCard";
+import feedcard from "../../data/feedcard";
 
 class Home extends React.Component {
 
@@ -23,7 +23,7 @@ class Home extends React.Component {
             bodyImg={feedcard.bodyImg}
             bodyText={feedcard.bodyText}
             hits={feedcard.hits}
-            onPress={() => navigation.navigate('FeedCard')}
+            onPress={() => navigation.navigate('FeedCardDetailsScreen')}
             profileOnPress={() => navigation.navigate('Profile')}
           />
         </View>

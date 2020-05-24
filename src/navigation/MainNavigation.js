@@ -5,11 +5,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import Home from "../screens/Home";
-import Details from "../screens/Details";
-import Details2 from "../screens/Details2";
-import Details3 from "../screens/Details3";
+import Home from "../screens/Home/Home";
+import DetailsHome from "../screens/Home/DetailsHome";
+import Details2 from "../screens/Home/Details2";
+import Details3 from "../screens/Home/Details3";
+import Details4 from "../screens/Home/Details4";
+import Details5 from "../screens/Home/Details5";
 import Match from "../screens/Match/Match";
+import FeedCardDetailsScreen from "../screens/Match/FeedCardDetailsScreen";
 import Writing from "../screens/Match/Writing";
 import Notifications from "../screens/Notifications";
 import Profile from "../screens/Profile/Profile";
@@ -25,7 +28,7 @@ const MaterialTopTab = createMaterialTopTabNavigator();
 const MainNavigation = () => (
   <BottomTab.Navigator
     initialRouteName="Home"
-    activeColor= "white"
+    activeColor= {colors.emerald}
     shifting= {true}
     barStyle={{ backgroundColor: 'white' }}
   >
@@ -34,7 +37,7 @@ const MainNavigation = () => (
       component={CreateHomeStack}
       options={{
         tabBarLabel: 'Home',
-        tabBarColor: colors.emerald,
+        tabBarColor: colors.white,
         tabBarIcon: ({ color, size }) => (
           <Feather name="home" color={color} size={24} />
         ),
@@ -45,7 +48,7 @@ const MainNavigation = () => (
       component={CreateMatchStack}
       options={{
         tabBarLabel: 'Match',
-        tabBarColor: "#694fad",
+        tabBarColor: colors.white,
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons name="soccer-field" color={color} size={24} />
         ),
@@ -56,7 +59,7 @@ const MainNavigation = () => (
       component={Notifications}
       options={{
         tabBarLabel: 'Notifications',
-        tabBarColor: "#d02860",
+        tabBarColor: colors.white,
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons name="bell" color={color} size={24} />
         ),
@@ -70,7 +73,7 @@ export default MainNavigation;
 const CreateHomeStack = ({navigation}) => (
   <Stack.Navigator
     screenOptions={{
-      headerStyle: { backgroundColor: colors.emerald },
+      headerStyle: { backgroundColor: colors.white },
     }}
   >
     <Stack.Screen
@@ -114,13 +117,14 @@ const CreateHomeStack = ({navigation}) => (
     <Stack.Screen name ="Setting" component={Setting} />
     <Stack.Screen name ="SearchClub" component={SearchClub} />
     <Stack.Screen name ="Details" component={CreateMaterialTopTab} />
+    <Stack.Screen name ="FeedCardDetailsScreen" component={FeedCardDetailsScreen} />
   </Stack.Navigator>
 );
 
 const CreateMatchStack = ({navigation}) => (
   <Stack.Navigator
     screenOptions={{
-      headerStyle: { backgroundColor: "#694fad" }
+      headerStyle: { backgroundColor: colors.white }
     }}
   >
     <Stack.Screen
@@ -140,21 +144,25 @@ const CreateMatchStack = ({navigation}) => (
       }}
     />
     <Stack.Screen name ="Writing" component={Writing} options={Writing.navigationOptions} />
+    <Stack.Screen name ="FeedCardDetailsScreen" component={FeedCardDetailsScreen} />
     <Stack.Screen name ="Details" component={CreateMaterialTopTab} />
+
   </Stack.Navigator>
 );
 
 const CreateMaterialTopTab = () => (
   <MaterialTopTab.Navigator
     tabBarOptions={{
-      activeTintColor: '#e91e63',
+      activeTintColor: 'powderblue',
       labelStyle: { fontSize: 12 },
       tabStyle: { height: 40 },
-      style: { backgroundColor: 'powderblue' },
+      style: { backgroundColor: colors.white },
     }}
   >
-    <MaterialTopTab.Screen name="Details" component={Details} options={{ tabBarLabel: 'Home' }} />
-    <MaterialTopTab.Screen name="Details2" component={Details2} options={{ tabBarLabel: 'VV' }} />
-    <MaterialTopTab.Screen name="Details3" component={Details3} options={{ tabBarLabel: 'schedule' }} />
+    <MaterialTopTab.Screen name="DetailsHome" component={DetailsHome} options={{ tabBarLabel: 'Home' }} />
+    <MaterialTopTab.Screen name="Details2" component={Details2} options={{ tabBarLabel: 'Schedule' }} />
+    <MaterialTopTab.Screen name="Details3" component={Details3} options={{ tabBarLabel: 'Players' }} />
+    <MaterialTopTab.Screen name="Details4" component={Details4} options={{ tabBarLabel: 'Info' }} />
+    <MaterialTopTab.Screen name="Details5" component={Details5} options={{ tabBarLabel: 'Setting' }} />
   </MaterialTopTab.Navigator>
 );
