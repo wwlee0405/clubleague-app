@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
-import { ScrollView } from "react-native";
+import { StyleSheet, ScrollView } from "react-native";
 import { Feather } from '@expo/vector-icons';
 import colors from '../../../colors';
 
@@ -15,6 +15,7 @@ export default class FeedCardDetailsScreen extends React.Component {
       <ScrollView
         horizontal={false}
         showsVerticalScrollIndicator={false}
+        style={styles.container}
       >
         <FeedCardDetails
           onPress={() => navigation.navigate('Profile')}
@@ -31,3 +32,10 @@ export default class FeedCardDetailsScreen extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.clBackgroundColor,
+  },
+});

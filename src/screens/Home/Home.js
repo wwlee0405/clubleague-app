@@ -79,7 +79,7 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.clBackgroundColor,
   },
   clubContainer: {
     borderBottomWidth: 1,

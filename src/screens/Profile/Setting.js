@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { AuthContext } from "../../components/context";
 import styled from "styled-components";
-
+import colors from '../../../colors';
 
 export default ({ navigation }) => {
 
@@ -22,6 +22,7 @@ export default ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colors.clBackgroundColor,
     justifyContent: 'center',
     alignItems: 'center'
   },

@@ -20,4 +20,6 @@ export default {
   grey01: '#f3f3f3',
   grey02: '#919191',
   grey03: '#b3b3b3',
+
+  clBackgroundColor: "#ffffff",
 };

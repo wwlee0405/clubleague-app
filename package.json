@@ -11,6 +11,7 @@
     "@apollo/react-hooks": "^3.1.5",
     "@expo/vector-icons": "^10.2.0",
     "@react-native-community/async-storage": "^1.10.1",
+    "@react-native-community/datetimepicker": "^2.4.0",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/bottom-tabs": "^5.4.0",
     "@react-navigation/compat": "^5.1.18",

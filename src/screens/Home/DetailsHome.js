@@ -60,6 +60,6 @@ export default DetailsHome;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.clBackgroundColor,
   },
 });
