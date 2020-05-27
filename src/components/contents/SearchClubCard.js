@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 15,
     borderBottomWidth: 1,
-    borderColor: colors.lightGreyColor,
+    borderColor: colors.grey01,
   },
   clubProfileImgWrap: {
     paddingRight: 15,
@@ -75,20 +75,20 @@ const styles = StyleSheet.create({
   },
   clubProfileTopInfoTextLeft: {
     fontSize: 12,
-    color: colors.grey03,
+    color: colors.grey02,
   },
   clubProfileTopInfoTextRight: {
     paddingLeft: 20,
     fontSize: 12,
-    color: colors.grey03,
+    color: colors.grey02,
   },
   clubProfileBottomInfoTextLeft: {
     fontSize: 12,
-    color: colors.grey03,
+    color: colors.grey02,
   },
   clubProfileBottomInfoTextRight: {
     fontSize: 12,
     paddingLeft: 20,
-    color: colors.grey03,
+    color: colors.grey02,
   },
 });

@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     width: 130,
     height: 130,
     borderRadius: 100,
-    backgroundColor: colors.lightGrey,
+    backgroundColor: colors.lightGreyColor,
   },
   notice: {
     fontSize: 13,

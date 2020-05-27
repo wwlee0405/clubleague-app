@@ -1,6 +1,9 @@
 export default {
   blackColor: "#262626",
   white: "#ffffff",
+  snow: '#fffafa',
+  ghostWhite: '#f8f8ff',
+  whiteSmoke: '#f5f5f5',
   greyColor: "#F9F9F9",
   darkGreyColor: "#999",
   lightGreyColor: "#c7c7c7",
@@ -11,11 +14,6 @@ export default {
   sacramento: "#043927",
   yellow: "#fbbc05",
   yellowGreen: "#9ACD32",
-
-  white01: '#f8f8ff',
-  white02: '#eae5e5',
-  white03: '#f5f5f5',
-  white04: '#fffafa',
 
   grey01: '#f3f3f3',
   grey02: '#919191',

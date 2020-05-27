@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   pickerWrap: {
     margin: 20,
     padding: 20,
-    backgroundColor: colors.white01,
+    backgroundColor: colors.whiteSmoke,
     bottom: 60,
     left: 20,
     right: 20,

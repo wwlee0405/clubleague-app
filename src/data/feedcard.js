@@ -5,7 +5,7 @@ const feedcard = [
     user: 'Son',
     address: 'Seoul, Korea',
     bodyImg: require('./ImgTest/bbbb.jpg'),
-    bodyText: '이번주 02/17 매칭 초청합니다. 팀명:클럽하우스 유니폼:흰색, 매너:최고, 장소:수지체육공원',
+    bodyText: '07월20일 월요일 4파전 부에노스아이레스의 어떤경기장으로 초청합니다.',
     hits: 150,
   },
   {
@@ -14,7 +14,7 @@ const feedcard = [
     user: 'Lionel Messi',
     address: 'Buenos Aires, Argentina',
     bodyImg: require('./ImgTest/aaaa.jpg'),
-    bodyText: '05/17 매칭 초청합니다. 팀명:F.C. Barcelona 유니폼:줄무늬, 매너:최고, 장소:캄프누',
+    bodyText: '한번 붙자!! 05/17 매칭 초청합니다. 팀명:F.C. Barcelona 유니폼:줄무늬, 매너:최고, 장소:캄프누',
     hits: 550,
   },
   {

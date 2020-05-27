@@ -58,7 +58,7 @@ class Home extends React.Component {
             />
           </View>
 
-        </View>
+        </View >
 
         <ScrollView
           horizontal={false}
@@ -79,11 +79,11 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.clBackgroundColor,
   },
   clubContainer: {
     borderBottomWidth: 1,
-    borderColor: colors.lightGreyColor,
+    borderColor: colors.white,
+    backgroundColor: colors.clBackgroundColor,
   },
   clubContainerTopWrap: {
     height: 35,

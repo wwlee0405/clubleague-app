@@ -102,11 +102,11 @@ const styles = StyleSheet.create({
   },
   nameTag: {
     fontSize: 10,
-    color: colors.darkGrey,
+    color: colors.darkGreyColor,
   },
   property: {
     fontSize: 15,
-    color: colors.black,
+    color: colors.blackColor,
   },
   buttonWrap: {
     paddingTop: 20,

@@ -142,6 +142,6 @@ const styles = StyleSheet.create({
     paddingRight: 15,
   },
   replySection: {
-    backgroundColor: colors.white03,
+    backgroundColor: colors.whiteSmoke,
   },
 });
