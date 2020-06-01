@@ -32,11 +32,11 @@ class SearchClubScreen extends React.Component {
         >
           <SearchClubCard
             onPress={() => navigation.navigate('Details')}
-            clubProfileImg={require('../../data/ImgTest/2bar.jpg')}
-            clubName="FC Barcelona"
-            clubInfo="난곡에서 활동하는 축구동호회입니다."
+            clubProfileImg={require('../../data/ImgTest/1ars.jpg')}
+            clubName="FC Seoul"
+            clubInfo="서울에서 활동하는 축구동호회입니다."
             sports="Soccer"
-            address="Barcelona, Spain"
+            address="Seoul, Korea"
             members="15"
             leaderUser="Ernesto Valverde"
           />
@@ -47,16 +47,17 @@ class SearchClubScreen extends React.Component {
             clubInfo="난곡에서 활동하는 축구동호회입니다."
             sports="Soccer"
             address="Barcelona, Spain"
-            members="15"
+            members="17"
             leaderUser="Ernesto Valverde"
           />
           <SearchClubCard
             onPress={() => navigation.navigate('Details')}
-            clubProfileImg={require('../../data/ImgTest/2bar.jpg')}
-            clubName="FC Barcelona"
+            clubProfileImg={require('../../data/ImgTest/aaaa.jpg')}
+            clubName="FC Gangnam"
+            clubInfo="강남에서 활동하는 축구동호회입니다."
             sports="Soccer"
-            address="Barcelona, Spain"
-            members="15"
+            address="Seoul, Korea"
+            members="20"
             leaderUser="Ernesto Valverde"
           />
 
@@ -76,5 +77,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    backgroundColor: colors.clBackgroundColor,
   },
 });

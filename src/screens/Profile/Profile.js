@@ -75,7 +75,7 @@ export default ProfileScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white'
+    backgroundColor: colors.clBackgroundColor,
   },
   contantContainer: {
     paddingTop: 10,
@@ -102,11 +102,11 @@ const styles = StyleSheet.create({
   },
   nameTag: {
     fontSize: 10,
-    color: colors.darkGrey,
+    color: colors.darkGreyColor,
   },
   property: {
     fontSize: 15,
-    color: colors.black,
+    color: colors.blackColor,
   },
   buttonWrap: {
     paddingTop: 20,
@@ -120,10 +120,11 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 1,
     borderColor: colors.emerald,
-    backgroundColor: colors.emerald,
+    backgroundColor: colors.clBackgroundColor,
     borderRadius: 8,
   },
   editProfileButtonText: {
-    color: colors.white,
+    fontWeight: 'bold',
+    color: colors.emerald,
   },
 });

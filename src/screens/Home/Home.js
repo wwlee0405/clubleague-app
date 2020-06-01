@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View, ScrollView , TouchableOpacity } from "react-native";
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
-import colors from '../../colors';
-import Categories from "../components/contents/Categories";
+import colors from '../../../colors';
+import Categories from "../../components/contents/Categories";
 
-import categoriesList from "../data/categories";
-import FeedCard from "../components/contents/FeedCard";
-import feedcard from "../data/feedcard";
+import categoriesList from "../../data/categories";
+import FeedCard from "../../components/contents/FeedCard";
+import feedcard from "../../data/feedcard";
 
 class Home extends React.Component {
 
@@ -23,7 +23,7 @@ class Home extends React.Component {
             bodyImg={feedcard.bodyImg}
             bodyText={feedcard.bodyText}
             hits={feedcard.hits}
-            onPress={() => navigation.navigate('FeedCard')}
+            onPress={() => navigation.navigate('FeedCardDetailsScreen')}
             profileOnPress={() => navigation.navigate('Profile')}
           />
         </View>
@@ -58,11 +58,12 @@ class Home extends React.Component {
             />
           </View>
 
-        </View>
+        </View >
 
         <ScrollView
           horizontal={false}
           showsVerticalScrollIndicator={false}
+          style={styles.scrollViewWrap}
         >
 
           {this.renderFeedCard()}
@@ -79,11 +80,11 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
   },
   clubContainer: {
     borderBottomWidth: 1,
-    borderColor: colors.lightGreyColor,
+    borderColor: colors.white,
+    backgroundColor: colors.white,
   },
   clubContainerTopWrap: {
     height: 35,
@@ -108,6 +109,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   clubContainerBottomWrap: {
-    height: 120
+    height: 120,
+  },
+  scrollViewWrap: {
+    backgroundColor: colors.clBackgroundColor,
   },
 });

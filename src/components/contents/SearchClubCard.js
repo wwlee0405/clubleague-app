@@ -8,6 +8,7 @@ export default class SearchClubCard extends React.Component {
   render() {
     const { onPress, clubProfileImg, clubName, clubInfo, sports, members, leaderUser, address } = this.props;
     return (
+      <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
         <View style={styles.clubProfileWrap}>
 
@@ -37,11 +38,19 @@ export default class SearchClubCard extends React.Component {
 
         </View>
       </TouchableOpacity>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex:1,
+    borderRadius: 20,
+    backgroundColor: colors.white,
+    marginTop: 5,
+    marginBottom: 5,
+  },
   clubProfileWrap: {
     flex: 1,
     flexDirection: 'row',
@@ -49,8 +58,6 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     paddingLeft: 15,
     paddingRight: 15,
-    borderBottomWidth: 1,
-    borderColor: colors.lightGreyColor,
   },
   clubProfileImgWrap: {
     paddingRight: 15,

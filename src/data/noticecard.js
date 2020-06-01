@@ -34,6 +34,41 @@ const noticecard = [
     text: '게임 요청을 합니다 . .',
     time: 'PM 4:00',
   },
+  {
+    id: 6,
+    profileImg: require('./ImgTest/dddd.jpg'),
+    user: 'Lionel Messi',
+    text: '게임 요청을 합니다 . .',
+    time: 'PM 3:30',
+  },
+  {
+    id: 7,
+    profileImg: require('./ImgTest/dddd.jpg'),
+    user: 'Lionel Messi',
+    text: '게임 요청을 합니다 . .',
+    time: 'PM 3:30',
+  },
+  {
+    id: 8,
+    profileImg: require('./ImgTest/dddd.jpg'),
+    user: 'Lionel Messi',
+    text: '게임 요청을 합니다 . .',
+    time: 'PM 3:30',
+  },
+  {
+    id: 9,
+    profileImg: require('./ImgTest/dddd.jpg'),
+    user: 'Lionel Messi',
+    text: '게임 요청을 합니다 . .',
+    time: 'PM 3:30',
+  },
+  {
+    id: 10,
+    profileImg: require('./ImgTest/dddd.jpg'),
+    user: 'Lionel Messi',
+    text: '게임 요청을 합니다 . .',
+    time: 'PM 3:30',
+  },
 ];
 
 export default noticecard;
