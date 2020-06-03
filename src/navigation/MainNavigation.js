@@ -107,38 +107,16 @@ const CreateHomeStack = ({navigation}) => (
         )
       }}
     />
-    <Stack.Screen
-      name ="Profile"
-      component={Profile}
-      options={{
-        headerRight: () => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Setting')}
-            title="Setting"
-          >
-            <Feather name="settings" size={25} style={{ paddingRight: 20, color: colors.sacramento }} />
-          </TouchableOpacity>
-        )
-      }}
-    />
-    <Stack.Screen name ="EditProfile" component={EditProfile} />
+    <Stack.Screen name ="Profile" component={Profile} options={Profile.navigationOptions} />
+    <Stack.Screen name ="EditProfile" component={EditProfile} options={EditProfile.navigationOptions} />
     <Stack.Screen name ="Setting" component={Setting} />
-    <Stack.Screen name ="SearchClub" component={SearchClub} />
-    <Stack.Screen
-      name ="NewClub"
-      component={NewClub}
-      options={{
-        headerRight: () => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Home')}
-            title="Submit"
-          >
-            <Feather name="check" size={25} style={{ paddingRight: 20, color: colors.sacramento }} />
-          </TouchableOpacity>
-        )
-      }}
-    />
-    <Stack.Screen name ="Details" component={CreateMaterialTopTab} />
+    <Stack.Screen name ="SearchClub" component={SearchClub} options={SearchClub.navigationOptions} />
+    <Stack.Screen name ="NewClub" component={NewClub} options={NewClub.navigationOptions} />
+    <Stack.Screen name ="Details" component={CreateMaterialTopTab}
+			options={{
+				headerTransparent: false
+			}}
+		/>
     <Stack.Screen name ="FeedCardDetailsScreen" component={FeedCardDetailsScreen} />
     <Stack.Screen name ="Entry" component={Entry} />
   </Stack.Navigator>
@@ -170,21 +148,8 @@ const CreateMatchStack = ({navigation}) => (
     <Stack.Screen name ="Details" component={CreateMaterialTopTab} />
     <Stack.Screen name ="FeedCardDetailsScreen" component={FeedCardDetailsScreen} />
     <Stack.Screen name ="Entry" component={Entry} />
-    <Stack.Screen
-      name ="Profile"
-      component={Profile}
-      options={{
-        headerRight: () => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Setting')}
-            title="Setting"
-          >
-            <Feather name="settings" size={25} style={{ paddingRight: 20, color: colors.sacramento }} />
-          </TouchableOpacity>
-        )
-      }}
-    />
-    <Stack.Screen name ="EditProfile" component={EditProfile} />
+    <Stack.Screen name ="Profile" component={Profile} options={Profile.navigationOptions} />
+    <Stack.Screen name ="EditProfile" component={EditProfile} options={EditProfile.navigationOptions} />
     <Stack.Screen name ="Setting" component={Setting} />
 
   </Stack.Navigator>
@@ -216,21 +181,8 @@ const CreateNotificationStack = ({navigation}) => (
     <Stack.Screen name ="Details" component={CreateMaterialTopTab} />
     <Stack.Screen name ="FeedCardDetailsScreen" component={FeedCardDetailsScreen} />
     <Stack.Screen name ="Entry" component={Entry} />
-    <Stack.Screen
-      name ="Profile"
-      component={Profile}
-      options={{
-        headerRight: () => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Setting')}
-            title="Setting"
-          >
-            <Feather name="settings" size={25} style={{ paddingRight: 20, color: colors.sacramento }} />
-          </TouchableOpacity>
-        )
-      }}
-    />
-    <Stack.Screen name ="EditProfile" component={EditProfile} />
+    <Stack.Screen name ="Profile" component={Profile} options={Profile.navigationOptions} />
+    <Stack.Screen name ="EditProfile" component={EditProfile} options={EditProfile.navigationOptions} />
     <Stack.Screen name ="Setting" component={Setting} />
 
   </Stack.Navigator>

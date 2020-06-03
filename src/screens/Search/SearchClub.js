@@ -3,19 +3,16 @@ import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, Image 
 import colors from '../../../colors';
 import SearchClubCard from "../../components/contents/SearchClubCard";
 
-class SearchClubScreen extends React.Component {
+class SearchClub extends React.Component {
 
-  static options = ({ navigation }) => {
+  static navigationOptions = ({ navigation }) => {
     return {
-      headerStyle: {
-        backgroundColor: colors.emerald,
-      },
-      headerTitle: (
+      headerTitle: () => (
         <View>
           <TextInput
             style={styles.inputSection}
-            placeholder="Search for club name, sport, reader name"
-            placeholderTextColor= {colors.sacramento}
+            placeholder="Search for club, sport, leader"
+            placeholderTextColor= {colors.darkGreyColor}
           />
         </View>
       ),
@@ -68,12 +65,15 @@ class SearchClubScreen extends React.Component {
   }
 }
 
-export default SearchClubScreen;
+export default SearchClub;
 
 const styles = StyleSheet.create({
   inputSection: {
     fontSize: 15,
-    color: colors.sacramento,
+    backgroundColor: colors.whiteSmoke,
+    borderRadius: 5,
+    paddingLeft: 10,
+    width: 300,
   },
   container: {
     flex: 1,

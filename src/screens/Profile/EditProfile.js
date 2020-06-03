@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TextInput, View, ScrollView, Image, TouchableOpacity } from "react-native";
 import { Feather } from '@expo/vector-icons';
 import colors from '../../../colors';
 import TextInputField from "../../components/form/TextInputField";
@@ -8,10 +8,10 @@ class EditProfile extends React.Component {
 
   static navigationOptions = ({ navigation }) => {
     return {
-      headerRight: (
+      headerRight: () => (
         <TouchableOpacity
           onPress={() => navigation.navigate('Profile')}
-          title="submit"
+          title="Submit"
         >
           <Feather name="check" size={25} style={{ paddingRight: 10 }} />
         </TouchableOpacity>

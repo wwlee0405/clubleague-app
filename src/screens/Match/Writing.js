@@ -10,6 +10,19 @@ import CreateMatchBox from "../../components/form/CreateMatchBox";
 
 class Writing extends React.Component {
 
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerRight: () => (
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Match')}
+          title="Submit"
+        >
+          <Feather name="check" size={25} style={{ paddingRight: 10 }} />
+        </TouchableOpacity>
+      ),
+    };
+  };
+
   render() {
     return (
       <View style={styles.container}>

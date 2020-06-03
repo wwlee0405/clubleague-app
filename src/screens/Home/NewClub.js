@@ -8,13 +8,15 @@ class NewClub extends React.Component {
 
   static navigationOptions = ({ navigation }) => {
     return {
-      headerRight: (
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Home')}
-          title="submit"
-        >
-          <Feather name="check" size={25} style={{ paddingRight: 10 }} />
-        </TouchableOpacity>
+      headerRight: () => (
+        <View>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Home')}
+            title="Submit"
+          >
+            <Feather name="check" size={25} style={{ paddingRight: 10 }} />
+          </TouchableOpacity>
+        </View>
       ),
     };
   };

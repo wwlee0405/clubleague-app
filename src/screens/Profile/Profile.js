@@ -5,6 +5,19 @@ import colors from '../../../colors';
 
 class ProfileScreen extends React.Component {
 
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerRight: () => (
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Setting')}
+          title="Setting"
+        >
+          <Feather name="settings" size={25} style={{ paddingRight: 20, color: colors.sacramento }} />
+        </TouchableOpacity>      
+      ),
+    };
+  };
+
   render() {
 
     const { navigation } = this.props;
