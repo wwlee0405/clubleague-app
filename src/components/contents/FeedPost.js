@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { Feather } from '@expo/vector-icons';
-import colors from '../../../colors';
+import colors from "../../../colors";
 
 import SetSportBox from "../form/SetSportBox";
 

@@ -3,72 +3,76 @@ import { PropTypes } from "prop-types";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import colors from '../../../colors';
 
+export default class FeedMatchBoxItem extends React.Component {
 
-const FeedMatchBoxItem = ({
-    askMatchOnPress,
-    matchDetailsOnPress,
-    matchClubImg,
-    title,
-    labelColor,
-    clubName,
-    entryBtnOnPress,
-    entryNavigationOnPress,
-    entry,
-    entryProfileImg
-  }) => {
-  return (
-    <View style={styles.container}>
+  render() {
+    const {
+      askMatchOnPress,
+      matchDetailsOnPress,
+      matchClubImg,
+      title,
+      labelColor,
+      clubName,
+      entryBtnOnPress,
+      entryNavigationOnPress,
+      entry,
+      entryProfileImg
+    } = this.props;
+    const color = labelColor || colors.yellow;
+    return (
+      <View style={styles.container}>
 
-      <View style={styles.topContainer}>
-        <TouchableOpacity onPress={askMatchOnPress}>
-          <View style={styles.topLeftWrap}>
-            <View>
-              <TouchableOpacity onPress={matchDetailsOnPress}>
-                <Image
-                  source={matchClubImg}
-                  style={styles.clubImg}
-                />
-              </TouchableOpacity>
+        <View style={styles.topContainer}>
+          <TouchableOpacity onPress={askMatchOnPress}>
+            <View style={styles.topLeftWrap}>
+              <View>
+                <TouchableOpacity onPress={matchDetailsOnPress}>
+                  <Image
+                    source={matchClubImg}
+                    style={styles.clubImg}
+                  />
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.labelWrap}>
+                <Text style={[{ color }, styles.labelText]}>{title}</Text>
+                <Text style={styles.clubName}>{clubName}</Text>
+              </View>
             </View>
+          </TouchableOpacity>
 
-            <View style={styles.labelWrap}>
-              <Text style={[{ color }, styles.labelText]}>{title}</Text>
-              <Text style={styles.clubName}>{clubName}</Text>
+          <View style={styles.topRightWrap}>
+            <TouchableOpacity
+              style={styles.attendBtn}
+              onPress={entryBtnOnPress}
+            >
+              <Text style={styles.btnText}>참석</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <TouchableOpacity onPress={entryNavigationOnPress}>
+          <View style={styles.bottomContainer}>
+            <Text style={styles.entryText}><Text>{entry}</Text> Entry</Text>
+            <View style={{ paddingRight: 3 }}>
+              <Image
+                source={entryProfileImg}
+                style={styles.entryImg}
+              />
+            </View>
+            <View style={{ paddingRight: 3 }}>
+              <Image
+                source={entryProfileImg}
+                style={styles.entryImg}
+              />
             </View>
           </View>
         </TouchableOpacity>
 
-        <View style={styles.topRightWrap}>
-          <TouchableOpacity
-            style={styles.attendBtn}
-            onPress={entryBtnOnPress}
-          >
-            <Text style={styles.btnText}>참석</Text>
-          </TouchableOpacity>
-        </View>
       </View>
-
-      <TouchableOpacity onPress={entryNavigationOnPress}>
-        <View style={styles.bottomContainer}>
-          <Text style={styles.entryText}><Text>{entry}</Text> Entry</Text>
-          <View style={{ paddingRight: 3 }}>
-            <Image
-              source={entryProfileImg}
-              style={styles.entryImg}
-            />
-          </View>
-          <View style={{ paddingRight: 3 }}>
-            <Image
-              source={entryProfileImg}
-              style={styles.entryImg}
-            />
-          </View>
-        </View>
-      </TouchableOpacity>
-
-    </View>
-  );
-};
+    );
+  }
+}
 
 FeedMatchBoxItem.propTypes = {
   onPress: PropTypes.func,
@@ -80,8 +84,6 @@ FeedMatchBoxItem.propTypes = {
   entryNavigationOnPress: PropTypes.func,
   entry: PropTypes.string,
 };
-
-export default FeedMatchBoxItem;
 
 const styles = StyleSheet.create({
   container: {
