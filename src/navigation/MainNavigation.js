@@ -77,50 +77,62 @@ function BottomTabs() {
 	);
 }
 
-const CreateHomeStack = ({navigation}) => (
-  <Stack.Navigator
-    screenOptions={{
-      headerStyle: { backgroundColor: colors.white },
-    }}
-  >
-    <Stack.Screen
-      name ="Home"
-      component={Home}
-      options={{
-        headerLeft: () => (<MaterialCommunityIcons name="soccer" size={30} style={{ paddingLeft: 10, color: colors.sacramento }} />),
-        headerTitle: <Text style={{ fontWeight: 'bold', fontSize: 18, color: colors.sacramento }}>Clubleague</Text>,
-        headerRight: () => (
-          <View style={{ flexDirection: 'row' }}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('SearchClub')}
-              title="SearchClub"
-            >
-              <Feather name="search" size={25} style={{ paddingRight: 20, color: colors.sacramento }} />
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Profile')}
-              title="Profile"
-            >
-              <Feather name="user" size={25} style={{ paddingRight: 10, color: colors.sacramento }} />
-            </TouchableOpacity>
-          </View>
-        )
-      }}
-    />
-    <Stack.Screen name ="Profile" component={Profile} options={Profile.navigationOptions} />
-    <Stack.Screen name ="EditProfile" component={EditProfile} options={EditProfile.navigationOptions} />
-    <Stack.Screen name ="Setting" component={Setting} />
-    <Stack.Screen name ="SearchClub" component={SearchClub} options={SearchClub.navigationOptions} />
-    <Stack.Screen name ="NewClub" component={NewClub} options={NewClub.navigationOptions} />
-    <Stack.Screen name ="Details" component={CreateMaterialTopTab}
-			options={{
-				headerTransparent: false
-			}}
-		/>
-    <Stack.Screen name ="FeedCardDetailsScreen" component={FeedCardDetailsScreen} />
-    <Stack.Screen name ="Entry" component={Entry} />
-  </Stack.Navigator>
-);
+const CreateHomeStack = ({navigation}) => {
+	const logOut = useLogOut();
+
+	return (
+	  <Stack.Navigator
+	    screenOptions={{
+	      headerStyle: { backgroundColor: colors.white },
+	    }}
+	  >
+	    <Stack.Screen
+	      name ="Home"
+	      component={Home}
+	      options={{
+	        headerLeft: () => (
+						<MaterialCommunityIcons
+							name="soccer"
+							size={30}
+							style={{ paddingLeft: 10, color: colors.sacramento }}
+							onPress={() => {
+									logOut(true);
+								}}
+						/>
+					),
+	        headerTitle: <Text style={{ fontWeight: 'bold', fontSize: 18, color: colors.sacramento }}>Clubleague</Text>,
+	        headerRight: () => (
+	          <View style={{ flexDirection: 'row' }}>
+	            <TouchableOpacity
+	              onPress={() => navigation.navigate('SearchClub')}
+	              title="SearchClub"
+	            >
+	              <Feather name="search" size={25} style={{ paddingRight: 20, color: colors.sacramento }} />
+	            </TouchableOpacity>
+	            <TouchableOpacity
+	              onPress={() => navigation.navigate('Profile')}
+	              title="Profile"
+	            >
+	              <Feather name="user" size={25} style={{ paddingRight: 10, color: colors.sacramento }} />
+	            </TouchableOpacity>
+	          </View>
+	        )
+	      }}
+	    />
+	    <Stack.Screen name ="Profile" component={Profile} options={Profile.navigationOptions} />
+	    <Stack.Screen name ="EditProfile" component={EditProfile} options={EditProfile.navigationOptions} />
+	    <Stack.Screen name ="Setting" component={Setting} />
+	    <Stack.Screen name ="SearchClub" component={SearchClub} options={SearchClub.navigationOptions} />
+	    <Stack.Screen name ="NewClub" component={NewClub} options={NewClub.navigationOptions} />
+	    <Stack.Screen name ="Details" component={CreateMaterialTopTab}
+				options={{
+					headerTransparent: false
+				}}
+			/>
+	    <Stack.Screen name ="FeedCardDetailsScreen" component={FeedCardDetailsScreen} />
+	    <Stack.Screen name ="Entry" component={Entry} />
+	  </Stack.Navigator>
+)};
 
 const CreateMatchStack = ({navigation}) => (
   <Stack.Navigator
