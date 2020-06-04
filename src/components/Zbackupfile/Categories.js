@@ -2,6 +2,10 @@ import React from "react";
 import { StyleSheet, View, Text, ScrollView , TouchableOpacity, Image } from "react-native";
 import colors from '../../../colors';
 
+// ClubTeams.js 파일로 대체됨
+
+
+/*
 export default class Categories extends React.Component {
   constructor(props) {
     super(props);
@@ -60,3 +64,4 @@ const styles = StyleSheet.create({
     paddingEnd: 5,
   },
 });
+*/

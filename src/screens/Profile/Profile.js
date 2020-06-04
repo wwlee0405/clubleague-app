@@ -3,8 +3,8 @@ import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from "rea
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../../../colors';
 
-class ProfileScreen extends React.Component {
 
+export default class extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
       headerRight: () => (
@@ -13,15 +13,12 @@ class ProfileScreen extends React.Component {
           title="Setting"
         >
           <Feather name="settings" size={25} style={{ paddingRight: 20, color: colors.sacramento }} />
-        </TouchableOpacity>      
+        </TouchableOpacity>
       ),
     };
   };
-
   render() {
-
     const { navigation } = this.props;
-
     return (
       <View style={styles.container}>
         <ScrollView
@@ -83,7 +80,6 @@ class ProfileScreen extends React.Component {
   }
 }
 
-export default ProfileScreen;
 
 const styles = StyleSheet.create({
   container: {

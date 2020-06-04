@@ -5,41 +5,22 @@ import colors from '../../../colors';
 
 import ClubSchedule from "../../components/contents/ClubSchedule";
 
-class DetailsSchedule extends React.Component {
+export default ({ navigation }) => {
+  return (
+    <View style={styles.container}>
 
-  renderClubSchedule() {
+      <ScrollView
+        horizontal={false}
+        showsVerticalScrollIndicator={false}
+      >
 
-      return (
-        <View>
-          <ClubSchedule />
+        <ClubSchedule />
 
-        </View>
-      );
+      </ScrollView>
+    </View>
+  );
+};
 
-  }
-
-  render() {
-
-    const { navigation } = this.props;
-
-    return (
-      <View style={styles.container}>
-
-        <ScrollView
-          horizontal={false}
-          showsVerticalScrollIndicator={false}
-        >
-
-          {this.renderClubSchedule()}
-
-        </ScrollView>
-      </View>
-
-    );
-  }
-}
-
-export default DetailsSchedule;
 
 const styles = StyleSheet.create({
   container: {

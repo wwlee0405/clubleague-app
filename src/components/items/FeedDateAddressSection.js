@@ -4,29 +4,28 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { Feather } from '@expo/vector-icons';
 import colors from '../../../colors';
 
-export default class FeedDateAddressSection extends React.Component {
 
-  render() {
-    const { icon, topText, bottomText } = this.props;
-    return (
-      <View style={styles.container}>
-        <View style={styles.flexWrap}>
-          <Feather name={icon} size={25} style={styles.img} />
-          <View style={styles.textWrap}>
-            <Text style={styles.topText}>{topText}</Text>
-            <Text style={styles.bottomText}>{bottomText}</Text>
-          </View>
+const FeedDateAddressSection = ({ icon, topText, bottomText }) => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.flexWrap}>
+        <Feather name={icon} size={25} style={styles.img} />
+        <View style={styles.textWrap}>
+          <Text style={styles.topText}>{topText}</Text>
+          <Text style={styles.bottomText}>{bottomText}</Text>
         </View>
       </View>
-    );
-  }
-}
+    </View>
+  );
+};
 
 FeedDateAddressSection.propTypes = {
   icon: PropTypes.string.isRequired,
   topText: PropTypes.string,
   bottomText: PropTypes.string,
 };
+
+export default FeedDateAddressSection;
 
 const styles = StyleSheet.create({
   container: {

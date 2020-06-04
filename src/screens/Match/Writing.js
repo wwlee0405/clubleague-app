@@ -8,8 +8,8 @@ import SetAddressBox from "../../components/form/SetAddressBox";
 import SetDateBox from "../../components/form/SetDateBox";
 import CreateMatchBox from "../../components/form/CreateMatchBox";
 
-class Writing extends React.Component {
 
+export default class extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
       headerRight: () => (
@@ -22,8 +22,8 @@ class Writing extends React.Component {
       ),
     };
   };
-
   render() {
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <TextInput
@@ -85,7 +85,6 @@ class Writing extends React.Component {
   }
 }
 
-export default Writing;
 
 const styles = StyleSheet.create({
   container: {

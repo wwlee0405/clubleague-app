@@ -1,116 +1,73 @@
 import React from "react";
 import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from "react-native";
-import { Feather } from '@expo/vector-icons';
 import colors from '../../../colors';
 
-import FeedCard from "./FeedCard";
-import feedcard from "../../data/feedcard";
-
-class ClubHome extends React.Component {
-
-  renderFeedCard() {
-    const { onPress, feedOnPress, feedProfileOnPress } = this.props;
-    return feedcard.map((feedcard, index) => {
-      return (
-        <View key={`feedcard-${index}`}>
-          <FeedCard
-            key={`feedcard-item-${index}`}
-            profileImg={feedcard.profileImg}
-            user={feedcard.user}
-            address={feedcard.address}
-            bodyImg={feedcard.bodyImg}
-            bodyText={feedcard.bodyText}
-            hits={feedcard.hits}
-            onPress={feedOnPress}
-            profileOnPress={feedProfileOnPress}
-          />
-        </View>
-      );
-    });
-  }
-
-  render() {
-
-    const {
-      onPress,
-      clubImg,
-      clubProfileImg,
-      clubName,
-      sports,
-      members,
-      leaderUser,
-      address
-    } = this.props;
-
-    return (
-      <ScrollView>
-        <View>
-          <Image
-            source={clubImg}
-            style={styles.clubImg}
-          />
-          <View style={styles.clubProfileWrap}>
-            <TouchableOpacity
-              style={styles.clubProfileImgButton}
-              onPress={onPress}
-            >
-              <Image
-                source={clubProfileImg}
-                style={styles.clubProfileImg}
-              />
-            </TouchableOpacity>
-            <View style={styles.clubProfileTextWrap}>
-              <View>
-                <Text style={styles.clubNameText}>{clubName}</Text>
-              </View>
-              <Text>{sports}</Text>
-              <View style={styles.clubProfileTeamInfoTextWrap}>
-                <Text style={styles.clubProfileTopInfoTextLeft}>Members <Text>{members}</Text></Text>
-                <Text style={styles.clubProfileTopInfoTextRight}>Leader <Text>{leaderUser}</Text></Text>
-              </View>
-              <View style={styles.clubProfileTeamInfoTextWrap}>
-                <Text style={styles.clubProfileBottomInfoTextLeft}>{address}</Text>
-                <Text style={{ fontSize: 14, paddingLeft: 20 }}>{address}</Text>
-                <Text style={{ fontSize: 14, paddingLeft: 20 }}>{address}</Text>
-              </View>
+const ClubHome = ({
+    onPress,
+    clubImg,
+    teamName,
+    sports,
+    members,
+    teamOwner,
+    teamArea
+  }) => {
+  return (
+    <View>
+      <View>
+        <View style={styles.clubProfileWrap}>
+          <TouchableOpacity
+            style={styles.clubProfileImgButton}
+            onPress={onPress}
+          >
+            <Image
+              source={require('../../data/ImgTest/2bar.jpg')}
+              style={styles.clubProfileImg}
+            />
+          </TouchableOpacity>
+          <View style={styles.clubProfileTextWrap}>
+            <View>
+              <Text style={styles.clubNameText}>{teamName}</Text>
+            </View>
+            <Text>{sports}</Text>
+            <View style={styles.clubProfileTeamInfoTextWrap}>
+              <Text style={styles.clubProfileTopInfoTextLeft}>Members <Text>{members}</Text></Text>
+              <Text style={styles.clubProfileTopInfoTextRight}>Leader <Text>{teamOwner}</Text></Text>
+            </View>
+            <View style={styles.clubProfileTeamInfoTextWrap}>
+              <Text style={styles.clubProfileBottomInfoTextLeft}>{teamArea}</Text>
             </View>
           </View>
         </View>
+      </View>
 
-        <View style={{ flex: 2, flexDirection: 'row' }}>
-          <TouchableOpacity
-            style={{ flex: 1, height: 50, backgroundColor: colors.yellowGreen }}
-            onPress={() => alert("Application or just sign up.")}
-          >
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-              <Text style={{ fontSize: 18, color: colors.white }}>Join this Club</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{ flex: 1, height: 50, backgroundColor: colors.blueColor }}
-            onPress={() => alert("ask the match")}
-          >
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-              <Text style={{ fontSize: 18, color: colors.white }}>Ask the match</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
+      <View style={{ flex: 2, flexDirection: 'row' }}>
+        <TouchableOpacity
+          style={{ flex: 1, height: 50, backgroundColor: colors.yellowGreen }}
+          onPress={() => alert("Application or just sign up.")}
+        >
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 18, color: colors.white }}>Join this Club</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{ flex: 1, height: 50, backgroundColor: colors.blueColor }}
+          onPress={() => alert("ask the match")}
+        >
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 18, color: colors.white }}>Ask the match</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
 
-        {this.renderFeedCard()}
 
-      </ScrollView>
-    );
-  }
-}
+
+    </View>
+  );
+};
 
 export default ClubHome;
 
 const styles = StyleSheet.create({
-  clubImg: {
-    flex: 1,
-    height: 120,
-    width: null,
-  },
   clubProfileWrap: {
     flex: 1,
     flexDirection: 'row',
@@ -151,5 +108,6 @@ const styles = StyleSheet.create({
   },
   clubProfileBottomInfoTextLeft: {
     fontSize: 14,
+    color: colors.darkGreyColor,
   },
 });

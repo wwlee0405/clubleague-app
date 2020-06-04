@@ -4,8 +4,7 @@ import { Feather } from '@expo/vector-icons';
 import colors from '../../../colors';
 import SetSportInput from "../../components/form/SetSportInput";
 
-class NewClub extends React.Component {
-
+export default class extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
       headerRight: () => (
@@ -20,7 +19,6 @@ class NewClub extends React.Component {
       ),
     };
   };
-
   render() {
     return (
       <View style={styles.container}>
@@ -29,6 +27,10 @@ class NewClub extends React.Component {
 
         <View style={styles.inputSectionWrap}>
           <TextInput style={styles.inputSection} placeholder="Input Club Name" />
+        </View>
+
+        <View style={styles.inputSectionWrap}>
+          <TextInput style={styles.inputSection} placeholder="Input Club Hometown" />
         </View>
 
         <View style={styles.imgSectionWrap}>
@@ -53,8 +55,6 @@ class NewClub extends React.Component {
     );
   }
 }
-
-export default NewClub;
 
 const styles = StyleSheet.create({
   container: {

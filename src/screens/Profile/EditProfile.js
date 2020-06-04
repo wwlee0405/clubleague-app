@@ -4,8 +4,8 @@ import { Feather } from '@expo/vector-icons';
 import colors from '../../../colors';
 import TextInputField from "../../components/form/TextInputField";
 
-class EditProfile extends React.Component {
 
+export default class extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
       headerRight: () => (
@@ -18,8 +18,8 @@ class EditProfile extends React.Component {
       ),
     };
   };
-
   render() {
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <ScrollView
@@ -51,8 +51,6 @@ class EditProfile extends React.Component {
     );
   }
 }
-
-export default EditProfile;
 
 const styles = StyleSheet.create({
   container: {

@@ -2,40 +2,39 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import colors from '../../../colors';
 
+const NotificationCard = ({ onPress, noticeOnPress, username, text, time }) => {
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity onPress={onPress}>
+        <View style={styles.noticeWrap}>
 
-export default class NotificationCard extends React.Component {
-
-  render() {
-    const { onPress, noticeOnPress, profileImg, user, text, time } = this.props;
-    return (
-      <View style={styles.container}>
-        <TouchableOpacity onPress={onPress}>
-          <View style={styles.noticeWrap}>
-
-            <View style={styles.leftWrap}>
-              <TouchableOpacity onPress={noticeOnPress}>
-                <Image
-                  source={profileImg}
-                  style={styles.img}
-                />
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.bodyWrap}>
-              <Text style={styles.textTop}>{user}</Text>
-              <Text style={styles.textBottom}>{text}</Text>
-            </View>
-
-            <View style={styles.rightWrap}>
-              <Text style={styles.textTime}>{time}</Text>
-            </View>
-
+          <View style={styles.leftWrap}>
+            <TouchableOpacity onPress={noticeOnPress}>
+              <Image
+                source={require('../../data/ImgTest/cccc.jpg')}
+                style={styles.img}
+              />
+            </TouchableOpacity>
           </View>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-}
+
+          <View style={styles.bodyWrap}>
+            <Text style={styles.textTop}>{username}</Text>
+            <Text style={styles.textBottom}>{text}</Text>
+          </View>
+
+          <View style={styles.rightWrap}>
+            <Text style={styles.textTime}>{time}</Text>
+          </View>
+
+        </View>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+
+export default NotificationCard;
+
 
 const styles = StyleSheet.create({
   container: {

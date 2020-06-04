@@ -1,81 +1,72 @@
-import React from "react";
-import { StyleSheet, Text, View, ScrollView , TouchableOpacity } from "react-native";
-import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
+import React, { useState } from "react";
+import { ScrollView, RefreshControl, Text, StyleSheet, View, TouchableOpacity } from "react-native";
+import { Feather } from '@expo/vector-icons';
 import colors from '../../../colors';
-import Categories from "../../components/contents/Categories";
 
-import categoriesList from "../../data/categories";
-import FeedCard from "../../components/contents/FeedCard";
-import feedcard from "../../data/feedcard";
+import ClubTeams from "../../components/contents/ClubTeams";
 
-class Home extends React.Component {
+import { gql } from "apollo-boost";
+import Loader from "../../components/Loader";
+import { useQuery } from "react-apollo-hooks";
 
-  renderFeedCard() {
-    const { onPress, navigation } = this.props;
-    return feedcard.map((feedcard, index) => {
-      return (
-        <View key={`feedcard-${index}`}>
-          <FeedCard
-            key={`feedcard-item-${index}`}
-            profileImg={feedcard.profileImg}
-            user={feedcard.user}
-            address={feedcard.address}
-            bodyImg={feedcard.bodyImg}
-            bodyText={feedcard.bodyText}
-            hits={feedcard.hits}
-            onPress={() => navigation.navigate('FeedCardDetailsScreen')}
-            profileOnPress={() => navigation.navigate('Profile')}
-          />
-        </View>
-      );
-    });
-  }
 
-  render() {
+export default ({ navigation }) => {
+  //const [refreshing, setRefreshing] = useState(false);
+  //const { loading, data, refetch } = useQuery();
+  //const refresh = async () => {
+  //  try {
+  //    setRefreshing(true);
+  //    await refetch();
+  //  } catch (e) {
+  //    console.log(e);
+  //  } finally {
+  //    setRefreshing(false);
+  //  }
+  //};
+  return (
+    <View style={styles.container}>
 
-    const { navigation } = this.props;
-
-    return (
-      <View style={styles.container}>
-
-        <View style={styles.clubContainer}>
-          <View style={styles.clubContainerTopWrap}>
-            <Text style={styles.clubContainerRightText}>Club</Text>
-            <View>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('NewClub')}
-                style={styles.clubContainerLeftButton}>
-                <Feather name="plus-circle" style={styles.clubContainerLeftButtonIcon} />
-                <Text style={styles.clubContainerLeftText}>New Club</Text>
-              </TouchableOpacity>
-            </View>
+      <View style={styles.clubContainer}>
+        <View style={styles.clubContainerTopWrap}>
+          <Text style={styles.clubContainerRightText}>Club</Text>
+          <View>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('NewClub')}
+              style={styles.clubContainerLeftButton}>
+              <Feather name="plus-circle" style={styles.clubContainerLeftButtonIcon} />
+              <Text style={styles.clubContainerLeftText}>New Club</Text>
+            </TouchableOpacity>
           </View>
+        </View>
 
-          <View style={styles.clubContainerBottomWrap}>
-            <Categories
-              categories={categoriesList}
+        <View style={styles.clubContainerBottomWrap}>
+          <ScrollView
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.clubsWrap}
+          >
+            <ClubTeams
               onPress={() => navigation.navigate('Details')}
             />
-          </View>
+          </ScrollView>
+        </View>
 
-        </View >
+      </View >
 
-        <ScrollView
-          horizontal={false}
-          showsVerticalScrollIndicator={false}
-          style={styles.scrollViewWrap}
-        >
+      <ScrollView
+        horizontal={false}
+        showsVerticalScrollIndicator={false}
+        style={styles.gameScheduleWrap}
+        //refreshControl={
+        //  <RefreshControl refreshing={refreshing} onRefresh={refresh} />
+        //}
+      >
+        <Text>Game Scahedule</Text>
 
-          {this.renderFeedCard()}
-
-        </ScrollView>
-      </View>
-
-    );
-  }
-}
-
-export default Home;
+      </ScrollView>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -111,7 +102,12 @@ const styles = StyleSheet.create({
   clubContainerBottomWrap: {
     height: 120,
   },
-  scrollViewWrap: {
+  clubsWrap: {
+    alignItems: 'center',
+    paddingStart: 5,
+    paddingEnd: 5,
+  },
+  gameScheduleWrap: {
     backgroundColor: colors.clBackgroundColor,
   },
 });

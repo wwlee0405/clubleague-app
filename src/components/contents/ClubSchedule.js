@@ -4,35 +4,34 @@ import { Feather } from '@expo/vector-icons';
 import colors from '../../../colors';
 import ScheduleSectionList from "../items/ScheduleSectionList";
 
-class ClubSchedule extends Component {
-  render() {
-    return (
-      <View style={styles.sectionList}>
-        <SectionList
-          sections={[
-            {title: 'SEP 2019', data: ['01', '02', '03']},
-            {title: 'OCT 2019', data: ['01', '03', '15']},
-            {title: 'NOV 2019', data: ['05', '15', '17', '25', '27', '29', '30']},
-            {title: 'DEC 2019', data: ['05', '15', '17', '25', '27', '29', '30']},
-          ]}
-          renderItem={({item}) =>
-            <ScheduleSectionList
-              day={item}
-              week="WED"
-              title="Match"
-              time="18:00"
-              address="Barcelona, Spain"
-            />
-          }
-          renderSectionHeader={({section}) =>
-            <Text style={styles.sectionHeader}>{section.title}</Text>
-          }
-          keyExtractor={(item, index) => index}
-        />
-      </View>
-    );
-  }
-}
+const ClubSchedule = ({ onPress, profileImg, username, text, time }) => {
+  return (
+    <View style={styles.sectionList}>
+      <SectionList
+        sections={[
+          {title: 'SEP 2019', data: ['01', '02', '03']},
+          {title: 'OCT 2019', data: ['01', '03', '15']},
+          {title: 'NOV 2019', data: ['05', '15', '17', '25', '27', '29', '30']},
+          {title: 'DEC 2019', data: ['05', '15', '17', '25', '27', '29', '30']},
+        ]}
+        renderItem={({item}) =>
+          <ScheduleSectionList
+            day={item}
+            week="WED"
+            title="Match"
+            time="18:00"
+            address="Barcelona, Spain"
+          />
+        }
+        renderSectionHeader={({section}) =>
+          <Text style={styles.sectionHeader}>{section.title}</Text>
+        }
+        keyExtractor={(item, index) => index}
+      />
+    </View>
+  );
+};
+
 
 export default ClubSchedule;
 

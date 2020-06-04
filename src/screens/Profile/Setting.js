@@ -1,11 +1,9 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-
-import styled from "styled-components";
 import colors from '../../../colors';
 
 export default ({ navigation }) => {
-  
+
   return (
     <View style={styles.container}>
       <TouchableOpacity>

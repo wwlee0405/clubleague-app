@@ -2,46 +2,45 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import colors from '../../../colors';
 
-
-export default class SearchClubCard extends React.Component {
-
-  render() {
-    const { onPress, clubProfileImg, clubName, clubInfo, sports, members, leaderUser, address } = this.props;
-    return (
-      <View style={styles.container}>
+const SearchClubCard = ({ onPress, teamName, teamInfo, sports, teamArea, members, teamOwner }) => {
+  return (
+    <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
         <View style={styles.clubProfileWrap}>
 
           <View style={styles.clubProfileImgWrap}>
             <Image
-              source={clubProfileImg}
+              source={require('../../data/ImgTest/1ars.jpg')}
               style={styles.clubProfileImg}
             />
           </View>
 
           <View style={styles.clubProfileTextWrap}>
             <View>
-              <Text style={styles.clubNameText}>{clubName}</Text>
+              <Text style={styles.clubNameText}>{teamName}</Text>
             </View>
             <View>
-              <Text style={{ fontSize: 12 }}>{clubInfo}</Text>
+              <Text style={{ fontSize: 12 }}>{teamInfo}</Text>
             </View>
             <View style={styles.clubProfileTeamInfoTextWrap}>
               <Text style={styles.clubProfileTopInfoTextLeft}>{sports}</Text>
-              <Text style={styles.clubProfileTopInfoTextRight}>{address}</Text>
+              <Text style={styles.clubProfileTopInfoTextRight}>{teamArea}</Text>
             </View>
             <View style={styles.clubProfileTeamInfoTextWrap}>
               <Text style={styles.clubProfileBottomInfoTextLeft}>Members  <Text>{members}</Text></Text>
-              <Text style={styles.clubProfileBottomInfoTextRight}>Leader  <Text>{leaderUser}</Text></Text>
+              <Text style={styles.clubProfileBottomInfoTextRight}>Leader  <Text>{teamOwner}</Text></Text>
             </View>
           </View>
 
         </View>
       </TouchableOpacity>
-      </View>
-    );
-  }
-}
+    </View>
+  );
+};
+
+export default SearchClubCard;
+
+
 
 const styles = StyleSheet.create({
   container: {

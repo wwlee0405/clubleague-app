@@ -5,44 +5,24 @@ import colors from '../../../colors';
 
 import ClubPlayers from "../../components/contents/ClubPlayers";
 
-class DetailsPlayers extends React.Component {
 
-  renderClubProfile() {
-    const { onPress, navigation } = this.props;
+export default ({ onPress, navigation }) => {
+  return (
+    <View style={styles.container}>
 
-      return (
-        <View>
-          <ClubPlayers
-            onPress={() => navigation.navigate('Profile')}
-          />
+      <ScrollView
+        horizontal={false}
+        showsVerticalScrollIndicator={false}
+      >
+        <ClubPlayers
+          onPress={() => navigation.navigate('Profile')}
+        />
 
-        </View>
-      );
+      </ScrollView>
+    </View>
+  );
+};
 
-  }
-
-  render() {
-
-    const { navigation } = this.props;
-
-    return (
-      <View style={styles.container}>
-
-        <ScrollView
-          horizontal={false}
-          showsVerticalScrollIndicator={false}
-        >
-
-          {this.renderClubProfile()}
-
-        </ScrollView>
-      </View>
-
-    );
-  }
-}
-
-export default DetailsPlayers;
 
 const styles = StyleSheet.create({
   container: {

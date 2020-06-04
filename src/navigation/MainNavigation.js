@@ -12,7 +12,7 @@ import DetailsPlayers from "../screens/Home/DetailsPlayers";
 import DetailsInfo from "../screens/Home/DetailsInfo";
 import DetailsSetting from "../screens/Home/DetailsSetting";
 import Match from "../screens/Match/Match";
-import FeedCardDetailsScreen from "../screens/Match/FeedCardDetailsScreen";
+import FeedDetails from "../screens/Match/FeedDetails";
 import Entry from "../screens/Match/Entry";
 import Writing from "../screens/Match/Writing";
 import Notification from "../screens/Notification/Notification";
@@ -129,7 +129,7 @@ const CreateHomeStack = ({navigation}) => {
 					headerTransparent: false
 				}}
 			/>
-	    <Stack.Screen name ="FeedCardDetailsScreen" component={FeedCardDetailsScreen} />
+	    <Stack.Screen name ="FeedDetails" component={FeedDetails} />
 	    <Stack.Screen name ="Entry" component={Entry} />
 	  </Stack.Navigator>
 )};
@@ -158,7 +158,7 @@ const CreateMatchStack = ({navigation}) => (
     />
     <Stack.Screen name ="Writing" component={Writing} options={Writing.navigationOptions} />
     <Stack.Screen name ="Details" component={CreateMaterialTopTab} />
-    <Stack.Screen name ="FeedCardDetailsScreen" component={FeedCardDetailsScreen} />
+    <Stack.Screen name ="FeedDetails" component={FeedDetails} />
     <Stack.Screen name ="Entry" component={Entry} />
     <Stack.Screen name ="Profile" component={Profile} options={Profile.navigationOptions} />
     <Stack.Screen name ="EditProfile" component={EditProfile} options={EditProfile.navigationOptions} />
@@ -191,7 +191,7 @@ const CreateNotificationStack = ({navigation}) => (
       }}
     />
     <Stack.Screen name ="Details" component={CreateMaterialTopTab} />
-    <Stack.Screen name ="FeedCardDetailsScreen" component={FeedCardDetailsScreen} />
+    <Stack.Screen name ="FeedDetails" component={FeedDetails} />
     <Stack.Screen name ="Entry" component={Entry} />
     <Stack.Screen name ="Profile" component={Profile} options={Profile.navigationOptions} />
     <Stack.Screen name ="EditProfile" component={EditProfile} options={EditProfile.navigationOptions} />

@@ -4,45 +4,28 @@ import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../../../colors';
 
 import NotificationCard from "../../components/contents/NotificationCard";
-import noticecard from "../../data/noticecard";
 
-class Notification extends React.Component {
 
-  renderNotificationCard() {
-    const { onPress, noticeOnPress, navigation } = this.props;
-    return noticecard.map((noticecard, index) => {
-      return (
-        <View key={`noticecard-${index}`}>
-          <NotificationCard
-            key={`noticecard-item-${index}`}
-            onPress={() => navigation.navigate('FeedCardDetailsScreen')}
-            noticeOnPress={() => navigation.navigate('Profile')}
-            profileImg={noticecard.profileImg}
-            user={noticecard.user}
-            text={noticecard.text}
-            time={noticecard.time}
-          />
-        </View>
-      );
-    });
-  }
+export default ({ onPress, noticeOnPress, navigation }) => {
+  return (
+    <View style={styles.container}>
+      <ScrollView
+        horizontal={false}
+        showsVerticalScrollIndicator={false}
+      >
+        <NotificationCard
+          onPress={() => navigation.navigate('FeedDetails')}
+          noticeOnPress={() => navigation.navigate('Profile')}
+          username="Son"
+          text="게임을 요청합니다."
+          time="PM 3:43"
+        />
 
-  render() {
-    const { navigation } = this.props;
-    return (
-      <View style={styles.container}>
-        <ScrollView
-          horizontal={false}
-          showsVerticalScrollIndicator={false}
-        >
-          {this.renderNotificationCard()}
-        </ScrollView>
-      </View>
-    );
-  }
-}
+      </ScrollView>
+    </View>
+  );
+};
 
-export default Notification;
 
 const styles = StyleSheet.create({
   container: {
