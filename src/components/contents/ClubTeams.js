@@ -20,6 +20,7 @@ const ClubTeams = ({ onPress, teamName }) => {
 };
 
 ClubTeams.propTypes = {
+  id: PropTypes.string.isRequired,
   teamName: PropTypes.string.isRequired,
 };
 

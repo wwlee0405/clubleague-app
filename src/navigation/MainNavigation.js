@@ -19,7 +19,7 @@ import Notification from "../screens/Notification/Notification";
 import Profile from "../screens/Profile/Profile";
 import EditProfile from "../screens/Profile/EditProfile";
 import Setting from "../screens/Profile/Setting";
-import SearchClub from "../screens/Search/SearchClub";
+import SearchClub from "../screens/Home/SearchClub";
 import NewClub from "../screens/Home/NewClub";
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from "../../colors"

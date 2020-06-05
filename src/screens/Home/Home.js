@@ -10,19 +10,30 @@ import Loader from "../../components/Loader";
 import { useQuery } from "react-apollo-hooks";
 
 
+const SeeMyTeam = gql`
+  {
+    seeMyTeam {
+      id
+      teamName
+      teamArea
+      teamInfo
+    }
+}
+`;
+
 export default ({ navigation }) => {
-  //const [refreshing, setRefreshing] = useState(false);
-  //const { loading, data, refetch } = useQuery();
-  //const refresh = async () => {
-  //  try {
-  //    setRefreshing(true);
-  //    await refetch();
-  //  } catch (e) {
-  //    console.log(e);
-  //  } finally {
-  //    setRefreshing(false);
-  //  }
-  //};
+  const [refreshing, setRefreshing] = useState(false);
+  const { loading, data, refetch } = useQuery(SeeMyTeam);
+  const refresh = async () => {
+    try {
+      setRefreshing(true);
+      await refetch();
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setRefreshing(false);
+    }
+  };
   return (
     <View style={styles.container}>
 
@@ -45,9 +56,12 @@ export default ({ navigation }) => {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.clubsWrap}
           >
-            <ClubTeams
-              onPress={() => navigation.navigate('Details')}
-            />
+            { data &&
+              data.seeMyTeam &&
+              data.seeMyTeam.map(clubTeams => (<ClubTeams key={clubTeams.id} teamName={clubTeams.teamName} />
+            ))}
+
+
           </ScrollView>
         </View>
 
@@ -57,11 +71,11 @@ export default ({ navigation }) => {
         horizontal={false}
         showsVerticalScrollIndicator={false}
         style={styles.gameScheduleWrap}
-        //refreshControl={
-        //  <RefreshControl refreshing={refreshing} onRefresh={refresh} />
-        //}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={refresh} />
+        }
       >
-        <Text>Game Scahedule</Text>
+        <Text>Hello</Text>
 
       </ScrollView>
     </View>

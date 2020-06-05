@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, Image } from "react-native";
 import colors from '../../../colors';
+import SearchBar from "../../components/form/SearchBar";
 import SearchClubCard from "../../components/contents/SearchClubCard";
 
 export default class extends React.Component {
@@ -13,10 +14,12 @@ export default class extends React.Component {
             placeholder="Search for club, sport, leader"
             placeholderTextColor= {colors.darkGreyColor}
           />
+
         </View>
       ),
     };
   };
+  
   render() {
     const { navigation } = this.props;
     return (
