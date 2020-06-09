@@ -55,12 +55,19 @@ export default ({ navigation }) => {
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.clubsWrap}
+            refreshControl={
+              <RefreshControl refreshing={refreshing} onRefresh={refresh} />
+            }
           >
-            { data &&
-              data.seeMyTeam &&
-              data.seeMyTeam.map(clubTeams => (<ClubTeams key={clubTeams.id} teamName={clubTeams.teamName} />
-            ))}
 
+
+            {loading ? (
+              <Loader />
+            ) : (
+              data &&
+              data.seeMyTeam &&
+              data.seeMyTeam.map(seeMyTeam => <ClubTeams key={clubTeams.id} teamName={clubTeams.teamName} />)
+            )}
 
           </ScrollView>
         </View>
@@ -71,11 +78,8 @@ export default ({ navigation }) => {
         horizontal={false}
         showsVerticalScrollIndicator={false}
         style={styles.gameScheduleWrap}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={refresh} />
-        }
       >
-        <Text>Hello</Text>
+        <Text>Schedule</Text>
 
       </ScrollView>
     </View>

@@ -7,17 +7,20 @@ const SearchBar = ({ onChange, value, onSubmit }) => (
   <TextInput
     style={{
       height: 35,
-      backgroundColor: styles.lightGreyColor,
+      backgroundColor: colors.whiteSmoke,
       padding: 10,
       borderRadius: 5,
-      textAlign: "center"
+      textAlign: "center",
+      fontSize: 13,
+      paddingLeft: 10,
+      width: 300,
     }}
     returnKeyType="search"
     onChangeText={onChange}
     onEndEditing={onSubmit}
     value={value}
-    placeholder={"Search"}
-    placeholderTextColor={styles.darkGreyColor}
+    placeholder={"Search for club, sport, leader"}
+    placeholderTextColor={colors.darkGreyColor}
   />
 );
 

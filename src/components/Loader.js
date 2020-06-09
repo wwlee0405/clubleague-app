@@ -1,7 +1,7 @@
 import React from "react";
 import { ActivityIndicator } from "react-native";
 import styled from "styled-components";
-import colors from '../../colors';
+import colors from "../../colors";
 
 const Container = styled.View`
   flex: 1;
@@ -11,6 +11,6 @@ const Container = styled.View`
 
 export default () => (
   <Container>
-    <ActivityIndicator color={styles.blackColor} />
+    <ActivityIndicator color={colors.blackColor} />
   </Container>
 );

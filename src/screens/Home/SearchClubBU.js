@@ -5,12 +5,20 @@ import SearchBar from "../../components/form/SearchBar";
 import SearchClubCard from "../../components/contents/SearchClubCard";
 
 export default class extends React.Component {
-  static navigationOptions = ({ navigation }) => ({
-    headerTitle: () => (
-      <SearchBar />
-    )
-  });
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerTitle: () => (
+        <View>
+          <TextInput
+            style={styles.inputSection}
+            placeholder="Search for club, sport, leader"
+            placeholderTextColor= {colors.darkGreyColor}
+          />
 
+        </View>
+      ),
+    };
+  };
 
   render() {
     const { navigation } = this.props;
