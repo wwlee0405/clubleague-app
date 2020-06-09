@@ -9,21 +9,22 @@ import { gql } from "apollo-boost";
 import Loader from "../../components/Loader";
 import { useQuery } from "react-apollo-hooks";
 
-
 const SeeMyTeam = gql`
-  {
-    seeMyTeam {
-      id
+  query seeTeam($id: String!) {
+    seeTeam(id: $id)
+    {
       teamName
       teamArea
       teamInfo
     }
-}
+  }
 `;
 
 export default ({ navigation }) => {
   const [refreshing, setRefreshing] = useState(false);
-  const { loading, data, refetch } = useQuery(SeeMyTeam);
+  const { loading, data, refetch } = useQuery(SeeMyTeam, {
+    variables: { id: "ckb1sy5vntyr00999g1bq9tyb"}
+  });
   const refresh = async () => {
     try {
       setRefreshing(true);
@@ -60,13 +61,12 @@ export default ({ navigation }) => {
             }
           >
 
-
             {loading ? (
               <Loader />
             ) : (
               data &&
               data.seeMyTeam &&
-              data.seeMyTeam.map(seeMyTeam => <ClubTeams key={clubTeams.id} teamName={clubTeams.teamName} />)
+              data.seeMyTeam.map(clubTeams => <ClubTeams key={clubTeams.id} teamName={clubTeams.teamName} />)
             )}
 
           </ScrollView>

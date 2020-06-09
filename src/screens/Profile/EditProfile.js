@@ -6,18 +6,17 @@ import TextInputField from "../../components/form/TextInputField";
 
 
 export default class extends React.Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      headerRight: () => (
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Profile')}
-          title="Submit"
-        >
-          <Feather name="check" size={25} style={{ paddingRight: 10 }} />
-        </TouchableOpacity>
-      ),
-    };
-  };
+  static navigationOptions = ({ navigation }) => ({
+    headerRight: () => (
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Profile')}
+        title="Submit"
+      >
+        <Feather name="check" size={25} style={{ paddingRight: 10 }} />
+      </TouchableOpacity>
+    ),
+  });
+
   render() {
     const { navigation } = this.props;
     return (

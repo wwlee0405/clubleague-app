@@ -5,19 +5,32 @@ import SearchBar from "../../components/form/SearchBar";
 import SearchClubCard from "../../components/contents/SearchClubCard";
 
 export default class extends React.Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      headerTitle: () => (
-        <View>
-          <TextInput
-            style={styles.inputSection}
-            placeholder="Search for club, sport, leader"
-            placeholderTextColor= {colors.darkGreyColor}
-          />
-
-        </View>
-      ),
+  static navigationOptions = ({ navigation, route }) => ({
+    headerTitle: () => (
+      <SearchBar
+        value={route.params?.term ?? ''}
+        onChange={route.params?.onChange ?? (() => null)}
+        onSubmit={route.params?.onSubmit ?? (() => null)}
+      />
+    )
+  });
+  constructor(props) {
+    super(props);
+    const { navigation } = props;
+    this.state = {
+      term: ""
     };
+    navigation.setParams({
+      term: this.state.term,
+      onChange: this.onChange,
+      onSubmit: this.onSubmit
+    });
+  }
+  onChange = text => {
+    this.setState({ text });
+  };
+  onSubmit = () => {
+    console.log("Submit");
   };
 
   render() {
