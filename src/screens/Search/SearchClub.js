@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, Image } from "react-native";
-import colors from '../../../colors';
+import { StyleSheet, ScrollView } from "react-native";
+import colors from "../../../colors";
 import SearchBar from "../../components/form/SearchBar";
-import SearchClubCard from "../../components/contents/SearchClubCard";
+import SearchPresenter from "./SearchPresenter";
 
 export default class extends React.Component {
   static navigationOptions = ({ navigation, route }) => ({
@@ -18,7 +18,8 @@ export default class extends React.Component {
     super(props);
     const { navigation } = props;
     this.state = {
-      term: ""
+      term: "",
+      shouldFetch: false
     };
     navigation.setParams({
       term: this.state.term,
@@ -28,38 +29,19 @@ export default class extends React.Component {
   }
   onChange = text => {
     const { navigation } = this.props;
-    this.setState({ term: text });
+    this.setState({ term: text, shouldFetch: false });
     navigation.setParams({
       term: text
     });
   };
   onSubmit = () => {
-    console.log("Submit");
+    this.setState({ shouldFetch: true });
   };
 
   render() {
     const { navigation } = this.props;
-    return (
-      <View style={styles.container}>
-        <ScrollView
-          horizontal={false}
-          showsVerticalScrollIndicator={false}
-        >
-          <SearchClubCard
-            onPress={() => navigation.navigate('Details')}
-            teamName="FC Seoul"
-            teamInfo="서울에서 활동하는 축구동호회입니다."
-            sports="Soccer"
-            teamArea="Seoul, Korea"
-            members="15"
-            teamOwner="Ernesto Valverde"
-          />
-
-
-        </ScrollView>
-      </View>
-
-    );
+    const { term, shouldFetch } = this.state;
+    return <SearchPresenter term={term} shouldFetch={shouldFetch} />;
   }
 }
 

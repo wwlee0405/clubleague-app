@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { ScrollView, RefreshControl, Text, StyleSheet, View, TouchableOpacity } from "react-native";
 import { Feather } from '@expo/vector-icons';
-import colors from '../../../colors';
-
-import ClubTeams from "../../components/contents/ClubTeams";
-
+import colors from "../../../colors";
 import { gql } from "apollo-boost";
 import Loader from "../../components/Loader";
 import { useQuery } from "react-apollo-hooks";
+import ClubTeams from "../../components/contents/ClubTeams";
 
 const SeeMyTeam = gql`
   query seeTeam($id: String!) {

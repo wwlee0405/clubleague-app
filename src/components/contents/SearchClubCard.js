@@ -1,46 +1,52 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
-import colors from '../../../colors';
+import PropTypes from "prop-types";
+import colors from "../../../colors";
 
-const SearchClubCard = ({ onPress, teamName, teamInfo, sports, teamArea, members, teamOwner }) => {
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={onPress}>
-        <View style={styles.clubProfileWrap}>
+const SearchClubCard = ({ navigation, id, teamName, teamInfo, sports, teamArea, members, teamOwner }) => (
+  <View style={styles.container}>
+    <TouchableOpacity onPress={() => navigation.navigate("Details")}>
+      <View style={styles.clubProfileWrap}>
 
-          <View style={styles.clubProfileImgWrap}>
-            <Image
-              source={require('../../data/ImgTest/1ars.jpg')}
-              style={styles.clubProfileImg}
-            />
-          </View>
-
-          <View style={styles.clubProfileTextWrap}>
-            <View>
-              <Text style={styles.clubNameText}>{teamName}</Text>
-            </View>
-            <View>
-              <Text style={{ fontSize: 12 }}>{teamInfo}</Text>
-            </View>
-            <View style={styles.clubProfileTeamInfoTextWrap}>
-              <Text style={styles.clubProfileTopInfoTextLeft}>{sports}</Text>
-              <Text style={styles.clubProfileTopInfoTextRight}>{teamArea}</Text>
-            </View>
-            <View style={styles.clubProfileTeamInfoTextWrap}>
-              <Text style={styles.clubProfileBottomInfoTextLeft}>Members  <Text>{members}</Text></Text>
-              <Text style={styles.clubProfileBottomInfoTextRight}>Leader  <Text>{teamOwner}</Text></Text>
-            </View>
-          </View>
-
+        <View style={styles.clubProfileImgWrap}>
+          <Image
+            source={require('../../data/ImgTest/1ars.jpg')}
+            style={styles.clubProfileImg}
+          />
         </View>
-      </TouchableOpacity>
-    </View>
-  );
+
+        <View style={styles.clubProfileTextWrap}>
+          <View>
+            <Text style={styles.clubNameText}>{teamName}</Text>
+          </View>
+          <View>
+            <Text style={{ fontSize: 12 }}>{teamInfo}</Text>
+          </View>
+          <View style={styles.clubProfileTeamInfoTextWrap}>
+            <Text style={styles.clubProfileTopInfoTextLeft}>{sports}</Text>
+            <Text style={styles.clubProfileTopInfoTextRight}>{teamArea}</Text>
+          </View>
+          <View style={styles.clubProfileTeamInfoTextWrap}>
+            <Text style={styles.clubProfileBottomInfoTextLeft}>Members  <Text>{members}</Text></Text>
+            <Text style={styles.clubProfileBottomInfoTextRight}>Leader  <Text>{teamOwner}</Text></Text>
+          </View>
+        </View>
+
+      </View>
+    </TouchableOpacity>
+  </View>
+);
+
+SearchClubCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  teamName: PropTypes.string,
+  teamInfo: PropTypes.string,
+  sports: PropTypes.string,
+  members: PropTypes.string,
+  teamOwner: PropTypes.string,
 };
 
 export default SearchClubCard;
-
-
 
 const styles = StyleSheet.create({
   container: {
