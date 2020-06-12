@@ -8,9 +8,10 @@ import { useQuery } from "react-apollo-hooks";
 import ClubTeams from "../../components/contents/ClubTeams";
 
 const SeeMyTeam = gql`
-  query seeTeam($id: String!) {
-    seeTeam(id: $id)
+  query seeMyTeam {
+    seeMyTeam
     {
+      id
       teamName
       teamArea
       teamInfo
@@ -20,9 +21,7 @@ const SeeMyTeam = gql`
 
 export default ({ navigation }) => {
   const [refreshing, setRefreshing] = useState(false);
-  const { loading, data, refetch } = useQuery(SeeMyTeam, {
-    variables: { id: "ckb1sy5vntyr00999g1bq9tyb"}
-  });
+  const { loading, data, refetch } = useQuery(SeeMyTeam);
   const refresh = async () => {
     try {
       setRefreshing(true);
@@ -64,8 +63,9 @@ export default ({ navigation }) => {
             ) : (
               data &&
               data.seeMyTeam &&
-              data.seeMyTeam.map(clubTeams => <ClubTeams key={clubTeams.id} teamName={clubTeams.teamName} />)
-            )}
+              data.seeMyTeam.map(teams => (
+                <ClubTeams onPress={() => navigation.navigate("Details",{teamId:teams.id})} key={teams.id} teamName={teams.teamName} />
+            )))}
 
           </ScrollView>
         </View>
