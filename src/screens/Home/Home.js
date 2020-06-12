@@ -64,7 +64,7 @@ export default ({ navigation }) => {
               data &&
               data.seeMyTeam &&
               data.seeMyTeam.map(teams => (
-                <ClubTeams onPress={() => navigation.navigate("Details",{teamId:teams.id})} key={teams.id} teamName={teams.teamName} />
+                <ClubTeams onPress={() => navigation.navigate("Details")} key={teams.id} teamName={teams.teamName} />
             )))}
 
           </ScrollView>
