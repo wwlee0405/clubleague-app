@@ -1,83 +1,46 @@
-import React from "react";
-import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from "react-native";
-import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
-import colors from '../../../colors';
+import React, { useEffect } from "react";
+import { StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import { Feather } from '@expo/vector-icons';
+import colors from "../../../colors";
+import { gql } from "apollo-boost";
+import { USER_FRAGMENT } from "../../../fragments";
+import Loader from "../../components/Loader";
+import { useQuery } from "react-apollo-hooks";
+import UserProfile from "../../components/contents/UserProfile";
 
-
-export default class extends React.Component {
-  static navigationOptions = ({ navigation }) => ({
-    headerRight: () => (
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Setting')}
-        title="Setting"
-      >
-        <Feather name="settings" size={25} style={{ paddingRight: 20, color: colors.sacramento }} />
-      </TouchableOpacity>
-    ),
-  });
-
-  render() {
-    const { navigation } = this.props;
-    return (
-      <View style={styles.container}>
-        <ScrollView
-          horizontal={false}
-          showsVerticalScrollIndicator={false}
-        >
-
-          <View style={styles.contantContainer}>
-
-            <View style={styles.topWrap}>
-
-              <View style={styles.imgWrap}>
-                <Image
-                  source={require('../../data/ImgTest/dddd.jpg')}
-                  style={styles.img}
-                />
-              </View>
-
-              <View style={styles.textWrap}>
-                <View style={styles.textWrapPadding}>
-                  <View>
-                    <Text style={styles.nameTag}>Username</Text>
-                    <Text style={styles.property}>wwlee0405</Text>
-                  </View>
-                  <View>
-                    <Text style={styles.nameTag}>Name</Text>
-                    <Text style={styles.property}>Lionel Messi</Text>
-                  </View>
-                  <View>
-                    <Text style={styles.nameTag}>Area</Text>
-                    <Text style={styles.property}>Barcelona, Spain</Text>
-                  </View>
-                  <View>
-                    <Text style={styles.nameTag}>Position</Text>
-                    <Text style={styles.property}>FW</Text>
-                  </View>
-                  <View>
-                    <Text style={styles.nameTag}>Mainclub</Text>
-                    <Text style={styles.property}>FC Barcelona</Text>
-                  </View>
-                </View>
-              </View>
-
-            </View>
-
-            <View style={styles.buttonWrap}>
-              <TouchableOpacity
-                style={styles.editProfileButton}
-                onPress={() => navigation.navigate('EditProfile')}
-              >
-                <Text style={styles.editProfileButtonText}>Edit Profile</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-
-        </ScrollView>
-      </View>
-    );
+const ME = gql`
+  {
+    me {
+      user {
+        avatar
+        username
+        fullName
+        email
+      }
+    }
   }
-}
+`;
+
+export default ({ navigation }) => {
+  const { loading, data } = useQuery(ME);
+  return (
+    <ScrollView>
+      {
+        loading ? <Loader /> :
+        data &&
+        data.me &&
+        data.me.user &&
+        <UserProfile
+          key={data.me.user.id}
+          avatar={data.me.user.avatar}
+          username={data.me.user.username}
+          fullName={data.me.user.fullName}
+          onPress={() => navigation.navigate('EditProfile')}
+        />
+      }
+    </ScrollView>
+  );
+};
 
 
 const styles = StyleSheet.create({

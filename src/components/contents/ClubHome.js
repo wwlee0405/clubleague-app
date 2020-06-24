@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from "react-native";
+import PropTypes from "prop-types";
 import colors from '../../../colors';
 
 const ClubHome = ({
@@ -63,6 +64,15 @@ const ClubHome = ({
 
     </View>
   );
+};
+
+ClubHome.propTypes = {
+  id: PropTypes.string.isRequired,
+  teamName: PropTypes.string.isRequired,
+  sports: PropTypes.string,
+  members: PropTypes.string,
+  teamOwner: PropTypes.string,
+  teamArea: PropTypes.string,
 };
 
 export default ClubHome;

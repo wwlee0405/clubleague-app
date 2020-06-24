@@ -7,8 +7,8 @@ import { useQuery } from "react-apollo-hooks";
 import ClubHome from "../../components/contents/ClubHome";
 
 const SeeTeam = gql`
-  query seeTeam($id: ID!) {
-    seeTeam(id: $id) {
+  query seeTeam($id: String!) {
+    searchTeam(id: $id) {
       id
       teamName
       teamArea
@@ -26,6 +26,14 @@ export default ({ route, navigation }) => {
       showsVerticalScrollIndicator={false}
       style={styles.container}
     >
+      <ClubHome
+        onPress={() => navigation.navigate('Details')}
+        teamName="Barcelona"
+        sports="Soccer"
+        members="15"
+        teamOwner="Ernesto Valverde"
+        teamArea="Barcelona, Spain"
+      />
       {loading ? (
         <Loader />
       ) : (

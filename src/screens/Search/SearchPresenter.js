@@ -16,7 +16,7 @@ export const SEARCH = gql`
   }
 `;
 
-const SearchPresenter = ({ term, shouldFetch }) => {
+const SearchPresenter = ({ term, shouldFetch, onPress }) => {
   const [refreshing, setRefreshing] = useState(false);
   const { data, loading, refetch } = useQuery(SEARCH, {
     variables: {
@@ -46,7 +46,7 @@ const SearchPresenter = ({ term, shouldFetch }) => {
       ) : (
         data &&
         data.searchTeam &&
-        data.searchTeam.map(post => <SearchClubCard key={post.id} {...post} />)
+        data.searchTeam.map(post => <SearchClubCard onPress={onPress} key={post.id} {...post} />)
       )}
     </ScrollView>
   );

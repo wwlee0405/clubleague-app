@@ -3,9 +3,9 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import PropTypes from "prop-types";
 import colors from "../../../colors";
 
-const SearchClubCard = ({ navigation, id, teamName, teamInfo, sports, teamArea, members, teamOwner }) => (
+const SearchClubCard = ({ onPress, navigation, id, teamName, teamInfo, sports, teamArea, members, teamOwner }) => (
   <View style={styles.container}>
-    <TouchableOpacity onPress={() => navigation.navigate("Details")}>
+    <TouchableOpacity onPress={onPress}>
       <View style={styles.clubProfileWrap}>
 
         <View style={styles.clubProfileImgWrap}>
