@@ -17,6 +17,7 @@ import Entry from "../screens/Match/Entry";
 import Writing from "../screens/Match/Writing";
 import Notification from "../screens/Notification/Notification";
 import Profile from "../screens/Profile/Profile";
+import UserDetail from "../screens/Profile/UserDetail";
 import EditProfile from "../screens/Profile/EditProfile";
 import Setting from "../screens/Profile/Setting";
 import SearchClub from "../screens/Search/SearchClub";
@@ -31,196 +32,311 @@ const Stack = createStackNavigator();
 const MaterialTopTab = createMaterialTopTabNavigator();
 
 function BottomTabs() {
-	return (
-		<BottomTab.Navigator
-			initialRouteName="Home"
-			activeColor= {colors.emerald}
-			inactiveColor= {colors.darkGreyColor}
-    	shifting= {true}
-    	barStyle={{ backgroundColor: colors.white }}
-  	>
-			<BottomTab.Screen
-				name="Home"
-				component={CreateHomeStack}
-				options={{
-					tabBarLabel: "Home",
-					tabBarIcon: ({ color, size }) => (
-						<Feather name="home" color={color} size={24} />
-					),
-				}}
-			/>
-			<BottomTab.Screen
-				name="Match"
-				component={CreateMatchStack}
-				options={{
-					tabBarLabel: "Match",
-					tabBarIcon: ({ color, size }) => (
-						<MaterialCommunityIcons
-							name="soccer-field"
-							color={color}
-							size={24}
-						/>
-					),
-				}}
-			/>
-			<BottomTab.Screen
-				name="Notifications"
-				component={CreateNotificationStack}
-				options={{
-					tabBarLabel: "Updates",
-					tabBarIcon: ({ color, size }) => (
-						<MaterialCommunityIcons name="bell" color={color} size={24} />
-					),
-				}}
-			/>
-		</BottomTab.Navigator>
-	);
+   return (
+      <BottomTab.Navigator
+         initialRouteName="Home"
+         activeColor={colors.emerald}
+         inactiveColor={colors.darkGreyColor}
+         shifting={true}
+         barStyle={{ backgroundColor: colors.white }}
+      >
+         <BottomTab.Screen
+            name="Home"
+            component={CreateHomeStack}
+            options={{
+               tabBarLabel: "Home",
+               tabBarIcon: ({ color, size }) => (
+                  <Feather name="home" color={color} size={24} />
+               ),
+            }}
+         />
+         <BottomTab.Screen
+            name="Match"
+            component={CreateMatchStack}
+            options={{
+               tabBarLabel: "Match",
+               tabBarIcon: ({ color, size }) => (
+                  <MaterialCommunityIcons
+                     name="soccer-field"
+                     color={color}
+                     size={24}
+                  />
+               ),
+            }}
+         />
+         <BottomTab.Screen
+            name="Notifications"
+            component={CreateNotificationStack}
+            options={{
+               tabBarLabel: "Updates",
+               tabBarIcon: ({ color, size }) => (
+                  <MaterialCommunityIcons name="bell" color={color} size={24} />
+               ),
+            }}
+         />
+      </BottomTab.Navigator>
+   );
 }
 
-const CreateHomeStack = ({navigation}) => {
-	const logOut = useLogOut();
+const CreateHomeStack = ({ route, navigation }) => {
+   const logOut = useLogOut();
 
-	return (
-	  <Stack.Navigator
-	    screenOptions={{
-	      headerStyle: { backgroundColor: colors.white },
-	    }}
-	  >
-	    <Stack.Screen
-	      name ="Home"
-	      component={Home}
-	      options={{
-	        headerLeft: () => (
-						<MaterialCommunityIcons
-							name="soccer"
-							size={30}
-							style={{ paddingLeft: 10, color: colors.sacramento }}
-							onPress={() => {
-									logOut(true);
-								}}
-						/>
-					),
-	        headerTitle: <Text style={{ fontWeight: 'bold', fontSize: 18, color: colors.sacramento }}>Clubleague</Text>,
-	        headerRight: () => (
-	          <View style={{ flexDirection: 'row' }}>
-	            <TouchableOpacity
-	              onPress={() => navigation.navigate('SearchClub')}
-	              title="SearchClub"
-	            >
-	              <Feather name="search" size={25} style={{ paddingRight: 20, color: colors.sacramento }} />
-	            </TouchableOpacity>
-	            <TouchableOpacity
-	              onPress={() => navigation.navigate('Profile')}
-	              title="Profile"
-	            >
-	              <Feather name="user" size={25} style={{ paddingRight: 10, color: colors.sacramento }} />
-	            </TouchableOpacity>
-	          </View>
-	        )
-	      }}
-	    />
-	    <Stack.Screen name ="Profile" component={Profile} options={Profile.navigationOptions} />
-	    <Stack.Screen name ="EditProfile" component={EditProfile} options={EditProfile.navigationOptions} />
-	    <Stack.Screen name ="Setting" component={Setting} />
-	    <Stack.Screen name ="SearchClub" component={SearchClub} options={SearchClub.navigationOptions} />
-	    <Stack.Screen name ="NewClub" component={NewClub} options={NewClub.navigationOptions} />
-	    <Stack.Screen name ="Details" component={CreateMaterialTopTab}
-				options={{
-					headerTransparent: false
-				}}
-			/>
-	    <Stack.Screen name ="FeedDetails" component={FeedDetails} />
-	    <Stack.Screen name ="Entry" component={Entry} />
-	  </Stack.Navigator>
-)};
+   return (
+      <Stack.Navigator
+         screenOptions={{
+            headerStyle: { backgroundColor: colors.white },
+         }}
+      >
+         <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{
+               headerLeft: () => (
+                  <MaterialCommunityIcons
+                     name="soccer"
+                     size={30}
+                     style={{ paddingLeft: 10, color: colors.sacramento }}
+                     onPress={() => {
+                        logOut(true);
+                     }}
+                  />
+               ),
+               headerTitle: (
+                  <Text
+                     style={{
+                        fontWeight: "bold",
+                        fontSize: 18,
+                        color: colors.sacramento,
+                     }}
+                  >
+                     Clubleague
+                  </Text>
+               ),
+               headerRight: () => (
+                  <View style={{ flexDirection: "row" }}>
+                     <TouchableOpacity
+                        onPress={() => navigation.navigate("SearchClub")}
+                        title="SearchClub"
+                     >
+                        <Feather
+                           name="search"
+                           size={25}
+                           style={{ paddingRight: 20, color: colors.sacramento }}
+                        />
+                     </TouchableOpacity>
+                     <TouchableOpacity
+                        onPress={() => navigation.navigate("Profile")}
+                        title="Profile"
+                     >
+                        <Feather
+                           name="user"
+                           size={25}
+                           style={{ paddingRight: 10, color: colors.sacramento }}
+                        />
+                     </TouchableOpacity>
+                  </View>
+               ),
+            }}
+         />
+         <Stack.Screen
+            name="Profile"
+            component={Profile}
+            options={Profile.navigationOptions}
+         />
+         <Stack.Screen
+            name="EditProfile"
+            component={EditProfile}
+            options={EditProfile.navigationOptions}
+         />
+         <Stack.Screen name="Setting" component={Setting} />
+         <Stack.Screen
+            name="SearchClub"
+            component={SearchClub}
+            options={SearchClub.navigationOptions}
+         />
+         <Stack.Screen
+            name="NewClub"
+            component={NewClub}
+            options={NewClub.navigationOptions}
+         />
+         <Stack.Screen
+            name="Details"
+            children={CreateMaterialTopTab}
+						options={({route}) => ({
+							headerTransparent: false,
+							title: route.params.teamId
+						})}
+         />
+         <Stack.Screen name="FeedDetails" component={FeedDetails} />
+         <Stack.Screen name="Entry" component={Entry} />
+      </Stack.Navigator>
+   );
+};
 
-const CreateMatchStack = ({navigation}) => (
-  <Stack.Navigator
-    screenOptions={{
-      headerStyle: { backgroundColor: colors.white }
-    }}
-  >
-    <Stack.Screen
-      name ="Match"
-      component={Match}
-      options={{
-        headerLeft: () => (<MaterialCommunityIcons name="soccer" size={30} style={{ paddingLeft: 10, color: colors.sacramento }} />),
-        headerTitle: <Text style={{ fontWeight: 'bold', fontSize: 18, color: colors.sacramento }}>Clubleague</Text>,
-        headerRight: () => (
-          <TouchableOpacity
-          onPress={() => navigation.navigate('Writing')}
-          title="Writing"
-        >
-          <Feather name="edit" size={25} style={{ paddingRight: 10, color: colors.sacramento }} />
-        </TouchableOpacity>
-        )
+const CreateMatchStack = ({ navigation }) => (
+   <Stack.Navigator
+      screenOptions={{
+         headerStyle: { backgroundColor: colors.white },
       }}
-    />
-    <Stack.Screen name ="Writing" component={Writing} options={Writing.navigationOptions} />
-    <Stack.Screen name ="Details" component={CreateMaterialTopTab} />
-    <Stack.Screen name ="FeedDetails" component={FeedDetails} />
-    <Stack.Screen name ="Entry" component={Entry} />
-    <Stack.Screen name ="Profile" component={Profile} options={Profile.navigationOptions} />
-    <Stack.Screen name ="EditProfile" component={EditProfile} options={EditProfile.navigationOptions} />
-    <Stack.Screen name ="Setting" component={Setting} />
-
-  </Stack.Navigator>
+   >
+      <Stack.Screen
+         name="Match"
+         component={Match}
+         options={{
+            headerLeft: () => (
+               <MaterialCommunityIcons
+                  name="soccer"
+                  size={30}
+                  style={{ paddingLeft: 10, color: colors.sacramento }}
+               />
+            ),
+            headerTitle: (
+               <Text
+                  style={{
+                     fontWeight: "bold",
+                     fontSize: 18,
+                     color: colors.sacramento,
+                  }}
+               >
+                  Clubleague
+               </Text>
+            ),
+            headerRight: () => (
+               <TouchableOpacity
+                  onPress={() => navigation.navigate("Writing")}
+                  title="Writing"
+               >
+                  <Feather
+                     name="edit"
+                     size={25}
+                     style={{ paddingRight: 10, color: colors.sacramento }}
+                  />
+               </TouchableOpacity>
+            ),
+         }}
+      />
+      <Stack.Screen
+         name="Writing"
+         component={Writing}
+         options={Writing.navigationOptions}
+      />
+      <Stack.Screen name="Details" component={CreateMaterialTopTab} />
+      <Stack.Screen name="FeedDetails" component={FeedDetails} />
+      <Stack.Screen name="Entry" component={Entry} />
+      <Stack.Screen
+         name="Profile"
+         component={Profile}
+         options={Profile.navigationOptions}
+      />
+      <Stack.Screen
+         name="EditProfile"
+         component={EditProfile}
+         options={EditProfile.navigationOptions}
+      />
+      <Stack.Screen name="Setting" component={Setting} />
+   </Stack.Navigator>
 );
 
-
-const CreateNotificationStack = ({navigation}) => (
-  <Stack.Navigator
-    screenOptions={{
-      headerStyle: { backgroundColor: colors.white }
-    }}
-  >
-    <Stack.Screen
-      name ="Notification"
-      component={Notification}
-      options={{
-        headerLeft: () => (<MaterialCommunityIcons name="soccer" size={30} style={{ paddingLeft: 10, color: colors.sacramento }} />),
-        headerTitle: <Text style={{ fontWeight: 'bold', fontSize: 18, color: colors.sacramento }}>Clubleague</Text>,
-        headerRight: () => (
-          <TouchableOpacity
-          onPress={() => navigation.navigate('Profile')}
-          title="Profile"
-        >
-          <Feather name="user" size={25} style={{ paddingRight: 10, color: colors.sacramento }} />
-        </TouchableOpacity>
-        )
+const CreateNotificationStack = ({ navigation }) => (
+   <Stack.Navigator
+      screenOptions={{
+         headerStyle: { backgroundColor: colors.white },
       }}
-    />
-    <Stack.Screen name ="Details" component={CreateMaterialTopTab} />
-    <Stack.Screen name ="FeedDetails" component={FeedDetails} />
-    <Stack.Screen name ="Entry" component={Entry} />
-    <Stack.Screen name ="Profile" component={Profile} options={Profile.navigationOptions} />
-    <Stack.Screen name ="EditProfile" component={EditProfile} options={EditProfile.navigationOptions} />
-    <Stack.Screen name ="Setting" component={Setting} />
-
-  </Stack.Navigator>
+   >
+      <Stack.Screen
+         name="Notification"
+         component={Notification}
+         options={{
+            headerLeft: () => (
+               <MaterialCommunityIcons
+                  name="soccer"
+                  size={30}
+                  style={{ paddingLeft: 10, color: colors.sacramento }}
+               />
+            ),
+            headerTitle: (
+               <Text
+                  style={{
+                     fontWeight: "bold",
+                     fontSize: 18,
+                     color: colors.sacramento,
+                  }}
+               >
+                  Clubleague
+               </Text>
+            ),
+            headerRight: () => (
+               <TouchableOpacity
+                  onPress={() => navigation.navigate("Profile")}
+                  title="Profile"
+               >
+                  <Feather
+                     name="user"
+                     size={25}
+                     style={{ paddingRight: 10, color: colors.sacramento }}
+                  />
+               </TouchableOpacity>
+            ),
+         }}
+      />
+      <Stack.Screen name="Details" component={CreateMaterialTopTab} />
+      <Stack.Screen name="FeedDetails" component={FeedDetails} />
+      <Stack.Screen name="Entry" component={Entry} />
+      <Stack.Screen
+         name="Profile"
+         component={Profile}
+         options={Profile.navigationOptions}
+      />
+      <Stack.Screen
+         name="EditProfile"
+         component={EditProfile}
+         options={EditProfile.navigationOptions}
+      />
+      <Stack.Screen name="Setting" component={Setting} />
+   </Stack.Navigator>
 );
 
 const CreateMaterialTopTab = () => (
-  <MaterialTopTab.Navigator
-    tabBarOptions={{
-      activeTintColor: colors.blackColor,
-      labelStyle: { fontSize: 9 },
-      tabStyle: { height: 40 },
-      style: { backgroundColor: colors.white },
-    }}
-  >
-    <MaterialTopTab.Screen name="DetailsHome" component={DetailsHome} options={{ tabBarLabel: 'Home' }} />
-    <MaterialTopTab.Screen name="DetailsSchedule" component={DetailsSchedule} options={{ tabBarLabel: 'Schedule' }} />
-    <MaterialTopTab.Screen name="DetailsPlayers" component={DetailsPlayers} options={{ tabBarLabel: 'Players' }} />
-    <MaterialTopTab.Screen name="DetailsInfo" component={DetailsInfo} options={{ tabBarLabel: 'Info' }} />
-    <MaterialTopTab.Screen name="DetailsSetting" component={DetailsSetting} options={{ tabBarLabel: 'Setting' }} />
-  </MaterialTopTab.Navigator>
+   <MaterialTopTab.Navigator
+      tabBarOptions={{
+         activeTintColor: colors.blackColor,
+         labelStyle: { fontSize: 9 },
+         tabStyle: { height: 40 },
+         style: { backgroundColor: colors.white },
+      }}
+   >
+      <MaterialTopTab.Screen
+         name="DetailsHome"
+         component={DetailsHome}
+         options={{ tabBarLabel: "Home" }}
+      />
+      <MaterialTopTab.Screen
+         name="DetailsSchedule"
+         component={DetailsSchedule}
+         options={{ tabBarLabel: "Schedule" }}
+      />
+      <MaterialTopTab.Screen
+         name="DetailsPlayers"
+         component={DetailsPlayers}
+         options={{ tabBarLabel: "Players" }}
+      />
+      <MaterialTopTab.Screen
+         name="DetailsInfo"
+         component={DetailsInfo}
+         options={{ tabBarLabel: "Info" }}
+      />
+      <MaterialTopTab.Screen
+         name="DetailsSetting"
+         component={DetailsSetting}
+         options={{ tabBarLabel: "Setting" }}
+      />
+   </MaterialTopTab.Navigator>
 );
 
 export default function MainNavigation() {
-	return (
-		<NavigationContainer>
-			<BottomTabs />
-		</NavigationContainer>
-	);
+   return (
+      <NavigationContainer>
+         <BottomTabs />
+      </NavigationContainer>
+   );
 }

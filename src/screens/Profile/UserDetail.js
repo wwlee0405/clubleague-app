@@ -7,21 +7,19 @@ import { ScrollView } from "react-native";
 import UserProfile from "../../components/contents/UserProfile";
 
 const GET_USER = gql`
-  query seeUser($username: String!) {
-    seeUser(username: $username) {
-      ...UserParts
+  query seeUser($id: String!) {
+    seeUser(id: $id) {
+      username
     }
   }
-  ${USER_FRAGMENT}
 `;
 
 export default ({ navigation, route }) => {
   const { loading, data } = useQuery(GET_USER, {
-    variables: { username: route.params("username") }
+    variables: { id: route.params.id }
   });
   return (
     <ScrollView>
-
       {
         loading ? <Loader /> :
         data &&

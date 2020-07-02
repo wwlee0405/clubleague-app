@@ -41,7 +41,18 @@ export default class extends React.Component {
   render() {
     const { navigation } = this.props;
     const { term, shouldFetch } = this.state;
-    return <SearchPresenter term={term} shouldFetch={shouldFetch} onPress={() => navigation.navigate("Details")} />;
+    return (
+      <SearchPresenter
+        term={term}
+        shouldFetch={shouldFetch}
+        onPress={() =>
+          navigation.navigate("Details", {
+            screen: "DetailsHome",
+            params: { teamId: term.id },
+          })
+        }
+      />
+    );
   }
 }
 

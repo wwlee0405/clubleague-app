@@ -1,49 +1,50 @@
-import * as React from 'react';
+import * as React from "react";
 import { StyleSheet, Text, Button, ScrollView } from "react-native";
-import colors from '../../../colors';
+import colors from "../../../colors";
 import { gql } from "apollo-boost";
 import Loader from "../../components/Loader";
 import { useQuery } from "react-apollo-hooks";
 import ClubHome from "../../components/contents/ClubHome";
-
 const SeeTeam = gql`
-  query seeTeam($id: ID!) {
-    seeTeam(id: $id) {
-      id
-      teamName
-      teamArea
-      teamInfo
-    }
-  }
+	query seeTeam($id: String!) {
+		seeTeam(id: $id) {
+			id
+			teamName
+			teamArea
+			teamInfo
+		}
+	}
 `;
-
 export default ({ route, navigation }) => {
-  const { loading, data } = useQuery(SeeTeam);
-
-  return (
-    <ScrollView
-      horizontal={false}
-      showsVerticalScrollIndicator={false}
-      style={styles.container}
-    >
-      {loading ? (
-        <Loader />
-      ) : (
-        data &&
-        data.seeTeam &&
-        data.seeTeam.map(teams => (
-          <ClubHome onPress={() => navigation.navigate("Details")} key={teams.id} teamName={teams.teamName} />
-      )))}
-
-      <Text>Team Schedule</Text>
-
-    </ScrollView>
-  );
+	const { loading, data } = useQuery(SeeTeam, {
+		variables: { id: route.params.teamId },
+	});
+	return (
+		<ScrollView
+			horizontal={false}
+			showsVerticalScrollIndicator={false}
+			style={styles.container}
+		>
+			{loading ? (
+				<Loader />
+			) : (
+				data &&
+				data.seeTeam && (
+					<ClubHome
+						key={data.seeTeam.id}
+						avatar={data.seeTeam.avatar}
+						teamName={data.seeTeam.teamName}
+						onPress={() => navigation.navigate("Details")}
+					/>
+				)
+			)}
+			<Text>Team Schedule</Text>
+		</ScrollView>
+	);
 };
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.clBackgroundColor,
-  },
+	container: {
+		flex: 1,
+		backgroundColor: colors.clBackgroundColor,
+	},
 });

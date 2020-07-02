@@ -15,7 +15,7 @@ export default ({ onPress, noticeOnPress, navigation }) => {
       >
         <NotificationCard
           onPress={() => navigation.navigate('FeedDetails')}
-          noticeOnPress={() => navigation.navigate('Profile')}
+          noticeOnPress={() => navigation.navigate('UserDetail')}
           username="Son"
           text="게임을 요청합니다."
           time="PM 3:43"
