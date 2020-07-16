@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, Image, Alert } from "react-native";
+import { Button, StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, Image, Alert } from "react-native";
 import { Feather } from '@expo/vector-icons';
 import useInput from "../../hooks/useInput";
 import { useMutation } from "react-apollo-hooks";
@@ -7,60 +7,34 @@ import { gql } from "apollo-boost";
 import colors from '../../../colors';
 import SetSportInput from "../../components/form/SetSportInput";
 
-const CREATE_TEAM = gql`
-  mutation createTeam(
-    $teamName: String!
-    $teamArea: String
-    $teamInfo: String
-  ) {
-    createTeam(
-      teamName: $teamName
-      teamArea: $teamArea
-      teamInfo: $teamInfo
-    )
-  }
-`;
+function NewClub({ navigation }) {
+  const [count, setCount] = useState(0)
 
-export default ({ navigation }) => {
-  const clubNameInput = useInput("");
-  const [loading, setLoading] = useState();
-  const [createTeamMutation] = useMutation(CREATE_TEAM, {
-    variables: {
-      clubName: clubNameInput.value,
-    },
-  });
-  const newClubSubmit = async () => {
-    const { value: clubName } = clubNameInput;
-    if (clubName === "") {
-      return Alert.alert("Please, I need your Club Name.");
-    }
-    try {
-      setLoading(true);
-      const {
-        data: { createTeam },
-      } = await createTeamMutation();
-      if (createTeam) {
-        Alert.alert("Account created", "Log in now!");
-        navigation.navigate("Home");
-      }
-    } catch (e) {
-      console.log(e);
-    } finally {
-      setLoading(false);
-    }
-  };
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <View style={{ flexDirection: 'row' }}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Home')}
+            title="Submit"
+          >
+            <Feather name="check" size={25} style={{ paddingRight: 10 }} />
+          </TouchableOpacity>
+          <Button onPress={() => {setCount((c)=>c+1)}} title="Count+1" />
+          <Button onPress={() => {setCount((c)=>c-1)}} title="Count-1" />
+        </View>
+      ),
+    })
+  }, [navigation], setCount);
 
-  const updateFormData = (clubName) => {
-    clubNameInput.setValue(clubName);
-  };
   return (
     <View style={styles.container}>
-
+      <Text style={{ fontSize: 20 }}>{count}</Text>
       <SetSportInput />
 
       <View style={styles.inputSectionWrap}>
         <TextInput
-          {...clubNameInput}
+
           style={styles.inputSection}
           placeholder="Input Club Name"
         />
@@ -85,20 +59,13 @@ export default ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-
-      <TouchableOpacity
-        loading={loading}
-        onPress={newClubSubmit}
-      >
-        <Text style={{ fontSize: 20 }}>Submit</Text>
-      </ TouchableOpacity>
-
       <Text style={styles.notice}>You can change club name and picture after you create it.</Text>
 
     </View>
   );
-};
+}
 
+export default NewClub;
 
 const styles = StyleSheet.create({
   container: {
