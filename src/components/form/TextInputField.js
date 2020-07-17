@@ -1,41 +1,61 @@
-import React, { Component } from "react";
-import { PropTypes } from "prop-types";
-import { StyleSheet, Text, TextInput, View } from "react-native";
-import colors from '../../../colors';
+import React from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import constants from "../../../constants";
+import colors from "../../../colors";
 
-const InputField = ({ labelText, value, onChange }) => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.labelText}>{labelText}</Text>
-      <TextInput
-        style={styles.inputField}
-        value={value}
-        onChangeText={onChange}
-      />
-    </View>
-  );
+const Container = styled.View`
+	margin-bottom: 10px;
+`;
+
+const TextInput = styled.TextInput`
+	width: ${constants.width / 1.7}px;
+	padding: 10px;
+	background-color: ${(props) => props.theme.greyColor};
+	border: 0.5px solid ${(props) => props.theme.darkGreyColor};
+	border-radius: 4px;
+`;
+
+const TextInputField = ({
+	placeholder,
+	value,
+	keyboardType = "default",
+	autoCapitalize = "none",
+	returnKeyType = "done",
+	onChange,
+	onSubmitEditing = () => null,
+	autoCorrect = true,
+}) => (
+	<Container>
+		<TextInput
+			onChangeText={onChange}
+			keyboardType={keyboardType}
+			returnKeyType={returnKeyType}
+			placeholder={placeholder}
+			autoCapitalize={autoCapitalize}
+			onSubmitEditing={onSubmitEditing}
+			autoCorrect={autoCorrect}
+			value={value}
+		/>
+	</Container>
+);
+
+TextInputField.propTypes = {
+	placeholder: PropTypes.string.isRequired,
+	value: PropTypes.string.isRequired,
+	keyboardType: PropTypes.oneOf([
+		"default",
+		"number-pad",
+		"decimal-pad",
+		"numeric",
+		"email-address",
+		"phone-pad",
+	]),
+	autoCapitalize: PropTypes.oneOf(["none", "sentences", "words", "characters"]),
+	onChange: PropTypes.func.isRequired,
+	returnKeyType: PropTypes.oneOf(["done", "go", "next", "search", "send"]),
+	onSubmitEditing: PropTypes.func,
+	autoCorrect: PropTypes.bool,
 };
 
-
-InputField.propTypes = {
-  labelText: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
-
-export default InputField;
-
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    paddingBottom: 10,
-  },
-  labelText: {
-    fontWeight: '600',
-  },
-  inputField: {
-    borderBottomWidth: 1,
-    paddingTop: 1,
-    paddingBottom: 5,
-  }
-});
+export default TextInputField;
