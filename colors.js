@@ -20,4 +20,5 @@ export default {
   grey03: '#b3b3b3',
 
   clBackgroundColor: "#f5f5f5",
+  modalBackgroundColor: "#000000aa",
 };

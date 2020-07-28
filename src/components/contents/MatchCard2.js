@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from "rea
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../../../colors';
 
-const MatchCard = ({
+const MatchCard2 = ({
     onPress,
     profileOnPress,
     profileImg,
@@ -26,98 +26,86 @@ const MatchCard = ({
             />
           </TouchableOpacity>
           <View style={styles.profileTextWrap}>
-            <Text style={styles.profileUserTextTop}>{username}</Text>
-            <Text style={styles.profileUserTextBottom}>{area}</Text>
+            <Text style={styles.profileUserText}>{username}</Text>
+            <Text>{area}</Text>
           </View>
         </View>
 
-
         <View style={styles.bodyWrap}>
-          <View>
-            <Text style={styles.sportText}>Soccer</Text>
+          <View style={styles.bodyTextWrap}>
+            <Text style={styles.bodyText}>{bodyText}</Text>
           </View>
-          <ScrollView
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.bodyMachClubScrollWrap}
-          >
-            <View style={{ paddingRight: 10 }}>
+
+          <View style={styles.bodyGameWrap}>
+            <Text style={styles.gameText}><Text>4</Text> TeamGame</Text>
+            <Text style={styles.remainText}><Text>1</Text> Remain</Text>
+            <View style={{ paddingRight: 2 }}>
               <Image
                 source={require('../../data/ImgTest/1ars.jpg')}
                 style={styles.clubImg}
               />
             </View>
-            <View style={{ paddingRight: 10 }}>
+            <View style={{ paddingRight: 2 }}>
               <Image
                 source={require('../../data/ImgTest/2bar.jpg')}
                 style={styles.clubImg}
               />
             </View>
-            <View style={{ paddingRight: 10 }}>
+            <View style={{ paddingRight: 2 }}>
               <Image
                 source={require('../../data/ImgTest/2bar.jpg')}
                 style={styles.clubImg}
               />
             </View>
-            <View style={{ paddingRight: 10 }}>
-              <Image
-                source={require('../../data/ImgTest/2bar.jpg')}
-                style={styles.clubImg}
-              />
-            </View>
-
-
-
-          </ScrollView>
-          <View style={styles.bodyGameWrap}>
-            <Text style={styles.gameText}><Text>4</Text> TeamGame</Text>
-            <Text style={styles.remainText}><Text>1</Text> Remain</Text>
           </View>
+
+
 
         </View>
 
 
 
+
       </TouchableOpacity>
 
-
-      <View style={styles.bodyWrap}>
-        <ScrollView
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.scrollWrap}
-        >
-          <View style={styles.colorBoxWrap}>
-            <View style={[styles.colorBoxTextWrap, { backgroundColor: colors.redColor, marginLeft: 5 }]}>
-              <Feather
-                name="calendar"
-                color={colors.white}
-                size={22}
-                style={styles.colorBoximg}
-              />
-              <Text style={styles.colorBoxText}>Jul 20</Text>
-            </View>
-            <View style={[styles.colorBoxTextWrap, { backgroundColor: colors.blueColor, marginLeft: 5 }]}>
-              <MaterialCommunityIcons
-                name="stadium-variant"
-                color={colors.white}
-                size={22}
-                style={styles.colorBoximg}
-              />
-              <Text style={styles.colorBoxText}>Buenos Aires</Text>
-            </View>
-            <View style={[styles.colorBoxTextWrap, { backgroundColor: colors.yellowGreen, marginLeft: 5 }]}>
-              <Feather
-                name="clock"
-                color={colors.white}
-                size={22}
-                style={styles.colorBoximg}
-              />
-              <Text style={styles.colorBoxText}>10:00~14:00</Text>
-            </View>
+      <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.scrollWrap}
+      >
+        <View style={styles.colorBoxWrap}>
+          <View style={[styles.colorBoxTextWrap, { backgroundColor: colors.emerald }]}>
+            <Text style={styles.colorBoxSport}>Soccer</Text>
           </View>
-        </ScrollView>
-      </View>
+          <View style={[styles.colorBoxTextWrap, { backgroundColor: colors.blueColor, marginLeft: 5 }]}>
+            <MaterialCommunityIcons
+              name="stadium-variant"
+              color={colors.white}
+              size={22}
+              style={styles.colorBoximg}
+            />
+            <Text style={styles.colorBoxText}>Buenos Aires</Text>
+          </View>
+          <View style={[styles.colorBoxTextWrap, { backgroundColor: colors.redColor, marginLeft: 5 }]}>
+            <Feather
+              name="calendar"
+              color={colors.white}
+              size={22}
+              style={styles.colorBoximg}
+            />
+            <Text style={styles.colorBoxText}>Jul 20</Text>
+          </View>
+          <View style={[styles.colorBoxTextWrap, { backgroundColor: colors.yellowGreen, marginLeft: 5 }]}>
+            <Feather
+              name="clock"
+              color={colors.white}
+              size={22}
+              style={styles.colorBoximg}
+            />
+            <Text style={styles.colorBoxText}>10:00~14:00</Text>
+          </View>
+        </View>
+      </ScrollView>
 
       <View style={styles.bottmWrap}>
         <Text note style={{ color: colors.darkGreyColor, fontSize: 12 }}>PM 5 : 20, Jan 15, 2020</Text>
@@ -127,7 +115,7 @@ const MatchCard = ({
   );
 };
 
-export default MatchCard;
+export default MatchCard2;
 
 
 const styles = StyleSheet.create({
@@ -151,48 +139,31 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   profileImg: {
-    width: 40,
-    height: 40,
+    width: 50,
+    height: 50,
     borderRadius: 100,
   },
   profileTextWrap: {
     justifyContent: 'center',
   },
-  profileUserTextTop: {
+  profileUserText: {
     fontWeight: 'bold',
-    fontSize: 13
-  },
-  profileUserTextBottom: {
-    fontSize: 13
   },
   bodyWrap: {
     backgroundColor: colors.ghostWhite,
   },
-  sportText: {
-    paddingTop: 5,
+  bodyTextWrap: {
     paddingLeft: 15,
+    paddingRight: 15,
+  },
+  bodyText: {
     fontWeight: 'bold',
     fontSize: 15,
-    color: colors.emerald,
-  },
-  bodyMachClubScrollWrap: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingStart: 15,
-    paddingEnd: 15,
-    paddingTop: 5,
-  },
-  clubImg: {
-    width: 50,
-    height: 50,
-    borderRadius: 100,
+    color: colors.darkGreyColor,
   },
   bodyGameWrap: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    paddingTop: 5,
+    paddingTop: 10,
     paddingHorizontal: 15,
   },
   gameText: {
@@ -207,10 +178,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.redColor,
   },
+  clubImg: {
+    width: 25,
+    height: 25,
+    borderRadius: 100,
+  },
   scrollWrap: {
     alignItems: 'center',
-    paddingStart: 10,
-    paddingEnd: 10,
+    paddingStart: 15,
+    paddingEnd: 15,
     backgroundColor: colors.ghostWhite,
   },
   colorBoxWrap: {
