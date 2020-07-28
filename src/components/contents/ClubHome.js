@@ -10,7 +10,8 @@ const ClubHome = ({
     sports,
     members,
     teamOwner,
-    teamArea
+    teamArea,
+    joinOnPress
   }) => {
   return (
     <View>
@@ -44,7 +45,7 @@ const ClubHome = ({
       <View style={{ flex: 2, flexDirection: 'row' }}>
         <TouchableOpacity
           style={{ flex: 1, height: 50, backgroundColor: colors.yellowGreen }}
-          onPress={() => alert("Application or just sign up.")}
+          onPress={joinOnPress}
         >
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text style={{ fontSize: 18, color: colors.white }}>Join this Club</Text>
@@ -52,7 +53,7 @@ const ClubHome = ({
         </TouchableOpacity>
         <TouchableOpacity
           style={{ flex: 1, height: 50, backgroundColor: colors.blueColor }}
-          onPress={() => alert("ask the match")}
+          onPress={() => alert("ask the match!")}
         >
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text style={{ fontSize: 18, color: colors.white }}>Ask the match</Text>
