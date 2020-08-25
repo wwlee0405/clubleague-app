@@ -12,6 +12,7 @@ export default ({ onPress, noticeOnPress, navigation }) => {
       <ScrollView
         horizontal={false}
         showsVerticalScrollIndicator={false}
+        style={{ paddingHorizontal: 7 }}
       >
         <NotificationCard
           onPress={() => navigation.navigate('FeedDetails')}

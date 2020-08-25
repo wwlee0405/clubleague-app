@@ -39,7 +39,7 @@ export default NotificationCard;
 const styles = StyleSheet.create({
   container: {
     flex:1,
-    borderRadius: 20,
+    borderRadius: 15,
     backgroundColor: colors.white,
     marginTop: 3,
     marginBottom: 3,

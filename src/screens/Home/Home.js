@@ -13,6 +13,8 @@ import ClubTeams from "../../components/contents/ClubTeams";
 import { gql } from "apollo-boost";
 import Loader from "../../components/Loader";
 import { useQuery } from "react-apollo-hooks";
+import ScheduleCard from "../../components/contents/ScheduleCard";
+
 const SeeMyTeam = gql`
 	{
 		seeMyTeam {
@@ -41,7 +43,7 @@ export default ({ navigation }) => {
 		<View style={styles.container}>
 			<View style={styles.clubContainer}>
 				<View style={styles.clubContainerTopWrap}>
-					<Text style={styles.clubContainerRightText}>Club</Text>
+					<Text style={styles.clubContainerText}>Club</Text>
 					<View>
 						<TouchableOpacity
 							onPress={() => navigation.navigate("NewClub")}
@@ -49,9 +51,9 @@ export default ({ navigation }) => {
 						>
 							<Feather
 								name="plus-circle"
-								style={styles.clubContainerLeftButtonIcon}
+								style={styles.clubContainerRightButtonIcon}
 							/>
-							<Text style={styles.clubContainerLeftText}>New Club</Text>
+							<Text style={styles.clubContainerText}>New Club</Text>
 						</TouchableOpacity>
 					</View>
 				</View>
@@ -87,24 +89,74 @@ export default ({ navigation }) => {
 					</ScrollView>
 				</View>
 			</View>
-			<ScrollView
-				horizontal={false}
-				showsVerticalScrollIndicator={false}
-				style={styles.gameScheduleWrap}
-			>
-				<Text>Schedule</Text>
-			</ScrollView>
+
+			<View style={styles.scheduleContainer}>
+				<Text style={styles.scheduleContainerText}>My Schedule</Text>
+				<ScrollView
+					horizontal={false}
+					showsVerticalScrollIndicator={false}
+					style={styles.gameScheduleWrap}
+				>
+					<ScheduleCard
+						avatar={require('../../data/ImgTest/1ars.jpg')}
+	          teamName="FC_Arsenal"
+	          sport="Soccer"
+						date="Jul 20"
+						time="10:00"
+						area="Buenos Aires"
+						teamGame="4"
+	          onPress={() => navigation.navigate('FeedDetails')}
+	          detailsOnPress={() => navigation.navigate('Profile')}
+	        />
+					<ScheduleCard
+						avatar={require('../../data/ImgTest/aaaa.jpg')}
+	          teamName="FC_Namgang"
+	          sport="Futsal"
+						date="Jul 25"
+						time="22:00"
+						area="Seoul"
+						teamGame="4"
+	          onPress={() => navigation.navigate('FeedDetails')}
+	          detailsOnPress={() => navigation.navigate('Profile')}
+	        />
+					<ScheduleCard
+						avatar={require('../../data/ImgTest/bbbb.jpg')}
+	          teamName="Cicagobulls"
+	          sport="Basketball"
+						date="Aug 2"
+						time="09:00"
+						area="Cicago"
+						teamGame="4"
+	          onPress={() => navigation.navigate('FeedDetails')}
+	          detailsOnPress={() => navigation.navigate('Profile')}
+	        />
+					<ScheduleCard
+						avatar={require('../../data/ImgTest/2bar.jpg')}
+	          teamName="FC_Barcelona"
+	          sport="Soccer"
+						date="Aug 10"
+						time="15:00"
+						area="Barcelona"
+						teamGame="4"
+	          onPress={() => navigation.navigate('FeedDetails')}
+	          detailsOnPress={() => navigation.navigate('Profile')}
+	        />
+
+				</ScrollView>
+			</View>
 		</View>
 	);
 };
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		backgroundColor: colors.clBackgroundColor,
 	},
 	clubContainer: {
-		borderBottomWidth: 1,
-		borderColor: colors.white,
+		margin: 7,
+		paddingVertical: 5,
 		backgroundColor: colors.white,
+		borderRadius: 15,
 	},
 	clubContainerTopWrap: {
 		height: 35,
@@ -113,7 +165,7 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		paddingHorizontal: 7,
 	},
-	clubContainerRightText: {
+	clubContainerText: {
 		fontWeight: "bold",
 		fontSize: 18,
 	},
@@ -121,11 +173,7 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignItems: "center",
 	},
-	clubContainerLeftButtonIcon: {
-		fontSize: 18,
-	},
-	clubContainerLeftText: {
-		fontWeight: "bold",
+	clubContainerRightButtonIcon: {
 		fontSize: 18,
 	},
 	clubContainerBottomWrap: {
@@ -136,7 +184,17 @@ const styles = StyleSheet.create({
 		paddingStart: 5,
 		paddingEnd: 5,
 	},
-	gameScheduleWrap: {
+	scheduleContainer: {
+		flex: 1,
 		backgroundColor: colors.clBackgroundColor,
+	},
+	scheduleContainerText: {
+		fontWeight: "bold",
+		fontSize: 18,
+		paddingLeft: 14,
+		paddingVertical: 12,
+	},
+	gameScheduleWrap: {
+		paddingHorizontal: 7,
 	},
 });

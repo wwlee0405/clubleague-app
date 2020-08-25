@@ -23,7 +23,7 @@ const Reply = ({ onPress, profileImg, username, text, time }) => {
           <Text style={styles.user}>{username}</Text>
           <Text style={styles.time}>AM 12:00</Text>
         </View>
-        <Text style={styles.reply}>ekmslgmslgmsssssssssssssssssssssssssssssssssssssssl</Text>
+        <Text style={styles.reply}>ekmslgmslgmsssssssssssssssssssssssssssssssssssl</Text>
       </View>
 
     </View>

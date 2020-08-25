@@ -106,7 +106,7 @@ const CreateHomeStack = ({ route, navigation }) => {
                      style={{
                         fontWeight: "bold",
                         fontSize: 18,
-                        color: colors.sacramento,
+                        color: colors.sacramento
                      }}
                   >
                      Clubleague
@@ -138,11 +138,7 @@ const CreateHomeStack = ({ route, navigation }) => {
                ),
             }}
          />
-         <Stack.Screen
-            name="Profile"
-            component={Profile}
-            options={Profile.navigationOptions}
-         />
+         <Stack.Screen name="Profile" component={Profile} />
          <Stack.Screen
             name="EditProfile"
             component={EditProfile}
@@ -195,7 +191,7 @@ const CreateMatchStack = ({ navigation }) => (
                   style={{
                      fontWeight: "bold",
                      fontSize: 18,
-                     color: colors.sacramento,
+                     color: colors.sacramento
                   }}
                >
                   Clubleague
