@@ -13,7 +13,7 @@ const ClubTeams = ({ onPress, avatar, teamName }) => {
           style={styles.clubImg}
           source={{ uri: avatar }}
         />
-        <Text style={styles.clubName}>{teamName}</Text>
+        <Text style={styles.clubName} numberOfLines={1}>{teamName}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -39,5 +39,7 @@ const styles = StyleSheet.create({
   },
   clubName: {
     fontWeight: 'bold',
+    width: 80,
+    overflow: 'hidden',
   },
 });

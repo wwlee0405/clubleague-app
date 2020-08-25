@@ -7,10 +7,9 @@ import colors from '../../../colors';
 const MatchCard = ({
     onPress,
     profileOnPress,
-    profileImg,
+    avatar,
     username,
     area,
-    bodyText
   }) => {
   return (
     <View style={styles.container}>
@@ -21,7 +20,7 @@ const MatchCard = ({
             onPress={profileOnPress}
           >
             <Image
-              source={require('../../data/ImgTest/cccc.jpg')}
+              source={avatar}
               style={styles.profileImg}
             />
           </TouchableOpacity>
@@ -133,7 +132,7 @@ export default MatchCard;
 const styles = StyleSheet.create({
   container: {
     flex:1,
-    borderRadius: 20,
+    borderRadius: 15,
     backgroundColor: colors.white,
     paddingBottom: 10,
     marginTop: 5,
@@ -173,7 +172,7 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     fontWeight: 'bold',
     fontSize: 15,
-    color: colors.emerald,
+    color: colors.seaGreen,
   },
   bodyMachClubScrollWrap: {
     flex: 1,
@@ -199,6 +198,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingRight: 10,
+    color: colors.darkGreyColor,
   },
   remainText: {
     justifyContent: 'center',

@@ -68,6 +68,55 @@ const UserProfile = ({
         </View>
       </View>
 
+
+      <View style={{ flex: 1 }}>
+        <Text style={{ margin: 10 }}>Joined Club</Text>
+        <ScrollView
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+        >
+          <View style={{ flexDirection: 'row' }}>
+            <TouchableOpacity
+              onPress={() => alert("ask the match!")}
+            >
+              <View style={{ alignItems: 'center', backgroundColor: "white", borderRadius: 10, padding: 10, margin: 5 }}>
+                <Image
+                  source={require('../../data/ImgTest/1ars.jpg')}
+                  style={{ width: 90, height: 90, borderRadius: 100, margin: 5 }}
+                />
+                <Text style={{ width: 85, overflow: 'hidden' }} numberOfLines={1}>arsenal</Text>
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => alert("ask the match!")}
+            >
+              <View style={{ alignItems: 'center', backgroundColor: "white", borderRadius: 15, padding: 10, margin: 5 }}>
+                <Image
+                  source={require('../../data/ImgTest/2bar.jpg')}
+                  style={{ width: 90, height: 90, borderRadius: 100, margin: 5 }}
+                />
+                <Text style={{ width: 85, overflow: 'hidden' }} numberOfLines={1}>fcBarcelona</Text>
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => alert("ask the match!")}
+            >
+              <View style={{ alignItems: 'center', backgroundColor: "white", borderRadius: 15, padding: 10, margin: 5 }}>
+                <Image
+                  source={require('../../data/ImgTest/2bar.jpg')}
+                  style={{ width: 90, height: 90, borderRadius: 100, margin: 5 }}
+                />
+                <Text style={{ width: 85, overflow: 'hidden' }} numberOfLines={1}>fcBarcelonafnafabjfba</Text>
+              </View>
+            </TouchableOpacity>
+
+          </View>
+        </ScrollView>
+      </View>
+
+
     </ScrollView>
   </View>
 );

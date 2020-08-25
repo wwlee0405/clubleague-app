@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components"
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, Modal } from "react-native";
+import { StyleSheet, Text, ScrollView, Modal } from "react-native";
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../../../colors';
 
 import SearchInput from "../../components/form/SearchInput";
 import MatchCard from "../../components/contents/MatchCard";
-import MatchCard2 from "../../components/contents/MatchCard2";
 
 import SetSportBox from "../../components/form/SetSportBox";
 import SetSport from "../../components/form/SetSport";
@@ -44,9 +43,12 @@ const ChoiceView = styled.View`
   padding-top: 30px;
 `;
 
-const ChoiceBox = styled.View`
+const ChoiceBox = styled.TouchableOpacity`
   flex: 1;
+  justify-content: center;
   align-items: center;
+  height: 50px;
+  margin: 10px;
 `;
 
 const Touchable = styled.TouchableOpacity`
@@ -61,6 +63,7 @@ export default ({ onPress, navigation }) => {
       <ScrollView
         horizontal={false}
         showsVerticalScrollIndicator={false}
+        style={{ paddingHorizontal: 7 }}
       >
         <Content>
           <SearchInput placeholderText="종목명, 도시명, 클럽명" />
@@ -81,19 +84,17 @@ export default ({ onPress, navigation }) => {
               <Text>ClubName 검색</Text>
               <Text>게임수 검색</Text>
               <ChoiceView>
-                <ChoiceBox>
+                <ChoiceBox onPress={() => setModalOpen(false)}>
                   <Feather
                     name="check"
                     size={30}
                     color={colors.emerald}
-                    onPress={() => setModalOpen(false)}
                   />
                 </ChoiceBox>
-                <ChoiceBox>
+                <ChoiceBox onPress={() => setModalOpen(false)}>
                   <MaterialCommunityIcons
                     name="close"
                     size={30}
-                    onPress={() => setModalOpen(false)}
                   />
                 </ChoiceBox>
 
@@ -105,7 +106,7 @@ export default ({ onPress, navigation }) => {
           <Touchable
             onPress={() => setModalOpen(true)}
           >
-            <Text>Detial Search</Text>
+            <Text style={{ paddingTop: 10, fontSize: 20 }}>Detail Search</Text>
           </Touchable>
 
 
@@ -114,28 +115,14 @@ export default ({ onPress, navigation }) => {
 
 
         <MatchCard
-          username="Son"
-          area="Seoul, Korea"
-          bodyText="한번 붙자!! 05/17 매칭 초청합니다. 팀명:F.C. Barcelona 유니폼:줄무늬, 매너:최고, 장소:캄프누"
+          avatar={require('../../data/ImgTest/dddd.jpg')}
+          username="Messi"
+          area="Barcelona, Spain"
           onPress={() => navigation.navigate('FeedDetails')}
           profileOnPress={() => navigation.navigate('Profile')}
         />
-        <MatchCard2
-          username="Son"
-          area="Seoul, Korea"
-          bodyText="한번 붙자!! 05/17 매칭 초청합니다. 팀명:F.C. Barcelona 유니폼:줄무늬, 매너:최고, 장소:캄프누"
-          onPress={() => navigation.navigate('FeedDetails')}
-          profileOnPress={() => navigation.navigate('Profile')}
-        />
+
       </ScrollView>
     </Container>
   );
 };
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.clBackgroundColor,
-  },
-});
