@@ -77,7 +77,7 @@ const UserProfile = ({
         >
           <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
-              onPress={() => alert("ask the match!")}
+              onPress={() => alert("move ClubDetails")}
             >
               <View style={{ alignItems: 'center', backgroundColor: "white", borderRadius: 10, padding: 10, margin: 5 }}>
                 <Image
@@ -89,7 +89,7 @@ const UserProfile = ({
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => alert("ask the match!")}
+              onPress={() => alert("move ClubDetails")}
             >
               <View style={{ alignItems: 'center', backgroundColor: "white", borderRadius: 15, padding: 10, margin: 5 }}>
                 <Image
@@ -101,7 +101,7 @@ const UserProfile = ({
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => alert("ask the match!")}
+              onPress={() => alert("move ClubDetails")}
             >
               <View style={{ alignItems: 'center', backgroundColor: "white", borderRadius: 15, padding: 10, margin: 5 }}>
                 <Image

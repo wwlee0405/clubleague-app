@@ -14,8 +14,10 @@ export default {
   seaGreen: "#2e8b57",
   sacramento: "#043927",
   yellow: "#fbbc05",
-  yellowGreen: "#9ACD32",
+  forsythia: "#f7e600",
+  gold: "#ffd700",
   green: "#d7eb94",
+  yellowGreen: "#9ACD32",
 
   grey01: '#f3f3f3',
   grey02: '#919191',

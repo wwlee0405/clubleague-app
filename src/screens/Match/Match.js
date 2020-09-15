@@ -6,6 +6,7 @@ import colors from '../../../colors';
 
 import SearchInput from "../../components/form/SearchInput";
 import MatchCard from "../../components/contents/MatchCard";
+import DailyPlayerCard from "../../components/contents/DailyPlayerCard";
 
 import SetSportBox from "../../components/form/SetSportBox";
 import SetSport from "../../components/form/SetSport";
@@ -118,6 +119,13 @@ export default ({ onPress, navigation }) => {
           avatar={require('../../data/ImgTest/dddd.jpg')}
           username="Messi"
           area="Barcelona, Spain"
+          onPress={() => navigation.navigate('FeedDetails')}
+          profileOnPress={() => navigation.navigate('Profile')}
+        />
+        <DailyPlayerCard
+          avatar={require('../../data/ImgTest/cccc.jpg')}
+          username="son"
+          area="Seoul, Korea"
           onPress={() => navigation.navigate('FeedDetails')}
           profileOnPress={() => navigation.navigate('Profile')}
         />

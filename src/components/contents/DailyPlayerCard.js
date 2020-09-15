@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from "rea
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../../../colors';
 
-const MatchCard = ({
+const DailyPlayerCard = ({
     onPress,
     profileOnPress,
     avatar,
@@ -35,7 +35,7 @@ const MatchCard = ({
           <View style={styles.sportWrap}>
             <Text style={styles.sportText}>Soccer</Text>
             <View style={styles.typeTextBox}>
-              <Text style={styles.typeText}>Match</Text>
+              <Text style={styles.typeText}>DailyPlayer</Text>
             </View>
 
           </View>
@@ -46,34 +46,21 @@ const MatchCard = ({
           >
             <View style={{ paddingRight: 10 }}>
               <Image
-                source={require('../../data/ImgTest/1ars.jpg')}
+                source={require('../../data/ImgTest/dddd.jpg')}
                 style={styles.clubImg}
               />
             </View>
             <View style={{ paddingRight: 10 }}>
               <Image
-                source={require('../../data/ImgTest/2bar.jpg')}
+                source={require('../../data/ImgTest/ffff.jpg')}
                 style={styles.clubImg}
               />
             </View>
-            <View style={{ paddingRight: 10 }}>
-              <Image
-                source={require('../../data/ImgTest/2bar.jpg')}
-                style={styles.clubImg}
-              />
-            </View>
-            <View style={{ paddingRight: 10 }}>
-              <Image
-                source={require('../../data/ImgTest/2bar.jpg')}
-                style={styles.clubImg}
-              />
-            </View>
-
 
 
           </ScrollView>
           <View style={styles.bodyGameWrap}>
-            <Text style={styles.gameText}><Text>4</Text> TeamGame</Text>
+            <Text style={styles.gameText}><Text>2</Text> DailyPlayer</Text>
             <Text style={styles.remainText}><Text>1</Text> Remain</Text>
           </View>
 
@@ -98,7 +85,7 @@ const MatchCard = ({
                 size={22}
                 style={styles.colorBoximg}
               />
-              <Text style={styles.colorBoxText}>Jul 20</Text>
+              <Text style={styles.colorBoxText}>Dec 2</Text>
             </View>
             <View style={[styles.colorBoxTextWrap, { backgroundColor: colors.blueColor, marginLeft: 5 }]}>
               <MaterialCommunityIcons
@@ -107,7 +94,7 @@ const MatchCard = ({
                 size={22}
                 style={styles.colorBoximg}
               />
-              <Text style={styles.colorBoxText}>Buenos Aires</Text>
+              <Text style={styles.colorBoxText}>Seoul</Text>
             </View>
             <View style={[styles.colorBoxTextWrap, { backgroundColor: colors.yellowGreen, marginLeft: 5 }]}>
               <Feather
@@ -123,14 +110,14 @@ const MatchCard = ({
       </View>
 
       <View style={styles.bottmWrap}>
-        <Text note style={{ color: colors.darkGreyColor, fontSize: 12 }}>PM 5 : 20, Jan 15, 2020</Text>
+        <Text note style={{ color: colors.darkGreyColor, fontSize: 12 }}>PM 2 : 33, Dec 1, 2020</Text>
       </View>
 
     </View>
   );
 };
 
-export default MatchCard;
+export default DailyPlayerCard;
 
 
 const styles = StyleSheet.create({
