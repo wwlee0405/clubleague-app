@@ -66,35 +66,59 @@ const DailyPlayerCard = ({
 
         </View>
 
-        <View style={{ paddingTop: 10, paddingBottom: 10 }}>
-          <View style={styles.schedhuleBoxWrap}>
-            <View style={{ marginLeft: 15 }}>
-              <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Nov 1</Text>
-            </View>
-            <Text style={{ marginLeft: 8 }}>|</Text>
-            <View>
-              <Text style={{ marginLeft: 8, fontSize: 15 }}>16:00~19:00</Text>
-            </View>
-          </View>
 
-          <View style={styles.placeBoxWrap}>
-            <Feather
-              name="map-pin"
-              color={colors.darkGreyColor}
-              size={18}
-            />
-            <Text style={{ color: colors.darkGreyColor, fontSize: 13 }}>Seoul</Text>
-          </View>
-        </View>
 
       </TouchableOpacity>
 
+
+      <View style={styles.bodyWrap}>
+        <ScrollView
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.scrollWrap}
+        >
+          <View style={styles.colorBoxWrap}>
+            <View style={[styles.colorBoxTextWrap, { backgroundColor: colors.redColor, marginLeft: 5 }]}>
+              <Feather
+                name="calendar"
+                color={colors.white}
+                size={22}
+                style={styles.colorBoximg}
+              />
+              <Text style={styles.colorBoxText}>Dec 2</Text>
+            </View>
+            <View style={[styles.colorBoxTextWrap, { backgroundColor: colors.blueColor, marginLeft: 5 }]}>
+              <MaterialCommunityIcons
+                name="stadium-variant"
+                color={colors.white}
+                size={22}
+                style={styles.colorBoximg}
+              />
+              <Text style={styles.colorBoxText}>Seoul</Text>
+            </View>
+            <View style={[styles.colorBoxTextWrap, { backgroundColor: colors.yellowGreen, marginLeft: 5 }]}>
+              <Feather
+                name="clock"
+                color={colors.white}
+                size={22}
+                style={styles.colorBoximg}
+              />
+              <Text style={styles.colorBoxText}>10:00~14:00</Text>
+            </View>
+          </View>
+        </ScrollView>
+      </View>
+
+      <View style={styles.bottmWrap}>
+        <Text note style={{ color: colors.darkGreyColor, fontSize: 12 }}>PM 2 : 33, Dec 1, 2020</Text>
+      </View>
 
     </View>
   );
 };
 
 export default DailyPlayerCard;
+
 
 const styles = StyleSheet.create({
   container: {
@@ -132,7 +156,7 @@ const styles = StyleSheet.create({
     fontSize: 13
   },
   bodyWrap: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.ghostWhite,
   },
   sportWrap: {
     flex: 1,
@@ -171,8 +195,8 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   clubImg: {
-    width: 40,
-    height: 40,
+    width: 50,
+    height: 50,
     borderRadius: 100,
   },
   bodyGameWrap: {
@@ -186,7 +210,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingRight: 10,
     color: colors.darkGreyColor,
-    fontSize: 13,
   },
   remainText: {
     justifyContent: 'center',
@@ -194,18 +217,41 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     fontWeight: 'bold',
     color: colors.redColor,
-    fontSize: 13,
   },
-  schedhuleBoxWrap: {
-    flex: 1,
-    flexDirection: 'row',
+  scrollWrap: {
     alignItems: 'center',
-    backgroundColor: colors.white
+    paddingStart: 10,
+    paddingEnd: 10,
+    backgroundColor: colors.ghostWhite,
   },
-  placeBoxWrap: {
+  colorBoxWrap: {
     flex: 1,
     flexDirection: 'row',
-    marginLeft: 15,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
-
+  colorBoxTextWrap: {
+    flex: 1,
+    flexDirection: 'row',
+    width: null,
+    height: 25,
+    borderRadius: 5,
+  },
+  colorBoximg: {
+    paddingLeft: 5,
+  },
+  colorBoxSport: {
+    paddingLeft: 10,
+    paddingRight: 10,
+    color: colors.white,
+  },
+  colorBoxText: {
+    paddingLeft: 5,
+    paddingRight: 8,
+    color: colors.white,
+  },
+  bottmWrap: {
+    flex: 1,
+    paddingLeft: 15,
+  },
 });

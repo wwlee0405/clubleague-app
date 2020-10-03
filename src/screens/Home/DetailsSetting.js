@@ -8,7 +8,7 @@ export default ({ navigation }) => {
       <View>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => this.props.navigation.navigate('Setting')}
+          onPress={() => navigation.navigate('ClubSetting')}
         >
           <Text style={styles.btnText}>Club 기본 정보 관리</Text>
         </TouchableOpacity>
@@ -17,7 +17,7 @@ export default ({ navigation }) => {
       <View>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => this.props.navigation.navigate('Setting')}
+          onPress={() => navigation.navigate('ClubSetting')}
         >
           <Text style={styles.btnText}>Member 활동 관리</Text>
         </TouchableOpacity>
@@ -26,7 +26,7 @@ export default ({ navigation }) => {
       <View>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => this.props.navigation.navigate('Setting')}
+          onPress={() => navigation.navigate('ClubSetting')}
         >
           <Text style={styles.btnText}>Management 설정</Text>
         </TouchableOpacity>

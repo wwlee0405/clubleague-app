@@ -167,6 +167,7 @@ const styles = StyleSheet.create({
   },
   gameText: {
     color: colors.darkGreyColor,
+    fontSize: 13,
     paddingBottom: 5,
   },
   bottmWrap: {

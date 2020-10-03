@@ -20,6 +20,7 @@ import Profile from "../screens/Profile/Profile";
 import UserDetail from "../screens/Profile/UserDetail";
 import EditProfile from "../screens/Profile/EditProfile";
 import Setting from "../screens/Profile/Setting";
+import ClubSetting from "../screens/Home/ClubSetting";
 import SearchClub from "../screens/Search/SearchClub";
 import NewClub from "../screens/Home/NewClub";
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
@@ -95,7 +96,7 @@ const CreateHomeStack = ({ route, navigation }) => {
                   <MaterialCommunityIcons
                      name="soccer"
                      size={30}
-                     style={{ paddingLeft: 10, color: colors.sacramento }}
+                     style={{ paddingLeft: 10 }}
                      onPress={() => {
                         logOut(true);
                      }}
@@ -105,8 +106,7 @@ const CreateHomeStack = ({ route, navigation }) => {
                   <Text
                      style={{
                         fontWeight: "bold",
-                        fontSize: 18,
-                        color: colors.sacramento
+                        fontSize: 18
                      }}
                   >
                      Clubleague
@@ -121,7 +121,7 @@ const CreateHomeStack = ({ route, navigation }) => {
                         <Feather
                            name="search"
                            size={25}
-                           style={{ paddingRight: 20, color: colors.sacramento }}
+                           style={{ paddingRight: 20 }}
                         />
                      </TouchableOpacity>
                      <TouchableOpacity
@@ -131,14 +131,31 @@ const CreateHomeStack = ({ route, navigation }) => {
                         <Feather
                            name="user"
                            size={25}
-                           style={{ paddingRight: 10, color: colors.sacramento }}
+                           style={{ paddingRight: 10 }}
                         />
                      </TouchableOpacity>
                   </View>
                ),
             }}
          />
-         <Stack.Screen name="Profile" component={Profile} />
+         <Stack.Screen
+            name="Profile"
+            component={Profile}
+            options={{
+               headerRight: () => (
+                  <TouchableOpacity
+                     onPress={() => navigation.navigate("Setting")}
+                     title="Writing"
+                  >
+                     <Feather
+                        name="settings"
+                        size={25}
+                        style={{ paddingRight: 10 }}
+                     />
+                  </TouchableOpacity>
+               ),
+            }}
+         />
          <Stack.Screen
             name="EditProfile"
             component={EditProfile}
@@ -165,6 +182,7 @@ const CreateHomeStack = ({ route, navigation }) => {
          />
          <Stack.Screen name="FeedDetails" component={FeedDetails} />
          <Stack.Screen name="Entry" component={Entry} />
+         <Stack.Screen name="ClubSetting" component={ClubSetting} />
       </Stack.Navigator>
    );
 };
@@ -183,15 +201,14 @@ const CreateMatchStack = ({ navigation }) => (
                <MaterialCommunityIcons
                   name="soccer"
                   size={30}
-                  style={{ paddingLeft: 10, color: colors.sacramento }}
+                  style={{ paddingLeft: 10 }}
                />
             ),
             headerTitle: (
                <Text
                   style={{
                      fontWeight: "bold",
-                     fontSize: 18,
-                     color: colors.sacramento
+                     fontSize: 18
                   }}
                >
                   Clubleague
@@ -205,7 +222,7 @@ const CreateMatchStack = ({ navigation }) => (
                   <Feather
                      name="edit"
                      size={25}
-                     style={{ paddingRight: 10, color: colors.sacramento }}
+                     style={{ paddingRight: 10 }}
                   />
                </TouchableOpacity>
             ),
@@ -222,7 +239,20 @@ const CreateMatchStack = ({ navigation }) => (
       <Stack.Screen
          name="Profile"
          component={Profile}
-         options={Profile.navigationOptions}
+         options={{
+            headerRight: () => (
+               <TouchableOpacity
+                  onPress={() => navigation.navigate("Setting")}
+                  title="Writing"
+               >
+                  <Feather
+                     name="settings"
+                     size={25}
+                     style={{ paddingRight: 10 }}
+                  />
+               </TouchableOpacity>
+            ),
+         }}
       />
       <Stack.Screen
          name="EditProfile"
@@ -247,15 +277,14 @@ const CreateNotificationStack = ({ navigation }) => (
                <MaterialCommunityIcons
                   name="soccer"
                   size={30}
-                  style={{ paddingLeft: 10, color: colors.sacramento }}
+                  style={{ paddingLeft: 10 }}
                />
             ),
             headerTitle: (
                <Text
                   style={{
                      fontWeight: "bold",
-                     fontSize: 18,
-                     color: colors.sacramento,
+                     fontSize: 18
                   }}
                >
                   Clubleague
@@ -269,7 +298,7 @@ const CreateNotificationStack = ({ navigation }) => (
                   <Feather
                      name="user"
                      size={25}
-                     style={{ paddingRight: 10, color: colors.sacramento }}
+                     style={{ paddingRight: 10 }}
                   />
                </TouchableOpacity>
             ),
@@ -281,7 +310,20 @@ const CreateNotificationStack = ({ navigation }) => (
       <Stack.Screen
          name="Profile"
          component={Profile}
-         options={Profile.navigationOptions}
+         options={{
+            headerRight: () => (
+               <TouchableOpacity
+                  onPress={() => navigation.navigate("Setting")}
+                  title="Writing"
+               >
+                  <Feather
+                     name="settings"
+                     size={25}
+                     style={{ paddingRight: 10 }}
+                  />
+               </TouchableOpacity>
+            ),
+         }}
       />
       <Stack.Screen
          name="EditProfile"

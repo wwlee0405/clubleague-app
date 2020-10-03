@@ -7,7 +7,7 @@ export default ({ navigation }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity>
-        <Text>SignOut</Text>
+        <Text>권한설정 page</Text>
       </TouchableOpacity>
     </View>
   );

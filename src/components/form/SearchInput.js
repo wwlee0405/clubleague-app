@@ -18,9 +18,6 @@ export default class SearchInput extends React.Component {
             style={styles.input}
             placeholder={placeholderText}
           />
-          <TouchableOpacity style={styles.btn}>
-            <Text style={styles.btnText}>Search</Text>
-          </TouchableOpacity>
         </View>
       </View>
     );
@@ -38,7 +35,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   box: {
-    display: 'flex',
+    flex: 1,
     flexDirection: 'row',
     width: 340,
     height: 50,
@@ -52,18 +49,9 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
   },
   icon: {
-    flex: 1,
     paddingLeft: 15,
   },
   input: {
-    flex: 6,
-  },
-  btn: {
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  btnText: {
-    alignItems: 'center',
+    paddingLeft: 10,
   },
 });
