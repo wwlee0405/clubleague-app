@@ -8,44 +8,45 @@ export default ({ navigation }) => {
       <View>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('PushSetting')}
+          onPress={() => null}
         >
-          <Text style={styles.btnText}>푸시 알림</Text>
-        </TouchableOpacity>
-      </View>
-      <View>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('Language')}
-        >
-          <Text style={styles.btnText}>언어</Text>
+          <Text style={styles.btnText}>English</Text>
         </TouchableOpacity>
       </View>
 
       <View>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('Help')}
+          onPress={() => null}
         >
-          <Text style={styles.btnText}>서비스 도움말</Text>
+          <Text style={styles.btnText}>Espanol</Text>
         </TouchableOpacity>
       </View>
 
       <View>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => alert("로그아웃 하시겠습니까?")}
+          onPress={() => null}
         >
-          <Text style={styles.btnText}>SignOut</Text>
+          <Text style={styles.btnText}>Deutsch</Text>
         </TouchableOpacity>
       </View>
 
       <View>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => alert("계정을 삭제하시겠습니까?")}
+          onPress={() => null}
         >
-          <Text style={styles.btnText}>Clubleague 탈퇴</Text>
+          <Text style={styles.btnText}>日本語</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => null}
+        >
+          <Text style={styles.btnText}>한국어</Text>
         </TouchableOpacity>
       </View>
     </View>

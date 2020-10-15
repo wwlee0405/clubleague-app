@@ -47,13 +47,17 @@ function EditProfile({ navigation, route }) {
             <TextInputField labelText="Mainclub" placeholder="Mainclub" value={postText} onChange={setPostText} />
           </View>
 
-          <Button
-            title="Done"
-            onPress={() => {
-              // Pass params back to Profile screen
-              navigation.navigate('Profile', { post: postText });
-            }}
-          />
+          <View style={styles.btnWrap}>
+            <TouchableOpacity
+              onPress={() => {
+                // Pass params back to Profile screen
+                navigation.navigate('Details', { post: postText });
+              }}
+              style={styles.btn}
+            >
+              <Text style={styles.btnText}>Done</Text>
+            </TouchableOpacity>
+          </View>
 
         </ScrollView>
       </View>
@@ -80,5 +84,20 @@ const styles = StyleSheet.create({
   },
   textWrap: {
     padding: 20,
-  }
+  },
+  btnWrap: {
+    flex: 1,
+    alignItems: 'center'
+  },
+  btn: {
+    width: 100,
+    height: 50,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.blueColor,
+  },
+  btnText: {
+    color: colors.white
+  },
 });

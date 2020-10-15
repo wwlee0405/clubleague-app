@@ -20,9 +20,20 @@ import Profile from "../screens/Profile/Profile";
 import UserDetail from "../screens/Profile/UserDetail";
 import EditProfile from "../screens/Profile/EditProfile";
 import Setting from "../screens/Profile/Setting";
-import ClubSetting from "../screens/Home/ClubSetting";
 import SearchClub from "../screens/Search/SearchClub";
 import NewClub from "../screens/Home/NewClub";
+
+import DtBasicInfo from "../screens/Setting/DtBasicInfo";
+import DtCoLeader from "../screens/Setting/DtCoLeader";
+import DtEmpowerment from "../screens/Setting/DtEmpowerment";
+import DtForcedWithdrawal from "../screens/Setting/DtForcedWithdrawal";
+import DtJoinQualification from "../screens/Setting/DtJoinQualification";
+import DtJoinQuestion from "../screens/Setting/DtJoinQuestion";
+
+import Help from "../screens/Setting/Help";
+import Language from "../screens/Setting/Language";
+import PushSetting from "../screens/Setting/PushSetting";
+
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from "../../colors"
 
@@ -69,7 +80,7 @@ function BottomTabs() {
             name="Notifications"
             component={CreateNotificationStack}
             options={{
-               tabBarLabel: "Updates",
+               tabBarLabel: "Notifications",
                tabBarIcon: ({ color, size }) => (
                   <MaterialCommunityIcons name="bell" color={color} size={24} />
                ),
@@ -182,7 +193,16 @@ const CreateHomeStack = ({ route, navigation }) => {
          />
          <Stack.Screen name="FeedDetails" component={FeedDetails} />
          <Stack.Screen name="Entry" component={Entry} />
-         <Stack.Screen name="ClubSetting" component={ClubSetting} />
+         <Stack.Screen name="DtBasicInfo" component={DtBasicInfo} />
+         <Stack.Screen name="DtCoLeader" component={DtCoLeader} />
+         <Stack.Screen name="DtEmpowerment" component={DtEmpowerment} />
+         <Stack.Screen name="DtForcedWithdrawal" component={DtForcedWithdrawal} />
+         <Stack.Screen name="DtJoinQualification" component={DtJoinQualification} />
+         <Stack.Screen name="DtJoinQuestion" component={DtJoinQuestion} />
+         <Stack.Screen name="Help" component={Help} />
+         <Stack.Screen name="Language" component={Language} />
+         <Stack.Screen name="PushSetting" component={PushSetting} />
+
       </Stack.Navigator>
    );
 };
@@ -260,6 +280,15 @@ const CreateMatchStack = ({ navigation }) => (
          options={EditProfile.navigationOptions}
       />
       <Stack.Screen name="Setting" component={Setting} />
+      <Stack.Screen name="DtBasicInfo" component={DtBasicInfo} />
+      <Stack.Screen name="DtCoLeader" component={DtCoLeader} />
+      <Stack.Screen name="DtEmpowerment" component={DtEmpowerment} />
+      <Stack.Screen name="DtForcedWithdrawal" component={DtForcedWithdrawal} />
+      <Stack.Screen name="DtJoinQualification" component={DtJoinQualification} />
+      <Stack.Screen name="DtJoinQuestion" component={DtJoinQuestion} />
+      <Stack.Screen name="Help" component={Help} />
+      <Stack.Screen name="Language" component={Language} />
+      <Stack.Screen name="PushSetting" component={PushSetting} />
    </Stack.Navigator>
 );
 
@@ -331,6 +360,15 @@ const CreateNotificationStack = ({ navigation }) => (
          options={EditProfile.navigationOptions}
       />
       <Stack.Screen name="Setting" component={Setting} />
+      <Stack.Screen name="DtBasicInfo" component={DtBasicInfo} />
+      <Stack.Screen name="DtCoLeader" component={DtCoLeader} />
+      <Stack.Screen name="DtEmpowerment" component={DtEmpowerment} />
+      <Stack.Screen name="DtForcedWithdrawal" component={DtForcedWithdrawal} />
+      <Stack.Screen name="DtJoinQualification" component={DtJoinQualification} />
+      <Stack.Screen name="DtJoinQuestion" component={DtJoinQuestion} />
+      <Stack.Screen name="Help" component={Help} />
+      <Stack.Screen name="Language" component={Language} />
+      <Stack.Screen name="PushSetting" component={PushSetting} />
    </Stack.Navigator>
 );
 
