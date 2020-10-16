@@ -4,7 +4,7 @@ import { Feather } from '@expo/vector-icons';
 import colors from '../../../colors';
 import ScheduleSectionList from "../items/ScheduleSectionList";
 
-const ClubSchedule = ({ onPress, profileImg, username, text, time }) => {
+const ClubSchedule = ({ onPress, time }) => {
   return (
     <View style={styles.sectionList}>
       <SectionList
@@ -20,7 +20,7 @@ const ClubSchedule = ({ onPress, profileImg, username, text, time }) => {
             week="WED"
             title="Match"
             time="18:00"
-            address="Barcelona, Spain"
+            area="Barcelona, Spain"
           />
         }
         renderSectionHeader={({section}) =>

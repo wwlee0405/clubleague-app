@@ -16,9 +16,9 @@ export default ({ navigation }) => {
           renderItem={({item}) =>
             <PlayersListItem
               onPress={() => navigation.navigate('Profile')}
-              profileImg={item.profileImg}
+              avatar={item.avatar}
               user={item.user}
-              address={item.address}
+              area={item.area}
             />
           }
           keyExtractor={(item, index) => index}

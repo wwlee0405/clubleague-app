@@ -7,7 +7,7 @@ export default ({
   week,
   title,
   time,
-  address
+  area
 }) => (
   <View style={styles.clubScheduleWrap}>
     <View style={styles.clubScheduleLeftWrap}>
@@ -17,7 +17,7 @@ export default ({
     <View style={styles.clubScheduleRightWrap}>
       <Text style={styles.clubScheduleRightTop}>{title}</Text>
       <Text style={styles.clubScheduleTime}>{time}</Text>
-      <Text style={styles.clubScheduleRightBottom}>{address}</Text>
+      <Text style={styles.clubScheduleRightBottom}>{area}</Text>
     </View>
   </View>
 );

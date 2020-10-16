@@ -3,17 +3,17 @@ import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
 import PropTypes from "prop-types";
 import colors from '../../../colors';
 
-const ClubTeams = ({ onPress, avatar, teamName }) => {
+const ClubTeams = ({ onPress, emblem, clubName }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
     >
       <View style={styles.clubTeamsWrap}>
         <Image
-          style={styles.clubImg}
-          source={{ uri: avatar }}
+          style={styles.emblem}
+          source={{ uri: emblem }}
         />
-        <Text style={styles.clubName} numberOfLines={1}>{teamName}</Text>
+        <Text style={styles.clubName} numberOfLines={1}>{clubName}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -21,7 +21,7 @@ const ClubTeams = ({ onPress, avatar, teamName }) => {
 
 ClubTeams.propTypes = {
   id: PropTypes.string.isRequired,
-  teamName: PropTypes.string.isRequired,
+  clubName: PropTypes.string.isRequired,
 
 };
 
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   clubTeamsWrap: {
     alignItems: 'center',
   },
-  clubImg: {
+  emblem: {
     marginHorizontal: 5,
     width: 85,
     height: 85,

@@ -4,24 +4,24 @@ import colors from '../../../colors';
 
 export default ({
   onPress,
-  profileImg,
+  avatar,
   user,
-  address
+  area
 }) => (
   <View style={styles.container}>
 
     <View style={styles.leftWrap}>
       <TouchableOpacity onPress={onPress}>
         <Image
-          source={profileImg}
-          style={styles.img}
+          source={avatar}
+          style={styles.avatar}
         />
       </TouchableOpacity>
     </View>
 
     <View style={styles.rightWrap}>
       <Text style={styles.rightTextTop}>{user}</Text>
-      <Text style={styles.rightTextBottom}>{address}</Text>
+      <Text style={styles.rightTextBottom}>{area}</Text>
     </View>
 
   </View>
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingLeft: 10,
   },
-  img: {
+  avatar: {
     width: 60,
     height: 60,
     borderRadius: 100,

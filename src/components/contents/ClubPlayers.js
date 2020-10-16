@@ -29,9 +29,9 @@ const ClubPlayers = ({ onPress }) => {
           renderItem={({item}) =>
             <PlayersListItem
               onPress={onPress}
-              profileImg={item.profileImg}
+              avatar={item.avatar}
               user={item.user}
-              address={item.address}
+              area={item.area}
             />
           }
           keyExtractor={(item, index) => index}

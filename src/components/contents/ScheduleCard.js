@@ -6,30 +6,30 @@ import colors from '../../../colors';
 const ScheduleCard = ({
     onPress,
     detailsOnPress,
-    avatar,
-    teamName,
+    emblem,
+    clubName,
     sport,
     date,
     time,
-    area,
-    teamGame,
+    matchArea,
+    clubGame,
   }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
-        <View style={styles.profileWrap}>
+        <View style={styles.emblemWrap}>
           <TouchableOpacity
-            style={styles.profileImgButton}
+            style={styles.emblemButton}
             onPress={detailsOnPress}
           >
             <Image
-              source={avatar}
-              style={styles.avatar}
+              source={emblem}
+              style={styles.emblem}
             />
           </TouchableOpacity>
-          <View style={styles.profileTextWrap}>
-            <Text style={styles.profileClubTextTop}>{teamName}</Text>
-            <Text style={styles.profileClubTextBottom}>{sport}</Text>
+          <View style={styles.clubInfoTextWrap}>
+            <Text style={styles.clubInfoTextTop}>{clubName}</Text>
+            <Text style={styles.clubInfoTextBottom}>{sport}</Text>
           </View>
         </View>
 
@@ -38,7 +38,7 @@ const ScheduleCard = ({
           <View style={styles.bodyLeftWrap}>
             <Text style={styles.matchDate}>{date}</Text>
             <Text style={styles.matchTime}>{time}</Text>
-            <Text style={styles.matchArea} numberOfLines={1}>{area}</Text>
+            <Text style={styles.matchArea} numberOfLines={1}>{matchArea}</Text>
           </View>
 
           <View style={styles.bodyRightWrap}>
@@ -46,26 +46,26 @@ const ScheduleCard = ({
               <View style={{ paddingRight: 10 }}>
                 <Image
                   source={require('../../data/ImgTest/1ars.jpg')}
-                  style={styles.clubImg}
+                  style={styles.matchClubEmblem}
                 />
               </View>
               <View style={{ paddingRight: 10 }}>
                 <Image
                   source={require('../../data/ImgTest/2bar.jpg')}
-                  style={styles.clubImg}
+                  style={styles.matchClubEmblem}
                 />
 
               </View>
               <View style={{ paddingRight: 10 }}>
                 <Image
                   source={require('../../data/ImgTest/2bar.jpg')}
-                  style={styles.clubImg}
+                  style={styles.matchClubEmblem}
                 />
               </View>
               <View style={{ paddingRight: 10 }}>
                 <Image
                   source={require('../../data/ImgTest/2bar.jpg')}
-                  style={styles.clubImg}
+                  style={styles.matchClubEmblem}
                 />
               </View>
 
@@ -73,7 +73,7 @@ const ScheduleCard = ({
             </View>
 
             <View>
-              <Text style={styles.gameText}><Text>{teamGame}</Text> TeamGames</Text>
+              <Text style={styles.gameText}><Text>{clubGame}</Text> TeamGames</Text>
             </View>
           </View>
 
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
   },
-  profileWrap: {
+  emblemWrap: {
     flex: 1,
     flexDirection: 'row',
     paddingTop: 10,
@@ -104,22 +104,22 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 15,
   },
-  profileImgButton: {
+  emblemButton: {
     paddingRight: 10,
   },
-  avatar: {
+  emblem: {
     width: 40,
     height: 40,
     borderRadius: 100,
   },
-  profileTextWrap: {
+  clubInfoTextWrap: {
     justifyContent: 'center',
   },
-  profileClubTextTop: {
+  clubInfoTextTop: {
     fontWeight: 'bold',
     fontSize: 13
   },
-  profileClubTextBottom: {
+  clubInfoTextBottom: {
     fontSize: 13
   },
   bodyWrap: {
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     paddingEnd: 15,
     paddingTop: 5,
   },
-  clubImg: {
+  matchClubEmblem: {
     width: 50,
     height: 50,
     borderRadius: 100,

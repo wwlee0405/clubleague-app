@@ -26,7 +26,7 @@ export default ({
       <FeedPost
         onPress={() => navigation.navigate('Profile')}
         username="Lionel Messi"
-        location="Buenos Aires, Argentina"
+        area="Buenos Aires, Argentina"
         bodyText="캄프누에서 뛸 매치상대구합니다."
         matchDetailsOnPress={() => navigation.navigate('Details')}
         entryNavigationOnPress={() => navigation.navigate('Entry')}

@@ -5,7 +5,7 @@ import { Feather } from '@expo/vector-icons';
 import colors from '../../../colors';
 
 
-const FeedDateAddressSection = ({ icon, topText, bottomText }) => {
+const FeedDateLocationSection = ({ icon, topText, bottomText }) => {
   return (
     <View style={styles.container}>
       <View style={styles.flexWrap}>
@@ -19,13 +19,13 @@ const FeedDateAddressSection = ({ icon, topText, bottomText }) => {
   );
 };
 
-FeedDateAddressSection.propTypes = {
+FeedDateLocationSection.propTypes = {
   icon: PropTypes.string.isRequired,
   topText: PropTypes.string,
   bottomText: PropTypes.string,
 };
 
-export default FeedDateAddressSection;
+export default FeedDateLocationSection;
 
 const styles = StyleSheet.create({
   container: {

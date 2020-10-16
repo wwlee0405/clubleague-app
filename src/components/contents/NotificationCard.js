@@ -12,7 +12,7 @@ const NotificationCard = ({ onPress, noticeOnPress, username, text, time }) => {
             <TouchableOpacity onPress={noticeOnPress}>
               <Image
                 source={require('../../data/ImgTest/cccc.jpg')}
-                style={styles.img}
+                style={styles.avatar}
               />
             </TouchableOpacity>
           </View>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingLeft: 10,
   },
-  img: {
+  avatar: {
     width: 60,
     height: 60,
     borderRadius: 100,

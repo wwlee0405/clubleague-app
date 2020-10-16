@@ -5,12 +5,12 @@ import colors from '../../../colors';
 
 const ClubHome = ({
     onPress,
-    clubImg,
-    teamName,
+    emblem,
+    clubName,
     sports,
     members,
-    teamOwner,
-    teamArea,
+    clubLeader,
+    clubArea,
     joinOnPress
   }) => {
   return (
@@ -28,15 +28,15 @@ const ClubHome = ({
           </TouchableOpacity>
           <View style={styles.clubProfileTextWrap}>
             <View>
-              <Text style={styles.clubNameText}>{teamName}</Text>
+              <Text style={styles.clubNameText}>{clubName}</Text>
             </View>
             <Text>{sports}</Text>
             <View style={styles.clubProfileTeamInfoTextWrap}>
               <Text style={styles.clubProfileTopInfoTextLeft}>Members <Text>{members}</Text></Text>
-              <Text style={styles.clubProfileTopInfoTextRight}>Leader <Text>{teamOwner}</Text></Text>
+              <Text style={styles.clubProfileTopInfoTextRight}>Leader <Text>{clubLeader}</Text></Text>
             </View>
             <View style={styles.clubProfileTeamInfoTextWrap}>
-              <Text style={styles.clubProfileBottomInfoTextLeft}>{teamArea}</Text>
+              <Text style={styles.clubProfileBottomInfoTextLeft}>{clubArea}</Text>
             </View>
           </View>
         </View>
@@ -69,11 +69,11 @@ const ClubHome = ({
 
 ClubHome.propTypes = {
   id: PropTypes.string.isRequired,
-  teamName: PropTypes.string.isRequired,
+  clubName: PropTypes.string.isRequired,
   sports: PropTypes.string,
   members: PropTypes.string,
-  teamOwner: PropTypes.string,
-  teamArea: PropTypes.string,
+  clubLeader: PropTypes.string,
+  clubArea: PropTypes.string,
 };
 
 export default ClubHome;

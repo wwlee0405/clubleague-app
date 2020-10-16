@@ -75,8 +75,8 @@ export default ({ navigation }) => {
 								<ClubTeams
 									key={index}
 									id={seeMyTeam.id}
-									avatar={seeMyTeam.teamEmblem}
-									teamName={seeMyTeam.teamName}
+									emblem={seeMyTeam.teamEmblem}
+									clubName={seeMyTeam.teamName}
 									onPress={() =>
 										navigation.navigate("Details", {
 											screen: "DetailsHome",
@@ -98,46 +98,46 @@ export default ({ navigation }) => {
 					style={styles.gameScheduleWrap}
 				>
 					<ScheduleCard
-						avatar={require('../../data/ImgTest/1ars.jpg')}
-	          teamName="FC_Arsenal"
+						emblem={require('../../data/ImgTest/1ars.jpg')}
+	          clubName="FC_Arsenal"
 	          sport="Soccer"
 						date="Jul 20"
 						time="10:00"
-						area="Buenos Aires"
-						teamGame="4"
+						matchArea="Buenos Aires"
+						clubGame="4"
 	          onPress={() => navigation.navigate('FeedDetails')}
 	          detailsOnPress={() => navigation.navigate('Profile')}
 	        />
 					<ScheduleCard
-						avatar={require('../../data/ImgTest/aaaa.jpg')}
-	          teamName="FC_Namgang"
+						emblem={require('../../data/ImgTest/aaaa.jpg')}
+	          clubName="FC_Namgang"
 	          sport="Futsal"
 						date="Jul 25"
 						time="22:00"
-						area="Seoul"
-						teamGame="4"
+						matchArea="Seoul"
+						clubGame="4"
 	          onPress={() => navigation.navigate('FeedDetails')}
 	          detailsOnPress={() => navigation.navigate('Profile')}
 	        />
 					<ScheduleCard
-						avatar={require('../../data/ImgTest/bbbb.jpg')}
-	          teamName="Cicagobulls"
+						emblem={require('../../data/ImgTest/bbbb.jpg')}
+	          clubName="Cicagobulls"
 	          sport="Basketball"
 						date="Aug 2"
 						time="09:00"
-						area="Cicago"
-						teamGame="4"
+						matchArea="Cicago"
+						clubGame="4"
 	          onPress={() => navigation.navigate('FeedDetails')}
 	          detailsOnPress={() => navigation.navigate('Profile')}
 	        />
 					<ScheduleCard
-						avatar={require('../../data/ImgTest/2bar.jpg')}
-	          teamName="FC_Barcelona"
+						emblem={require('../../data/ImgTest/2bar.jpg')}
+	          clubName="FC_Barcelona"
 	          sport="Soccer"
 						date="Aug 10"
 						time="15:00"
-						area="Barcelona"
-						teamGame="4"
+						matchArea="Barcelona"
+						clubGame="4"
 	          onPress={() => navigation.navigate('FeedDetails')}
 	          detailsOnPress={() => navigation.navigate('Profile')}
 	        />

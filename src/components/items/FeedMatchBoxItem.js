@@ -9,16 +9,16 @@ export default class FeedMatchBoxItem extends React.Component {
     const {
       askMatchOnPress,
       matchDetailsOnPress,
-      matchClubImg,
-      title,
-      labelColor,
+      matchClubEmblem,
+      homeAway,
+      homeAwayColor,
       clubName,
       entryBtnOnPress,
       entryNavigationOnPress,
       entry,
-      entryProfileImg
+      entryAvatar
     } = this.props;
-    const color = labelColor || colors.yellow;
+    const color = homeAwayColor || colors.yellow;
     return (
       <View style={styles.container}>
 
@@ -28,14 +28,14 @@ export default class FeedMatchBoxItem extends React.Component {
               <View>
                 <TouchableOpacity onPress={matchDetailsOnPress}>
                   <Image
-                    source={matchClubImg}
-                    style={styles.clubImg}
+                    source={matchClubEmblem}
+                    style={styles.matchClubEmblem}
                   />
                 </TouchableOpacity>
               </View>
 
               <View style={styles.labelWrap}>
-                <Text style={[{ color }, styles.labelText]}>{title}</Text>
+                <Text style={[{ color }, styles.labelText]}>{homeAway}</Text>
                 <Text style={styles.clubName}>{clubName}</Text>
               </View>
             </View>
@@ -56,14 +56,14 @@ export default class FeedMatchBoxItem extends React.Component {
             <Text style={styles.entryText}><Text>{entry}</Text> Entry</Text>
             <View style={{ paddingRight: 3 }}>
               <Image
-                source={entryProfileImg}
-                style={styles.entryImg}
+                source={entryAvatar}
+                style={styles.entryAvatar}
               />
             </View>
             <View style={{ paddingRight: 3 }}>
               <Image
-                source={entryProfileImg}
-                style={styles.entryImg}
+                source={entryAvatar}
+                style={styles.entryAvatar}
               />
             </View>
           </View>
@@ -78,8 +78,8 @@ FeedMatchBoxItem.propTypes = {
   onPress: PropTypes.func,
   clubDetailOnPress: PropTypes.func,
   profileImg: PropTypes.number,
-  title: PropTypes.string.isRequired,
-  labelColor: PropTypes.string,
+  homeAway: PropTypes.string.isRequired,
+  homeAwayColor: PropTypes.string,
   clubName: PropTypes.string,
   entryNavigationOnPress: PropTypes.func,
   entry: PropTypes.string,
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     width: 300,
     height: 50,
   },
-  clubImg: {
+  matchClubEmblem: {
     width: 45,
     height: 45,
     borderRadius: 100,
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingRight: 10,
   },
-  entryImg: {
+  entryAvatar: {
     width: 25,
     height: 25,
     borderRadius: 100,

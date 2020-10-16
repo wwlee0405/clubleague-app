@@ -34,7 +34,7 @@ function EditProfile({ navigation, route }) {
             >
               <Image
                 source={require('../../data/ImgTest/dddd.jpg')}
-                style={styles.img}
+                style={styles.avatar}
               />
             </TouchableOpacity>
           </View>
@@ -44,7 +44,6 @@ function EditProfile({ navigation, route }) {
             <TextInputField labelText="Name" placeholder="Name" value={postText} onChange={setPostText} />
             <TextInputField labelText="Area" placeholder="Area" value={postText} onChange={setPostText} />
             <TextInputField labelText="Position" placeholder="Position" value={postText} onChange={setPostText} />
-            <TextInputField labelText="Mainclub" placeholder="Mainclub" value={postText} onChange={setPostText} />
           </View>
 
           <View style={styles.btnWrap}>
@@ -77,7 +76,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 30,
   },
-  img: {
+  avatar: {
     width: 180,
     height: 180,
     borderRadius: 100,

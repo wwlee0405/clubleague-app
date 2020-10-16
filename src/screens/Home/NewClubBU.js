@@ -43,7 +43,7 @@ export default class extends React.Component {
 
     const clubNameInput = useInput("");
     const [loading, setLoading] = useState();
-  	const [createTeamMutation] = useMutation(CREATE_TEAM, {
+  	const [createClubMutation] = useMutation(CREATE_TEAM, {
   		variables: {
   			clubName: clubNameInput.value,
   		},
@@ -57,7 +57,7 @@ export default class extends React.Component {
   			setLoading(true);
   			const {
   				data: { createTeam },
-  			} = await createTeamMutation();
+  			} = await createClubMutation();
   			if (createTeam) {
   				Alert.alert("Account created", "Log in now!");
   				navigation.navigate("Home");

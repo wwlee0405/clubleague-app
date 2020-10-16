@@ -3,32 +3,32 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import PropTypes from "prop-types";
 import colors from "../../../colors";
 
-const SearchClubCard = ({ onPress, navigation, id, teamName, teamInfo, sports, teamArea, members, teamOwner }) => (
+const SearchClubCard = ({ onPress, navigation, id, clubName, clubInfo, sports, clubArea, members, clubLeader }) => (
   <View style={styles.container}>
     <TouchableOpacity onPress={onPress}>
-      <View style={styles.clubProfileWrap}>
+      <View style={styles.clubInfoWrap}>
 
-        <View style={styles.clubProfileImgWrap}>
+        <View style={styles.emblemWrap}>
           <Image
             source={require('../../data/ImgTest/1ars.jpg')}
-            style={styles.clubProfileImg}
+            style={styles.emblem}
           />
         </View>
 
-        <View style={styles.clubProfileTextWrap}>
+        <View style={styles.clubInfoWrap}>
           <View>
-            <Text style={styles.clubNameText}>{teamName}</Text>
+            <Text style={styles.clubNameText}>{clubName}</Text>
           </View>
           <View>
-            <Text style={{ fontSize: 12 }}>{teamInfo}</Text>
+            <Text style={{ fontSize: 12 }}>{clubInfo}</Text>
           </View>
-          <View style={styles.clubProfileTeamInfoTextWrap}>
-            <Text style={styles.clubProfileTopInfoTextLeft}>{sports}</Text>
-            <Text style={styles.clubProfileTopInfoTextRight}>{teamArea}</Text>
+          <View style={styles.clubInfoTextWrap}>
+            <Text style={styles.clubInfoTopTextLeft}>{sports}</Text>
+            <Text style={styles.clubInfoTopTextRight}>{clubArea}</Text>
           </View>
-          <View style={styles.clubProfileTeamInfoTextWrap}>
-            <Text style={styles.clubProfileBottomInfoTextLeft}>Members  <Text>{members}</Text></Text>
-            <Text style={styles.clubProfileBottomInfoTextRight}>Leader  <Text>{teamOwner}</Text></Text>
+          <View style={styles.clubInfoTextWrap}>
+            <Text style={styles.clubInfoBottomTextLeft}>Members  <Text>{members}</Text></Text>
+            <Text style={styles.clubInfoBottomTextRight}>Leader  <Text>{clubLeader}</Text></Text>
           </View>
         </View>
 
@@ -39,11 +39,11 @@ const SearchClubCard = ({ onPress, navigation, id, teamName, teamInfo, sports, t
 
 SearchClubCard.propTypes = {
   id: PropTypes.string.isRequired,
-  teamName: PropTypes.string,
-  teamInfo: PropTypes.string,
+  clubName: PropTypes.string,
+  clubInfo: PropTypes.string,
   sports: PropTypes.string,
   members: PropTypes.string,
-  teamOwner: PropTypes.string,
+  clubLeader: PropTypes.string,
 };
 
 export default SearchClubCard;
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
   },
-  clubProfileWrap: {
+  clubInfoWrap: {
     flex: 1,
     flexDirection: 'row',
     paddingTop: 20,
@@ -64,17 +64,17 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 15,
   },
-  clubProfileImgWrap: {
+  emblemWrap: {
     paddingRight: 15,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  clubProfileImg: {
+  emblem: {
     width: 85,
     height: 85,
     borderRadius: 100,
   },
-  clubProfileTextWrap: {
+  clubInfoWrap: {
     flex: 1,
     justifyContent: 'center',
   },
@@ -82,23 +82,23 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
   },
-  clubProfileTeamInfoTextWrap: {
+  clubInfoTextWrap: {
     flexDirection: 'row',
   },
-  clubProfileTopInfoTextLeft: {
+  clubInfoTopTextLeft: {
     fontSize: 12,
     color: colors.grey03,
   },
-  clubProfileTopInfoTextRight: {
+  clubInfoTopTextRight: {
     paddingLeft: 20,
     fontSize: 12,
     color: colors.grey03,
   },
-  clubProfileBottomInfoTextLeft: {
+  clubInfoBottomTextLeft: {
     fontSize: 12,
     color: colors.grey03,
   },
-  clubProfileBottomInfoTextRight: {
+  clubInfoBottomTextRight: {
     fontSize: 12,
     paddingLeft: 20,
     color: colors.grey03,

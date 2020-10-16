@@ -41,7 +41,7 @@ export default ({ route, navigation }) => {
 				data: { joinTeam },
 			} = await joinTeamMutation();
 			if (joinTeam) {
-				Alert.alert("Team joined", "check!");
+				Alert.alert("Club joined", "check!");
 				navigation.navigate("DetailsHome");
 			}
 		} catch (e) {
@@ -63,14 +63,14 @@ export default ({ route, navigation }) => {
 				data.seeTeam && (
 					<ClubHome
 						key={data.seeTeam.id}
-						avatar={data.seeTeam.avatar}
-						teamName={data.seeTeam.teamName}
+						emblem={data.seeTeam.emblem}
+						clubName={data.seeTeam.teamName}
 						onPress={() => navigation.navigate("Details")}
 						joinOnPress={joinTeamSubmit}
 					/>
 				)
 			)}
-			<Text>Team Schedule</Text>
+			<Text>Club Schedule</Text>
 		</ScrollView>
 	);
 };

@@ -11,7 +11,7 @@ const UserProfile = ({
   fullName,
   area,
   position,
-  teamName,
+  clubName,
   onPress
 }) =>(
   <View style={styles.container}>
@@ -24,10 +24,10 @@ const UserProfile = ({
 
         <View style={styles.topWrap}>
 
-          <View style={styles.imgWrap}>
+          <View style={styles.avatarWrap}>
             <Image
               source={{ uri: avatar }}
-              style={styles.img}
+              style={styles.avatar}
             />
           </View>
 
@@ -51,7 +51,7 @@ const UserProfile = ({
               </View>
               <View>
                 <Text style={styles.nameTag}>Mainclub</Text>
-                <Text style={styles.property}>{teamName}</Text>
+                <Text style={styles.property}>{clubName}</Text>
               </View>
             </View>
           </View>
@@ -139,12 +139,12 @@ const styles = StyleSheet.create({
   topWrap: {
     flexDirection: 'row',
   },
-  imgWrap: {
+  avatarWrap: {
     flex: 1,
     alignItems: 'center',
     paddingTop: 30,
   },
-  img: {
+  avatar: {
     width: 150,
     height: 150,
     borderRadius: 100,

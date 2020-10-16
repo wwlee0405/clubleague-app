@@ -5,15 +5,15 @@ import { Feather } from '@expo/vector-icons';
 import colors from '../../../colors';
 
 
-const Reply = ({ onPress, profileImg, username, text, time }) => {
+const Reply = ({ onPress, avatar, username, text, time }) => {
   return (
     <View style={styles.replyWrap}>
 
       <View style={styles.rightWrap}>
         <TouchableOpacity onPress={onPress}>
           <Image
-            source={profileImg}
-            style={styles.img}
+            source={avatar}
+            style={styles.avatar}
           />
         </TouchableOpacity>
       </View>
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingLeft: 15,
   },
-  img: {
+  avatar: {
     width: 40,
     height: 40,
     borderRadius: 100,

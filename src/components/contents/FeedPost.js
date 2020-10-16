@@ -6,7 +6,7 @@ import colors from "../../../colors";
 
 import SetSportBox from "../form/SetSportBox";
 
-import FeedDateAddressSection from "../items/FeedDateAddressSection";
+import FeedDateLocationSection from "../items/FeedDateLocationSection";
 import FeedMatchBoxItem from "../items/FeedMatchBoxItem";
 import Reply from "./Reply";
 
@@ -16,7 +16,7 @@ import FeedMatchTest from "../items/FeedMatchTest";
 const FeedPost = ({
     onPress,
     username,
-    location,
+    area,
     bodyImg,
     bodyText,
     askMatchOnPress,
@@ -38,7 +38,7 @@ const FeedPost = ({
         </TouchableOpacity>
         <View style={styles.profileTextWrap}>
           <Text style={styles.profileUserText}>{username}</Text>
-          <Text>{location}</Text>
+          <Text>{area}</Text>
         </View>
       </View>
 
@@ -53,12 +53,12 @@ const FeedPost = ({
       </View>
 
       <View>
-        <FeedDateAddressSection
+        <FeedDateLocationSection
           icon="clock"
           topText="Dec 29, 2019, SUN"
           bottomText="PM 02:00 - PM 06:00"
         />
-        <FeedDateAddressSection
+        <FeedDateLocationSection
           icon="map-pin"
           topText="양키스타디움"
           bottomText="1 E 161 St, The Bronx, NY 10451 USA"
@@ -70,18 +70,18 @@ const FeedPost = ({
         <FeedMatchBoxItem
           askMatchOnPress={() => alert("매치팀 등록함")}
           matchDetailsOnPress={matchDetailsOnPress}
-          matchClubImg={require('../../data/ImgTest/2bar.jpg')}
-          title="Home"
-          labelColor={colors.darkGreyColor}
+          matchClubEmblem={require('../../data/ImgTest/2bar.jpg')}
+          homeAway="Home"
+          homeAwayColor={colors.darkGreyColor}
           clubName="F.C. Barcelona"
           entry="20"
           entryBtnOnPress={() => alert("엔트리등록")}
           entryNavigationOnPress={entryNavigationOnPress}
-          entryProfileImg={require('../../data/ImgTest/ffff.jpg')}
+          entryAvatar={require('../../data/ImgTest/ffff.jpg')}
         />
-        <FeedMatchBoxItem askMatchOnPress={() => alert("매치팀 등록함")} matchDetailsOnPress={matchDetailsOnPress} matchClubImg={require('../../data/ImgTest/1ars.jpg')} title="Away" clubName="Arsenal" entry="16" entryProfileImg={require('../../data/ImgTest/ffff.jpg')} entryBtnOnPress={() => alert("엔트리등록")} entryNavigationOnPress={entryNavigationOnPress} />
+        <FeedMatchBoxItem askMatchOnPress={() => alert("매치팀 등록함")} matchDetailsOnPress={matchDetailsOnPress} matchClubEmblem={require('../../data/ImgTest/1ars.jpg')} homeAway="Away" clubName="Arsenal" entry="16" entryAvatar={require('../../data/ImgTest/ffff.jpg')} entryBtnOnPress={() => alert("엔트리등록")} entryNavigationOnPress={entryNavigationOnPress} />
 
-        <FeedMatchTest askMatchOnPress={() => alert("매치팀 등록함")} matchDetailsOnPress={matchDetailsOnPress} matchClubImg={require('../../data/ImgTest/ffff.jpg')} title="Away" entry="" entryBtnOnPress={() => alert("엔트리등록")} entryNavigationOnPress={entryNavigationOnPress} />
+        <FeedMatchTest askMatchOnPress={() => alert("매치팀 등록함")} matchDetailsOnPress={matchDetailsOnPress} matchClubEmblem={require('../../data/ImgTest/ffff.jpg')} homeAway="Away" entry="" entryBtnOnPress={() => alert("엔트리등록")} entryNavigationOnPress={entryNavigationOnPress} />
 
       </View>
 
@@ -105,7 +105,7 @@ const FeedPost = ({
 
       <View style={styles.replySection}>
         <Reply
-          profileImg={require('../../data/ImgTest/cccc.jpg')}
+          avatar={require('../../data/ImgTest/cccc.jpg')}
           username="son"
           onPress={onPress}
         />

@@ -35,7 +35,7 @@ const View = styled.View`
 export default ({ navigation }) => {
 	const clubNameInput = useInput("");
 	const [loading, setLoading] = useState(false);
-	const [createTeamMutation] = useMutation(CREATE_TEAM, {
+	const [createClubMutation] = useMutation(CREATE_TEAM, {
 		variables: {
 			teamName: clubNameInput.value,
 		},
@@ -49,9 +49,9 @@ export default ({ navigation }) => {
 			setLoading(true);
 			const {
 				data: { createTeam },
-			} = await createTeamMutation();
+			} = await createClubMutation();
 			if (createTeam) {
-				Alert.alert("Team created", "check!");
+				Alert.alert("Club created", "check!");
 				navigation.navigate("Home");
 			}
 		} catch (e) {
