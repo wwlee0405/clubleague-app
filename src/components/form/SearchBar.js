@@ -7,11 +7,11 @@ const SearchBar = ({ onChange, value, onSubmit }) => (
   <TextInput
     style={{
       height: 45,
-      backgroundColor: colors.white,
+      backgroundColor: colors.whiteSmoke,
       padding: 5,
       paddingLeft: 15,
       borderRadius: 10,
-      fontSize: 15,
+      fontSize: 17,
     }}
     returnKeyType="search"
     onChangeText={onChange}
