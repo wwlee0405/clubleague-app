@@ -7,7 +7,7 @@ const SearchBar = ({ onChange, value, onSubmit }) => (
   <TextInput
     style={{
       height: 45,
-      backgroundColor: colors.whiteSmoke,
+      backgroundColor: colors.white,
       padding: 5,
       paddingLeft: 15,
       borderRadius: 10,
