@@ -25,6 +25,23 @@ const Content = styled.View`
   padding-bottom: 300px;
 `;
 
+const NormalSearchView = styled.TouchableOpacity`
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  height: 50px;
+  margin: 5px 10px;
+  padding-left: 15px;
+  border: 2px solid ${props => props.theme.lightGreyColor};
+  background-color: ${(props) => props.theme.whiteSmoke};
+  border-radius: 10px;
+`;
+
+const NormalSearchText = styled.Text`
+  padding-left: 10px;
+  color: ${(props) => props.theme.lightGreyColor};
+`;
+
 const ModalBG = styled.View`
   flex: 1;
   background-color: ${(props) => props.theme.modalBackgroundColor};
@@ -52,9 +69,19 @@ const ChoiceBox = styled.TouchableOpacity`
   margin: 10px;
 `;
 
-const Touchable = styled.TouchableOpacity`
+const DetailSearchView = styled.TouchableOpacity`
   flex: 1;
+  justify-content: center;
   align-items: center;
+  height: 50px;
+  margin: 5px 10px;
+  background-color: ${(props) => props.theme.emerald};
+  border-radius: 10px;
+`;
+
+const DetailSearchText = styled.Text`
+  font-size: 20px;
+  color: ${(props) => props.theme.clBackgroundColor};
 `;
 
 export default ({ onPress, navigation }) => {
@@ -67,7 +94,10 @@ export default ({ onPress, navigation }) => {
         style={{ paddingHorizontal: 7 }}
       >
         <Content>
-          <SearchInput placeholderText="종목명, 도시명, 클럽명" />
+          <NormalSearchView onPress={() => navigation.navigate("SearchMatch")}>
+            <Feather name="search" size={20} />
+            <NormalSearchText>클럽명, 지역명, 스포츠 종목명</NormalSearchText>
+          </NormalSearchView>
 
           <Modal
             visible={modalOpen}
@@ -104,11 +134,11 @@ export default ({ onPress, navigation }) => {
           </ModalBG>
           </Modal>
 
-          <Touchable
+          <DetailSearchView
             onPress={() => setModalOpen(true)}
           >
-            <Text style={{ paddingTop: 10, fontSize: 20 }}>Detail Search</Text>
-          </Touchable>
+            <DetailSearchText>Detail Search</DetailSearchText>
+          </DetailSearchView>
 
 
 

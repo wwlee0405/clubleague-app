@@ -6,14 +6,12 @@ import colors from "../../../colors";
 const SearchBar = ({ onChange, value, onSubmit }) => (
   <TextInput
     style={{
-      height: 35,
-      backgroundColor: colors.whiteSmoke,
-      padding: 10,
-      borderRadius: 5,
-      textAlign: "center",
-      fontSize: 13,
-      paddingLeft: 10,
-      width: 300,
+      height: 45,
+      backgroundColor: colors.white,
+      padding: 5,
+      paddingLeft: 15,
+      borderRadius: 10,
+      fontSize: 15,
     }}
     returnKeyType="search"
     onChangeText={onChange}

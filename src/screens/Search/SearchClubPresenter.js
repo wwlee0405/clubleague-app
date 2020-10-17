@@ -16,7 +16,7 @@ export const SEARCH = gql`
   }
 `;
 
-const SearchPresenter = ({ term, shouldFetch, onPress }) => {
+const SearchClubPresenter = ({ term, shouldFetch, onPress }) => {
   const [refreshing, setRefreshing] = useState(false);
   const { data, loading, refetch } = useQuery(SEARCH, {
     variables: {
@@ -52,9 +52,9 @@ const SearchPresenter = ({ term, shouldFetch, onPress }) => {
   );
 };
 
-SearchPresenter.propTypes = {
+SearchClubPresenter.propTypes = {
   term: PropTypes.string.isRequired,
   shouldFetch: PropTypes.bool.isRequired,
 };
 
-export default SearchPresenter;
+export default SearchClubPresenter;

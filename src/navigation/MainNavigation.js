@@ -21,6 +21,7 @@ import UserDetail from "../screens/Profile/UserDetail";
 import EditProfile from "../screens/Profile/EditProfile";
 import Setting from "../screens/Profile/Setting";
 import SearchClub from "../screens/Search/SearchClub";
+import SearchMatch from "../screens/Search/SearchMatch";
 import NewClub from "../screens/Home/NewClub";
 
 import DtBasicInfo from "../screens/Setting/DtBasicInfo";
@@ -280,6 +281,7 @@ const CreateMatchStack = ({ navigation }) => (
          options={EditProfile.navigationOptions}
       />
       <Stack.Screen name="Setting" component={Setting} />
+      <Stack.Screen name="SearchMatch" component={SearchMatch} options={SearchMatch.navigationOptions} />
       <Stack.Screen name="DtBasicInfo" component={DtBasicInfo} />
       <Stack.Screen name="DtCoLeader" component={DtCoLeader} />
       <Stack.Screen name="DtEmpowerment" component={DtEmpowerment} />
