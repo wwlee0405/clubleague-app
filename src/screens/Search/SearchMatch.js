@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, ScrollView } from "react-native";
 import colors from "../../../colors";
 import SearchBar from "../../components/form/SearchBar";
-import SearchClubPresenter from "./SearchClubPresenter";
+import SearchMatchPresenter from "./SearchMatchPresenter";
 
 export default class extends React.Component {
   static navigationOptions = ({ navigation, route }) => ({
@@ -42,7 +42,7 @@ export default class extends React.Component {
     const { navigation } = this.props;
     const { term, shouldFetch } = this.state;
     return (
-      <SearchClubPresenter
+      <SearchMatchPresenter
         term={term}
         shouldFetch={shouldFetch}
         onPress={() =>
@@ -55,8 +55,6 @@ export default class extends React.Component {
     );
   }
 }
-
-
 
 const styles = StyleSheet.create({
   inputSection: {
