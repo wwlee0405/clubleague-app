@@ -33,7 +33,7 @@ export default class extends React.Component {
         <View style={{ flex: 1, alignItems: 'center' }}>
 
           <SetSportBox />
-          <SetAddressBox title="City" onPress={() => alert("set place")} />
+          <SetAddressBox title="Area" onPress={() => alert("set place")} />
           <SetDateBox title="Date" />
           <SetDateBox title="Time" />
           <CreateMatchBox title="Home" borderLine={colors.darkGreyColor} labelColor={colors.darkGreyColor} />
