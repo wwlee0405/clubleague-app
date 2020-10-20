@@ -40,92 +40,67 @@ import colors from "../../colors"
 
 import { useLogOut } from "../../AuthContext";
 
-const RootStack = createStackNavigator();
 const BottomTab = createMaterialBottomTabNavigator();
-const ModalStack = createStackNavigator();
-const MainStack = createStackNavigator();
+const Stack = createStackNavigator();
 const MaterialTopTab = createMaterialTopTabNavigator();
 
-export default function MainNavigation() {
+function BottomTabs() {
    return (
-      <NavigationContainer>
-        <RootStack.Navigator
-          initialRouteName="Home"
-          mode="modal"
-          headerMode="none"
-        >
-          <RootStack.Screen name="BottomTabs" component={BottomTabs} />
-          <RootStack.Screen name="FeedDetails" component={CreateModalStack} />
-        </RootStack.Navigator>
-      </NavigationContainer>
+      <BottomTab.Navigator
+         initialRouteName="Home"
+         activeColor={colors.emerald}
+         inactiveColor={colors.darkGreyColor}
+         shifting={true}
+         barStyle={{ backgroundColor: colors.white }}
+      >
+         <BottomTab.Screen
+            name="Home"
+            component={CreateHomeStack}
+            options={{
+               tabBarLabel: "Home",
+               tabBarIcon: ({ color, size }) => (
+                  <Feather name="home" color={color} size={24} />
+               ),
+            }}
+         />
+         <BottomTab.Screen
+            name="Match"
+            component={CreateMatchStack}
+            options={{
+               tabBarLabel: "Match",
+               tabBarIcon: ({ color, size }) => (
+                  <MaterialCommunityIcons
+                     name="soccer-field"
+                     color={color}
+                     size={24}
+                  />
+               ),
+            }}
+         />
+         <BottomTab.Screen
+            name="Notifications"
+            component={CreateNotificationStack}
+            options={{
+               tabBarLabel: "Notifications",
+               tabBarIcon: ({ color, size }) => (
+                  <MaterialCommunityIcons name="bell" color={color} size={24} />
+               ),
+            }}
+         />
+      </BottomTab.Navigator>
    );
 }
-
-const BottomTabs = ({ navigation }) => (
-  <BottomTab.Navigator
-     initialRouteName="Home"
-     activeColor={colors.emerald}
-     inactiveColor={colors.darkGreyColor}
-     shifting={true}
-     barStyle={{ backgroundColor: colors.white }}
-  >
-     <BottomTab.Screen
-        name="Home"
-        component={CreateHomeStack}
-        options={{
-           tabBarLabel: "Home",
-           tabBarIcon: ({ color, size }) => (
-              <Feather name="home" color={color} size={24} />
-           ),
-        }}
-     />
-     <BottomTab.Screen
-        name="Match"
-        component={CreateMatchStack}
-        options={{
-           tabBarLabel: "Match",
-           tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons
-                 name="soccer-field"
-                 color={color}
-                 size={24}
-              />
-           ),
-        }}
-     />
-     <BottomTab.Screen
-        name="Notifications"
-        component={CreateNotificationStack}
-        options={{
-           tabBarLabel: "Notifications",
-           tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="bell" color={color} size={24} />
-           ),
-        }}
-     />
-  </BottomTab.Navigator>
-);
-
-const CreateModalStack = ({ navigation }) => (
-  <ModalStack.Navigator
-    mode="modal"
-    headerMode="float"
-  >
-    <ModalStack.Screen name="FeedDetails" component={FeedDetails} options={{ title: "Lionel Messi" }} />
-    <ModalStack.Screen name="Entry" component={Entry} />
-  </ModalStack.Navigator>
-);
 
 const CreateHomeStack = ({ route, navigation }) => {
    const logOut = useLogOut();
 
    return (
-      <MainStack.Navigator
+      <Stack.Navigator
          screenOptions={{
             headerStyle: { backgroundColor: colors.white },
          }}
       >
-         <MainStack.Screen
+         <Stack.Screen
             name="Home"
             component={Home}
             options={{
@@ -175,7 +150,7 @@ const CreateHomeStack = ({ route, navigation }) => {
                ),
             }}
          />
-         <MainStack.Screen
+         <Stack.Screen
             name="Profile"
             component={Profile}
             options={{
@@ -193,23 +168,23 @@ const CreateHomeStack = ({ route, navigation }) => {
                ),
             }}
          />
-         <MainStack.Screen
+         <Stack.Screen
             name="EditProfile"
             component={EditProfile}
             options={EditProfile.navigationOptions}
          />
-         <MainStack.Screen name="Setting" component={Setting} />
-         <MainStack.Screen
+         <Stack.Screen name="Setting" component={Setting} />
+         <Stack.Screen
             name="SearchClub"
             component={SearchClub}
             options={SearchClub.navigationOptions}
          />
-         <MainStack.Screen
+         <Stack.Screen
             name="NewClub"
             component={NewClub}
             options={NewClub.navigationOptions}
          />
-         <MainStack.Screen
+         <Stack.Screen
             name="Details"
             children={CreateMaterialTopTab}
 						options={({route}) => ({
@@ -217,27 +192,29 @@ const CreateHomeStack = ({ route, navigation }) => {
 							title: route.params.teamId
 						})}
          />
-         <MainStack.Screen name="DtBasicInfo" component={DtBasicInfo} />
-         <MainStack.Screen name="DtCoLeader" component={DtCoLeader} />
-         <MainStack.Screen name="DtEmpowerment" component={DtEmpowerment} />
-         <MainStack.Screen name="DtForcedWithdrawal" component={DtForcedWithdrawal} />
-         <MainStack.Screen name="DtJoinQualification" component={DtJoinQualification} />
-         <MainStack.Screen name="DtJoinQuestion" component={DtJoinQuestion} />
-         <MainStack.Screen name="Help" component={Help} />
-         <MainStack.Screen name="Language" component={Language} />
-         <MainStack.Screen name="PushSetting" component={PushSetting} />
+         <Stack.Screen name="FeedDetails" component={FeedDetails} />
+         <Stack.Screen name="Entry" component={Entry} />
+         <Stack.Screen name="DtBasicInfo" component={DtBasicInfo} />
+         <Stack.Screen name="DtCoLeader" component={DtCoLeader} />
+         <Stack.Screen name="DtEmpowerment" component={DtEmpowerment} />
+         <Stack.Screen name="DtForcedWithdrawal" component={DtForcedWithdrawal} />
+         <Stack.Screen name="DtJoinQualification" component={DtJoinQualification} />
+         <Stack.Screen name="DtJoinQuestion" component={DtJoinQuestion} />
+         <Stack.Screen name="Help" component={Help} />
+         <Stack.Screen name="Language" component={Language} />
+         <Stack.Screen name="PushSetting" component={PushSetting} />
 
-      </MainStack.Navigator>
+      </Stack.Navigator>
    );
 };
 
 const CreateMatchStack = ({ navigation }) => (
-   <MainStack.Navigator
+   <Stack.Navigator
       screenOptions={{
          headerStyle: { backgroundColor: colors.white },
       }}
    >
-      <MainStack.Screen
+      <Stack.Screen
          name="Match"
          component={Match}
          options={{
@@ -272,13 +249,15 @@ const CreateMatchStack = ({ navigation }) => (
             ),
          }}
       />
-      <MainStack.Screen
+      <Stack.Screen
          name="Writing"
          component={Writing}
          options={Writing.navigationOptions}
       />
-      <MainStack.Screen name="Details" component={CreateMaterialTopTab} />
-      <MainStack.Screen
+      <Stack.Screen name="Details" component={CreateMaterialTopTab} />
+      <Stack.Screen name="FeedDetails" component={FeedDetails} />
+      <Stack.Screen name="Entry" component={Entry} />
+      <Stack.Screen
          name="Profile"
          component={Profile}
          options={{
@@ -296,32 +275,32 @@ const CreateMatchStack = ({ navigation }) => (
             ),
          }}
       />
-      <MainStack.Screen
+      <Stack.Screen
          name="EditProfile"
          component={EditProfile}
          options={EditProfile.navigationOptions}
       />
-      <MainStack.Screen name="Setting" component={Setting} />
-      <MainStack.Screen name="SearchMatch" component={SearchMatch} options={SearchMatch.navigationOptions} />
-      <MainStack.Screen name="DtBasicInfo" component={DtBasicInfo} />
-      <MainStack.Screen name="DtCoLeader" component={DtCoLeader} />
-      <MainStack.Screen name="DtEmpowerment" component={DtEmpowerment} />
-      <MainStack.Screen name="DtForcedWithdrawal" component={DtForcedWithdrawal} />
-      <MainStack.Screen name="DtJoinQualification" component={DtJoinQualification} />
-      <MainStack.Screen name="DtJoinQuestion" component={DtJoinQuestion} />
-      <MainStack.Screen name="Help" component={Help} />
-      <MainStack.Screen name="Language" component={Language} />
-      <MainStack.Screen name="PushSetting" component={PushSetting} />
-   </MainStack.Navigator>
+      <Stack.Screen name="Setting" component={Setting} />
+      <Stack.Screen name="SearchMatch" component={SearchMatch} options={SearchMatch.navigationOptions} />
+      <Stack.Screen name="DtBasicInfo" component={DtBasicInfo} />
+      <Stack.Screen name="DtCoLeader" component={DtCoLeader} />
+      <Stack.Screen name="DtEmpowerment" component={DtEmpowerment} />
+      <Stack.Screen name="DtForcedWithdrawal" component={DtForcedWithdrawal} />
+      <Stack.Screen name="DtJoinQualification" component={DtJoinQualification} />
+      <Stack.Screen name="DtJoinQuestion" component={DtJoinQuestion} />
+      <Stack.Screen name="Help" component={Help} />
+      <Stack.Screen name="Language" component={Language} />
+      <Stack.Screen name="PushSetting" component={PushSetting} />
+   </Stack.Navigator>
 );
 
 const CreateNotificationStack = ({ navigation }) => (
-   <MainStack.Navigator
+   <Stack.Navigator
       screenOptions={{
          headerStyle: { backgroundColor: colors.white },
       }}
    >
-      <MainStack.Screen
+      <Stack.Screen
          name="Notification"
          component={Notification}
          options={{
@@ -356,8 +335,10 @@ const CreateNotificationStack = ({ navigation }) => (
             ),
          }}
       />
-      <MainStack.Screen name="Details" component={CreateMaterialTopTab} />
-      <MainStack.Screen
+      <Stack.Screen name="Details" component={CreateMaterialTopTab} />
+      <Stack.Screen name="FeedDetails" component={FeedDetails} />
+      <Stack.Screen name="Entry" component={Entry} />
+      <Stack.Screen
          name="Profile"
          component={Profile}
          options={{
@@ -375,22 +356,22 @@ const CreateNotificationStack = ({ navigation }) => (
             ),
          }}
       />
-      <MainStack.Screen
+      <Stack.Screen
          name="EditProfile"
          component={EditProfile}
          options={EditProfile.navigationOptions}
       />
-      <MainStack.Screen name="Setting" component={Setting} />
-      <MainStack.Screen name="DtBasicInfo" component={DtBasicInfo} />
-      <MainStack.Screen name="DtCoLeader" component={DtCoLeader} />
-      <MainStack.Screen name="DtEmpowerment" component={DtEmpowerment} />
-      <MainStack.Screen name="DtForcedWithdrawal" component={DtForcedWithdrawal} />
-      <MainStack.Screen name="DtJoinQualification" component={DtJoinQualification} />
-      <MainStack.Screen name="DtJoinQuestion" component={DtJoinQuestion} />
-      <MainStack.Screen name="Help" component={Help} />
-      <MainStack.Screen name="Language" component={Language} />
-      <MainStack.Screen name="PushSetting" component={PushSetting} />
-   </MainStack.Navigator>
+      <Stack.Screen name="Setting" component={Setting} />
+      <Stack.Screen name="DtBasicInfo" component={DtBasicInfo} />
+      <Stack.Screen name="DtCoLeader" component={DtCoLeader} />
+      <Stack.Screen name="DtEmpowerment" component={DtEmpowerment} />
+      <Stack.Screen name="DtForcedWithdrawal" component={DtForcedWithdrawal} />
+      <Stack.Screen name="DtJoinQualification" component={DtJoinQualification} />
+      <Stack.Screen name="DtJoinQuestion" component={DtJoinQuestion} />
+      <Stack.Screen name="Help" component={Help} />
+      <Stack.Screen name="Language" component={Language} />
+      <Stack.Screen name="PushSetting" component={PushSetting} />
+   </Stack.Navigator>
 );
 
 const CreateMaterialTopTab = () => (
@@ -429,3 +410,11 @@ const CreateMaterialTopTab = () => (
       />
    </MaterialTopTab.Navigator>
 );
+
+export default function MainNavigation() {
+   return (
+      <NavigationContainer>
+         <BottomTabs />
+      </NavigationContainer>
+   );
+}
