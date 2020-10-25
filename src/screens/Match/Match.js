@@ -9,8 +9,7 @@ import MatchCard from "../../components/contents/MatchCard";
 import DailyPlayerCard from "../../components/contents/DailyPlayerCard";
 
 import SetSportBox from "../../components/form/SetSportBox";
-import SetSport from "../../components/form/SetSport";
-import SetAddressBox from "../../components/form/SetAddressBox";
+import SetAreaBox from "../../components/form/SetAreaBox";
 import SetDateBox from "../../components/form/SetDateBox";
 import CreateMatchBox from "../../components/form/CreateMatchBox";
 
@@ -108,8 +107,7 @@ export default ({ onPress, navigation }) => {
             <ModalContent>
 
               <SetSportBox />
-              <SetSport />
-              <SetAddressBox title="City" onPress={() => alert("set place")} />
+              <SetAreaBox title="Area" onPress={() => alert("set place")} />
               <SetDateBox title="Date" />
               <SetDateBox title="Time" />
               <Text>ClubName 검색</Text>

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
-import { StyleSheet, Text, View, TouchableOpacity, Modal, Alert } from "react-native";
+import { StyleSheet, Text, View, ScrollView,TouchableOpacity, Modal, Alert } from "react-native";
 import colors from '../../../colors';
 
-export default class SetSportBox extends React.Component {
+export default class SelectSportModal extends React.Component {
 
   constructor(props) {
     super(props);
@@ -29,14 +29,15 @@ export default class SetSportBox extends React.Component {
   }
 
   render() {
-    const { borderLine, labelColor } = this.props;
-    const borderColor = borderLine || colors.emerald;
-    const color = labelColor || colors.emerald;
 
     const pickerValues = [
       {
         title: 'Soccer',
         value: 'Soccer'
+      },
+      {
+        title: 'Futsal',
+        value: 'Futsal'
       },
       {
         title: 'Basketball',
@@ -46,16 +47,18 @@ export default class SetSportBox extends React.Component {
         title: 'Baseball',
         value: 'Baseball'
       },
+      {
+        title: 'Volley ball',
+        value: 'Volley ball'
+      },
     ]
 
     return (
       <View style={styles.container}>
         <TouchableOpacity
-          style={[{ borderColor }, styles.box]}
           onPress={() => this.togglePicker()}
           title={"select"}
         >
-          <Text style={[{ color }, styles.labelText]}>Sport</Text>
           <Text style={styles.sportText}>{ this.state.pickerSelection }</Text>
 
           <Modal
@@ -64,7 +67,11 @@ export default class SetSportBox extends React.Component {
             transparent={true}
             onRequestClose={() => Alert.alert("Please select a sport.")}
           >
-            <View style={styles.modalContent}>
+          <View style={styles.modalBG}>
+            <ScrollView
+              style={styles.modalContent}
+              showsVerticalScrollIndicator={false}
+            >
 
               { pickerValues.map((value, index) => {
                 return (
@@ -85,7 +92,9 @@ export default class SetSportBox extends React.Component {
                 <Text style={styles.modalBodyCancelText}>Cancel</Text>
               </TouchableOpacity>
 
-            </View>
+            </ScrollView>
+          </View>
+
           </Modal>
 
         </TouchableOpacity>
@@ -94,42 +103,27 @@ export default class SetSportBox extends React.Component {
   }
 }
 
-SetSportBox.propTypes = {
-  borderLine: PropTypes.string,
-  labelColor: PropTypes.string,
-};
-
 const styles = StyleSheet.create({
   container: {
     height: 45,
-    paddingTop: 10,
-  },
-  box: {
-    flex: 6,
-    flexDirection: 'row',
-    width: 250,
-    height: 45,
-    borderRadius: 8,
-    alignItems: 'center',
-    borderWidth: 1
-  },
-  labelText: {
-    flex: 1,
-    paddingLeft: 10,
-    fontSize: 12,
+    paddingBottom: 20,
   },
   sportText: {
-    flex: 5,
-    paddingLeft: 10,
+    fontSize: 20,
+    color: colors.grey03,
+  },
+  modalBG: {
+    flex: 1,
   },
   modalContent: {
-    margin: 20,
-    padding: 20,
+    margin: 50,
+    padding: 30,
+    height: 400,
     borderRadius: 15,
     backgroundColor: colors.white,
     top: 150,
-    left: 10,
-    right: 10,
+    left: 20,
+    right: 20,
     position: 'absolute',
     shadowColor: "#000",
     shadowOffset: {

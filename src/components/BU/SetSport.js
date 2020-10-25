@@ -3,7 +3,7 @@ import { View, Picker, StyleSheet, TouchableOpacity, Text } from "react-native";
 import colors from '../../../colors';
 
 const SetSport = () => {
-  const [selectedValue, setSelectedValue] = useState("java");
+  const [selectedValue, setSelectedValue] = useState("");
   return (
     <View style={styles.container}>
       <View
@@ -16,6 +16,7 @@ const SetSport = () => {
           style={styles.sportText}
           onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
         >
+          <Picker.Item label="Select a Sport" value="Select a Sport" />
           <Picker.Item label="Soccer" value="soccer" />
           <Picker.Item label="Futsal" value="futsal" />
           <Picker.Item label="Basketball" value="basketball" />
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
   },
   sportText: {
     flex: 5,
-    paddingLeft: 5,
+    paddingLeft: 50,
     height: 50,
     width: 150,
   },

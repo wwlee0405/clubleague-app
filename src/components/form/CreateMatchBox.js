@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
-import { StyleSheet, Text, View, TouchableOpacity, Modal } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Modal, Alert } from "react-native";
 import colors from '../../../colors';
 
 export default class CreateMatchBox extends React.Component {
@@ -58,31 +58,30 @@ export default class CreateMatchBox extends React.Component {
           <Text style={styles.clubName}>{ this.state.pickerSelection }</Text>
 
           <Modal
-            animationType= "slide"
+            animationType= "fade"
             visible={this.state.pickerDisplayed}
             transparent={true}
-            onRequestClose={() => console.log('close was requsted')}
+            onRequestClose={() => Alert.alert("Please select a club.")}
           >
-            <View style={styles.pickerWrap}>
-              <Text style={styles.pickerTopText}>Please select a club.</Text>
+            <View style={styles.modalContent}>
 
               { pickerValues.map((value, index) => {
                 return (
                   <TouchableOpacity
                     key={index}
-                    style={styles.pickerBodyBtn}
+                    style={styles.modalBodyBtn}
                     onPress={() => this.setPickerValue(value.value)}
                   >
-                    <Text style={styles.pickerBodyText}>{value.title}</Text>
+                    <Text style={styles.modalBodyText}>{value.title}</Text>
                   </TouchableOpacity>
                 )
               })}
 
               <TouchableOpacity
-                style={styles.pickerBodyBtn}
+                style={styles.modalBodyBtn}
                 onPress={() => this.togglePicker()}
               >
-                <Text style={styles.pickerBodyCancelText}>Cancel</Text>
+                <Text style={styles.modalBodyCancelText}>Cancel</Text>
               </TouchableOpacity>
 
             </View>
@@ -112,43 +111,48 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: 250,
     height: 45,
-    borderRadius: 100,
+    borderRadius: 8,
     alignItems: 'center',
-    borderWidth: 1,
+    borderWidth: 1
   },
   labelText: {
     flex: 1,
-    paddingLeft: 15,
-    fontSize: 10,
+    paddingLeft: 10,
+    fontSize: 12,
   },
   clubName: {
     flex: 5,
-    paddingLeft: 5,
+    paddingLeft: 10,
   },
-  pickerWrap: {
+  modalContent: {
     margin: 20,
     padding: 20,
-    backgroundColor: colors.whiteSmoke,
-    bottom: 60,
-    left: 20,
-    right: 20,
-    alignItems: 'center',
+    borderRadius: 15,
+    backgroundColor: colors.white,
+    top: 150,
+    left: 10,
+    right: 10,
     position: 'absolute',
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5
   },
-  pickerTopText: {
-    fontWeight: 'bold',
-    fontSize: 16,
-    marginBottom: 10,
-  },
-  pickerBodyBtn: {
+  modalBodyBtn: {
     paddingTop: 8,
     paddingBottom: 8,
   },
-  pickerBodyText: {
-    fontSize: 16,
+  modalBodyText: {
+    fontSize: 20,
+    textAlign: 'center'
   },
-  pickerBodyCancelText: {
+  modalBodyCancelText: {
     fontSize: 16,
+    textAlign: 'center',
     color: colors.darkGreyColor,
   },
 });

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import {
 	StyleSheet,
-	Text,
 	TouchableWithoutFeedback,
 	Keyboard,
 	Alert,
@@ -13,7 +12,8 @@ import AuthButton from "../../components/AuthButton";
 import { useMutation } from "react-apollo-hooks";
 import { gql } from "apollo-boost";
 import colors from "../../../colors";
-import SetSportInput from "../../components/form/SetSportInput";
+
+import SelectSportModal from "../../components/form/SelectSportModal";
 import TextInputField from "../../components/form/TextInputField";
 
 const CREATE_TEAM = gql`
@@ -30,6 +30,10 @@ const View = styled.View`
 	justify-content: center;
 	align-items: center;
 	flex: 1;
+`;
+
+const Text = styled.Text`
+	padding: 20px 60px;
 `;
 
 export default ({ navigation }) => {
@@ -63,7 +67,7 @@ export default ({ navigation }) => {
 	return (
 		<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 			<View>
-				<SetSportInput />
+				<SelectSportModal />
 
 				<TextInputField
 					{...clubNameInput}
@@ -73,7 +77,7 @@ export default ({ navigation }) => {
 				/>
 
 				<TextInputField
-					placeholder="Input Club Hometown"
+					placeholder="Input Club Area"
 					autoCapitalize="words"
 					autoCorrect={false}
 				/>

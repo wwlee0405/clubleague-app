@@ -17,7 +17,7 @@ export default class SetAddressBox extends React.Component {
           onPress={onPress}
         >
           <Text style={[{ color }, styles.labelText]}>{title}</Text>
-          <Text style={styles.address}>Madrid, Spain</Text>
+          <Text style={styles.areaText}>Madrid, Spain</Text>
         </TouchableOpacity>
       </View>
     );
@@ -41,17 +41,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: 250,
     height: 45,
-    borderRadius: 100,
+    borderRadius: 8,
     alignItems: 'center',
-    borderWidth: 1,
+    borderWidth: 1
   },
   labelText: {
     flex: 1,
-    paddingLeft: 15,
-    fontSize: 10,
+    paddingLeft: 10,
+    fontSize: 12,
   },
-  address: {
+  areaText: {
     flex: 5,
-    paddingLeft: 5,
+    paddingLeft: 10,
   },
 });

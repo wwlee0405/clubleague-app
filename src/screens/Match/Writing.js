@@ -4,7 +4,7 @@ import { Feather } from '@expo/vector-icons';
 import colors from '../../../colors';
 
 import SetSportBox from "../../components/form/SetSportBox";
-import SetAddressBox from "../../components/form/SetAddressBox";
+import SetAreaBox from "../../components/form/SetAreaBox";
 import SetDateBox from "../../components/form/SetDateBox";
 import CreateMatchBox from "../../components/form/CreateMatchBox";
 
@@ -33,7 +33,7 @@ export default class extends React.Component {
         <View style={{ flex: 1, alignItems: 'center' }}>
 
           <SetSportBox />
-          <SetAddressBox title="Area" onPress={() => alert("set place")} />
+          <SetAreaBox title="Area" onPress={() => alert("set place")} />
           <SetDateBox title="Date" />
           <SetDateBox title="Time" />
           <CreateMatchBox title="Home" borderLine={colors.darkGreyColor} labelColor={colors.darkGreyColor} />
