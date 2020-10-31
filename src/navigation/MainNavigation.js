@@ -111,7 +111,14 @@ const CreateModalStack = ({ navigation }) => (
     mode="modal"
     headerMode="float"
   >
-    <ModalStack.Screen name="FeedDetails" component={FeedDetails} options={{ title: "Lionel Messi" }} />
+    <ModalStack.Screen name="FeedDetails"
+      component={FeedDetails}
+      options={{
+            headerShown: false,
+            title: "Lionel Messi"
+          }}
+
+    />
     <ModalStack.Screen name="Entry" component={Entry} />
   </ModalStack.Navigator>
 );
@@ -217,6 +224,8 @@ const CreateHomeStack = ({ route, navigation }) => {
 							title: route.params.teamId
 						})}
          />
+         <MainStack.Screen name="FeedDetails" component={FeedDetails} options={{headerShown: false}} />
+         <MainStack.Screen name="Entry" component={Entry} />
          <MainStack.Screen name="DtBasicInfo" component={DtBasicInfo} />
          <MainStack.Screen name="DtCoLeader" component={DtCoLeader} />
          <MainStack.Screen name="DtEmpowerment" component={DtEmpowerment} />
@@ -301,6 +310,8 @@ const CreateMatchStack = ({ navigation }) => (
          component={EditProfile}
          options={EditProfile.navigationOptions}
       />
+      <MainStack.Screen name="FeedDetails" component={FeedDetails} options={{headerShown: false}} />
+      <MainStack.Screen name="Entry" component={Entry} />
       <MainStack.Screen name="Setting" component={Setting} />
       <MainStack.Screen name="SearchMatch" component={SearchMatch} options={SearchMatch.navigationOptions} />
       <MainStack.Screen name="DtBasicInfo" component={DtBasicInfo} />
@@ -380,6 +391,8 @@ const CreateNotificationStack = ({ navigation }) => (
          component={EditProfile}
          options={EditProfile.navigationOptions}
       />
+      <MainStack.Screen name="FeedDetails" component={FeedDetails} />
+      <MainStack.Screen name="Entry" component={Entry} />
       <MainStack.Screen name="Setting" component={Setting} />
       <MainStack.Screen name="DtBasicInfo" component={DtBasicInfo} />
       <MainStack.Screen name="DtCoLeader" component={DtCoLeader} />

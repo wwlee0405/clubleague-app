@@ -6,6 +6,7 @@ import {
 	StyleSheet,
 	View,
 	TouchableOpacity,
+	StatusBar
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import colors from "../../../colors";
@@ -41,6 +42,7 @@ export default ({ navigation }) => {
 	};
 	return (
 		<View style={styles.container}>
+			<StatusBar backgroundColor={colors.white} barStyle="dark-content" />
 			<View style={styles.clubContainer}>
 				<View style={styles.clubContainerTopWrap}>
 					<Text style={styles.clubContainerText}>Club</Text>

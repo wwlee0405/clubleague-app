@@ -117,7 +117,7 @@ const FeedPost = ({
 export default FeedPost;
 
 
-
+//marginTop 일시적용함
 const styles = StyleSheet.create({
   profileWrap: {
     flex: 1,
