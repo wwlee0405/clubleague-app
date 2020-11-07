@@ -16,6 +16,7 @@ export default ({
     location,
     bodyImg,
     bodyText,
+    askMatchOnPress,
     matchDetailsOnPress,
     hits
   }) => {
@@ -55,6 +56,7 @@ export default ({
           username="messi"
           area="Buenos Aires, Argentina"
           bodyText="캄프누에서 뛸 매치상대구합니다."
+          askMatchOnPress={() => navigation.navigate('MatchList')}
           matchDetailsOnPress={() => navigation.navigate('Details')}
           entryNavigationOnPress={() => navigation.navigate('Entry')}
           hits="150"
@@ -64,6 +66,7 @@ export default ({
           username="messi"
           area="Buenos Aires, Argentina"
           bodyText="캄프누에서 뛸 매치상대구합니다."
+          askMatchOnPress={() => navigation.navigate('MatchList')}
           matchDetailsOnPress={() => navigation.navigate('Details')}
           entryNavigationOnPress={() => navigation.navigate('Entry')}
           hits="150"

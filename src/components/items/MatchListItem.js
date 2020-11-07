@@ -33,18 +33,18 @@ export default ({
   user,
   area
 }) => (
-  <Container>
-    <LeftWrap>
-      <TouchableOpacity onPress={onPress}>
+  <TouchableOpacity onPress={onPress}>
+    <Container>
+      <LeftWrap>
         <Image
           source={avatar}
           style={{ width: 60, height: 60, borderRadius: 100 }}
         />
-      </TouchableOpacity>
-    </LeftWrap>
-    <RightWrap>
-      <RightTextTop>{user}</RightTextTop>
-      <RightTextBottom>{area}</RightTextBottom>
-    </RightWrap>
-  </Container>
+      </LeftWrap>
+      <RightWrap>
+        <RightTextTop>{user}</RightTextTop>
+        <RightTextBottom>{area}</RightTextBottom>
+      </RightWrap>
+    </Container>
+  </TouchableOpacity>
 );

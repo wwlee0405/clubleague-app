@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import colors from "../../../colors";
 import SearchBar from "../../components/form/SearchBar";
 import SearchMatchPresenter from "./SearchMatchPresenter";
@@ -55,17 +55,3 @@ export default class extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  inputSection: {
-    fontSize: 15,
-    backgroundColor: colors.whiteSmoke,
-    borderRadius: 5,
-    paddingLeft: 10,
-    width: 300,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: colors.clBackgroundColor,
-  },
-});

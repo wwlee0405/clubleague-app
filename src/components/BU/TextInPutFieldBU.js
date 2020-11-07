@@ -12,8 +12,8 @@ const TextInput = styled.TextInput`
 	width: ${constants.width / 1.7}px;
 	padding: 10px;
 	background-color: ${(props) => props.theme.clBackgroundColor};
-	text-align: center;
-	font-size: 20px;
+	border: 1px solid ${(props) => props.theme.darkGreyColor};
+	border-radius: 4px;
 `;
 
 const TextInputField = ({

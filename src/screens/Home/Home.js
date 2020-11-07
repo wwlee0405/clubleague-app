@@ -2,19 +2,57 @@ import React, { useState } from "react";
 import {
 	ScrollView,
 	RefreshControl,
-	Text,
-	StyleSheet,
-	View,
 	TouchableOpacity,
 	StatusBar
 } from "react-native";
+import styled from "styled-components"
 import { Feather } from "@expo/vector-icons";
 import colors from "../../../colors";
-import ClubTeams from "../../components/contents/ClubTeams";
 import { gql } from "apollo-boost";
-import Loader from "../../components/Loader";
 import { useQuery } from "react-apollo-hooks";
+import Loader from "../../components/Loader";
+import ClubTeams from "../../components/contents/ClubTeams";
 import ScheduleCard from "../../components/contents/ScheduleCard";
+
+const Container = styled.View`
+  flex: 1;
+  background-color: ${(props) => props.theme.clBackgroundColor};
+`;
+const ClubContainer = styled.View`
+  margin: 7px;
+  background-color: ${(props) => props.theme.white};
+	padding-vertical: 5px;
+	border-radius: 15px;
+`;
+const Touchable = styled.TouchableOpacity``;
+const ClubContainerTopWrap = styled.View`
+  height: 35px;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding-horizontal: 7px;
+`;
+const ClubContainerTopText = styled.Text`
+  font-weight: bold;
+	font-size: 18px;
+`;
+const ClubContainerTopButton = styled.View`
+  flex-direction: row;
+	align-items: center;
+`;
+const ClubContainerBottomWrap = styled.View`
+  height: 120px;
+`;
+const ScheduleContainer = styled.View`
+  flex: 1;
+  background-color: ${(props) => props.theme.clBackgroundColor};
+`;
+const ScheduleContainerText = styled.Text`
+  font-weight: bold;
+	font-size: 18px;
+	padding-left: 14px;
+	padding-vertical: 12px;
+`;
 
 const SeeMyTeam = gql`
 	{
@@ -27,6 +65,7 @@ const SeeMyTeam = gql`
 		}
 	}
 `;
+
 export default ({ navigation }) => {
 	const [refreshing, setRefreshing] = useState(false);
 	const { loading, data, refetch } = useQuery(SeeMyTeam);
@@ -41,29 +80,24 @@ export default ({ navigation }) => {
 		}
 	};
 	return (
-		<View style={styles.container}>
+		<Container>
 			<StatusBar backgroundColor={colors.white} barStyle="dark-content" />
-			<View style={styles.clubContainer}>
-				<View style={styles.clubContainerTopWrap}>
-					<Text style={styles.clubContainerText}>Club</Text>
-					<View>
-						<TouchableOpacity
-							onPress={() => navigation.navigate("NewClub")}
-							style={styles.clubContainerLeftButton}
-						>
-							<Feather
-								name="plus-circle"
-								style={styles.clubContainerRightButtonIcon}
-							/>
-							<Text style={styles.clubContainerText}>New Club</Text>
-						</TouchableOpacity>
-					</View>
-				</View>
-				<View style={styles.clubContainerBottomWrap}>
+			{/*Club Channel*/}
+			<ClubContainer>
+				<ClubContainerTopWrap>
+					<ClubContainerTopText>Club</ClubContainerTopText>
+					<Touchable onPress={() => navigation.navigate("NewClub")}>
+						<ClubContainerTopButton>
+							<Feather name="plus-circle" size={18} />
+							<ClubContainerTopText>New Club</ClubContainerTopText>
+						</ClubContainerTopButton>
+					</Touchable>
+				</ClubContainerTopWrap>
+				<ClubContainerBottomWrap>
 					<ScrollView
 						horizontal={true}
 						showsHorizontalScrollIndicator={false}
-						contentContainerStyle={styles.clubsWrap}
+						contentContainerStyle={{ alignItems: "center", paddingStart: 5, paddingEnd: 5 }}
 						refreshControl={
 							<RefreshControl refreshing={refreshing} onRefresh={refresh} />
 						}
@@ -89,15 +123,15 @@ export default ({ navigation }) => {
 							))
 						)}
 					</ScrollView>
-				</View>
-			</View>
-
-			<View style={styles.scheduleContainer}>
-				<Text style={styles.scheduleContainerText}>My Schedule</Text>
+				</ClubContainerBottomWrap>
+			</ClubContainer>
+			{/*My Schedule*/}
+			<ScheduleContainer>
+				<ScheduleContainerText>My Schedule</ScheduleContainerText>
 				<ScrollView
 					horizontal={false}
 					showsVerticalScrollIndicator={false}
-					style={styles.gameScheduleWrap}
+					style={{ paddingHorizontal: 7 }}
 				>
 					<ScheduleCard
 						emblem={require('../../data/ImgTest/1ars.jpg')}
@@ -143,60 +177,8 @@ export default ({ navigation }) => {
 	          onPress={() => navigation.navigate('FeedDetails')}
 	          detailsOnPress={() => navigation.navigate('Profile')}
 	        />
-
 				</ScrollView>
-			</View>
-		</View>
+			</ScheduleContainer>
+		</Container>
 	);
 };
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: colors.clBackgroundColor,
-	},
-	clubContainer: {
-		margin: 7,
-		paddingVertical: 5,
-		backgroundColor: colors.white,
-		borderRadius: 15,
-	},
-	clubContainerTopWrap: {
-		height: 35,
-		flexDirection: "row",
-		justifyContent: "space-between",
-		alignItems: "center",
-		paddingHorizontal: 7,
-	},
-	clubContainerText: {
-		fontWeight: "bold",
-		fontSize: 18,
-	},
-	clubContainerLeftButton: {
-		flexDirection: "row",
-		alignItems: "center",
-	},
-	clubContainerRightButtonIcon: {
-		fontSize: 18,
-	},
-	clubContainerBottomWrap: {
-		height: 120,
-	},
-	clubsWrap: {
-		alignItems: "center",
-		paddingStart: 5,
-		paddingEnd: 5,
-	},
-	scheduleContainer: {
-		flex: 1,
-		backgroundColor: colors.clBackgroundColor,
-	},
-	scheduleContainerText: {
-		fontWeight: "bold",
-		fontSize: 18,
-		paddingLeft: 14,
-		paddingVertical: 12,
-	},
-	gameScheduleWrap: {
-		paddingHorizontal: 7,
-	},
-});

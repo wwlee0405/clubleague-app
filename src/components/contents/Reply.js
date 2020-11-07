@@ -1,67 +1,57 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { Image, TouchableOpacity } from "react-native";
 import { Feather } from '@expo/vector-icons';
+import styled from "styled-components"
 import colors from '../../../colors';
 
+const Container = styled.View`
+  flexDirection: row;
+  padding-vertical: 10px;
+`;
+const ImgBtn = styled.View`
+  align-items: center;
+  padding-left: 15px;
+`;
+const BodyWrap = styled.View`
+  padding-left: 10px;
+`;
+const ProfileWrap = styled.View`
+  flex-direction: row;
+`;
+const UserText = styled.Text`
+  font-weight: bold;
+`;
+const TimeText = styled.Text`
+  padding-left: 10px;
+  color: ${(props) => props.theme.darkGreyColor};
+`;
+const ReplyText = styled.Text`
+  padding-right: 80px;
+`;
 
 const Reply = ({ onPress, avatar, username, text, time }) => {
   return (
-    <View style={styles.replyWrap}>
-
-      <View style={styles.rightWrap}>
-        <TouchableOpacity onPress={onPress}>
+    <Container>
+      <TouchableOpacity onPress={onPress}>
+        <ImgBtn>
           <Image
             source={avatar}
-            style={styles.avatar}
+            style={{ width: 40, height: 40, borderRadius: 100 }}
           />
-        </TouchableOpacity>
-      </View>
+        </ImgBtn>
+      </TouchableOpacity>
+      <BodyWrap>
+        <ProfileWrap>
+          <UserText>{username}</UserText>
+          <TimeText>AM 12:00</TimeText>
+        </ProfileWrap>
+        <ReplyText>ekmslgmslgmsssssssssssssssssssssssssssssssssssl</ReplyText>
+      </BodyWrap>
 
-      <View style={styles.bodyWrap}>
-        <View style={styles.bodyTop}>
-          <Text style={styles.user}>{username}</Text>
-          <Text style={styles.time}>AM 12:00</Text>
-        </View>
-        <Text style={styles.reply}>ekmslgmslgmsssssssssssssssssssssssssssssssssssl</Text>
-      </View>
-
-    </View>
+    </Container>
   );
 };
 
 
 export default Reply;
-
-const styles = StyleSheet.create({
-  replyWrap: {
-    flexDirection: 'row',
-    paddingTop: 10,
-    paddingBottom: 10,
-  },
-  rightWrap: {
-    alignItems: 'center',
-    paddingLeft: 15,
-  },
-  avatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 100,
-  },
-  bodyWrap: {
-    paddingLeft: 10,
-  },
-  bodyTop: {
-    flexDirection: 'row',
-  },
-  user: {
-    fontWeight: 'bold',
-  },
-  time: {
-    color: colors.darkGreyColor,
-    paddingLeft: 10,
-  },
-  reply: {
-    paddingRight: 80,
-  },
-});

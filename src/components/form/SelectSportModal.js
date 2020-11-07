@@ -1,7 +1,36 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
-import { StyleSheet, Text, View, ScrollView,TouchableOpacity, Modal, Alert } from "react-native";
+import { StyleSheet, ScrollView, TouchableOpacity, Modal, Alert } from "react-native";
+import styled from "styled-components"
 import colors from '../../../colors';
+
+const View = styled.View`
+`;
+const Text = styled.Text`
+`;
+const Container = styled.View`
+  height: 45px;
+  padding-bottom: 20px;
+`;
+const SportText = styled.Text`
+  font-size: 20px;
+  color: ${(props) => props.theme.darkGreyColor};
+`;
+const ModalBG = styled.View`
+  flex: 1;
+`;
+const ModalBodyBtn = styled.View`
+  padding-vertical: 8px;
+`;
+const ModalBodyText = styled.Text`
+  font-size: 20px;
+  text-align: center;
+`;
+const ModalBodyCancelText = styled.Text`
+  font-size: 18px;
+  text-align: center;
+  color: ${(props) => props.theme.darkGreyColor};
+`;
 
 export default class SelectSportModal extends React.Component {
 
@@ -54,25 +83,23 @@ export default class SelectSportModal extends React.Component {
     ]
 
     return (
-      <View style={styles.container}>
+      <Container>
         <TouchableOpacity
           onPress={() => this.togglePicker()}
           title={"select"}
         >
-          <Text style={styles.sportText}>{ this.state.pickerSelection }</Text>
-
+          <SportText>{ this.state.pickerSelection }</SportText>
           <Modal
             animationType= "fade"
             visible={this.state.pickerDisplayed}
             transparent={true}
             onRequestClose={() => Alert.alert("Please select a sport.")}
           >
-          <View style={styles.modalBG}>
+          <ModalBG>
             <ScrollView
               style={styles.modalContent}
               showsVerticalScrollIndicator={false}
             >
-
               { pickerValues.map((value, index) => {
                 return (
                   <TouchableOpacity
@@ -80,41 +107,28 @@ export default class SelectSportModal extends React.Component {
                     style={styles.modalBodyBtn}
                     onPress={() => this.setPickerValue(value.value)}
                   >
-                    <Text style={styles.modalBodyText}>{value.title}</Text>
+                    <ModalBodyBtn>
+                      <ModalBodyText>{value.title}</ModalBodyText>
+                    </ModalBodyBtn>
                   </TouchableOpacity>
                 )
               })}
-
-              <TouchableOpacity
-                style={styles.modalBodyBtn}
-                onPress={() => this.togglePicker()}
-              >
-                <Text style={styles.modalBodyCancelText}>Cancel</Text>
+              <TouchableOpacity onPress={() => this.togglePicker()}>
+                <ModalBodyBtn>
+                  <ModalBodyCancelText>Cancel</ModalBodyCancelText>
+                </ModalBodyBtn>
               </TouchableOpacity>
 
             </ScrollView>
-          </View>
-
+          </ModalBG>
           </Modal>
-
         </TouchableOpacity>
-      </View>
+      </Container>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    height: 45,
-    paddingBottom: 20,
-  },
-  sportText: {
-    fontSize: 20,
-    color: colors.grey03,
-  },
-  modalBG: {
-    flex: 1,
-  },
   modalContent: {
     margin: 50,
     padding: 30,
@@ -133,18 +147,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5
-  },
-  modalBodyBtn: {
-    paddingTop: 8,
-    paddingBottom: 8,
-  },
-  modalBodyText: {
-    fontSize: 20,
-    textAlign: 'center'
-  },
-  modalBodyCancelText: {
-    fontSize: 16,
-    textAlign: 'center',
-    color: colors.darkGreyColor,
   },
 });

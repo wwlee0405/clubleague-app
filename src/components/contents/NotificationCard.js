@@ -1,82 +1,72 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+import { TouchableOpacity, Image } from "react-native";
+import styled from "styled-components"
 import colors from '../../../colors';
+
+const Container = styled.View`
+  flex: 1;
+  border-radius: 15px;
+  background-color: ${(props) => props.theme.white};
+  margin-vertical: 3px;
+`;
+const NoticeWrap = styled.View`
+  flex: 5;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-vertical: 5px;
+`;
+const LeftWrap = styled.View`
+  flex: 1;
+  align-items: center;
+  padding-left: 10px;
+`;
+const BodyWrap = styled.View`
+  flex: 3;
+  padding-left: 10px;
+`;
+const UsernameText = styled.Text`
+  font-weight: bold;
+`;
+const NotificationText = styled.Text`
+  color: ${(props) => props.theme.darkGreyColor};
+`;
+const RightWrap = styled.View`
+  flex: 1;
+  padding-left: 10px;
+`;
+const TimeText = styled.Text`
+  color: ${(props) => props.theme.darkGreyColor};
+  font-size: 12px;
+`;
 
 const NotificationCard = ({ onPress, noticeOnPress, username, text, time }) => {
   return (
-    <View style={styles.container}>
+    <Container>
       <TouchableOpacity onPress={onPress}>
-        <View style={styles.noticeWrap}>
+        <NoticeWrap>
 
-          <View style={styles.leftWrap}>
+          <LeftWrap>
             <TouchableOpacity onPress={noticeOnPress}>
               <Image
                 source={require('../../data/ImgTest/cccc.jpg')}
-                style={styles.avatar}
+                style={{ width: 60, height: 60, borderRadius: 100 }}
               />
             </TouchableOpacity>
-          </View>
+          </LeftWrap>
 
-          <View style={styles.bodyWrap}>
-            <Text style={styles.textTop}>{username}</Text>
-            <Text style={styles.textBottom}>{text}</Text>
-          </View>
+          <BodyWrap>
+            <UsernameText>{username}</UsernameText>
+            <NotificationText>{text}</NotificationText>
+          </BodyWrap>
 
-          <View style={styles.rightWrap}>
-            <Text style={styles.textTime}>{time}</Text>
-          </View>
+          <RightWrap>
+            <TimeText>{time}</TimeText>
+          </RightWrap>
 
-        </View>
+        </NoticeWrap>
       </TouchableOpacity>
-    </View>
+    </Container>
   );
 };
 
-
 export default NotificationCard;
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex:1,
-    borderRadius: 15,
-    backgroundColor: colors.white,
-    marginTop: 3,
-    marginBottom: 3,
-  },
-  noticeWrap: {
-    flex: 5,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingTop: 5,
-    paddingBottom: 5,
-  },
-  leftWrap: {
-    flex: 1,
-    alignItems: 'center',
-    paddingLeft: 10,
-  },
-  avatar: {
-    width: 60,
-    height: 60,
-    borderRadius: 100,
-  },
-  bodyWrap: {
-    flex: 3,
-    paddingLeft: 10,
-  },
-  textTop: {
-    fontWeight: 'bold',
-  },
-  textBottom: {
-    color: colors.darkGreyColor,
-  },
-  rightWrap: {
-    flex: 1,
-    paddingLeft: 10,
-  },
-  textTime: {
-    color: colors.darkGreyColor,
-    fontSize: 12,
-  }
-});

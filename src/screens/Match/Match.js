@@ -18,13 +18,14 @@ const Container = styled.View`
   background-color: ${(props) => props.theme.clBackgroundColor};
 `;
 
-const Content = styled.View`
+const SearchContainer = styled.View`
   flex: 1;
   padding-top: 250px;
   padding-bottom: 300px;
 `;
 
-const NormalSearchView = styled.TouchableOpacity`
+const Touchable = styled.TouchableOpacity``;
+const NormalSearch = styled.View`
   flex: 1;
   flex-direction: row;
   align-items: center;
@@ -35,7 +36,6 @@ const NormalSearchView = styled.TouchableOpacity`
   background-color: ${(props) => props.theme.whiteSmoke};
   border-radius: 10px;
 `;
-
 const NormalSearchText = styled.Text`
   padding-left: 10px;
   color: ${(props) => props.theme.lightGreyColor};
@@ -45,7 +45,6 @@ const ModalBG = styled.View`
   flex: 1;
   background-color: ${(props) => props.theme.modalBackgroundColor};
 `;
-
 const ModalContent = styled.View`
   flex: 1;
   background-color: ${(props) => props.theme.white};
@@ -57,18 +56,18 @@ const ModalContent = styled.View`
 const ChoiceView = styled.View`
   flex: 1;
   flex-direction: row;
+  justify-content: space-between;
   padding-top: 30px;
 `;
-
-const ChoiceBox = styled.TouchableOpacity`
-  flex: 1;
+const ChoiceCheck = styled.View`
   justify-content: center;
   align-items: center;
   height: 50px;
-  margin: 10px;
+  margin: 20px;
+  padding: 25px;
 `;
 
-const DetailSearchView = styled.TouchableOpacity`
+const DetailSearch = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
@@ -77,7 +76,6 @@ const DetailSearchView = styled.TouchableOpacity`
   background-color: ${(props) => props.theme.emerald};
   border-radius: 10px;
 `;
-
 const DetailSearchText = styled.Text`
   font-size: 20px;
   color: ${(props) => props.theme.clBackgroundColor};
@@ -92,11 +90,14 @@ export default ({ onPress, navigation }) => {
         showsVerticalScrollIndicator={false}
         style={{ paddingHorizontal: 7 }}
       >
-        <Content>
-          <NormalSearchView onPress={() => navigation.navigate("SearchMatch")}>
-            <Feather name="search" size={20} />
-            <NormalSearchText>클럽명, 지역명, 스포츠 종목명</NormalSearchText>
-          </NormalSearchView>
+        {/*Search*/}
+        <SearchContainer>
+          <Touchable onPress={() => navigation.navigate("SearchMatch")}>
+            <NormalSearch>
+              <Feather name="search" size={20} />
+              <NormalSearchText>클럽명, 지역명, 스포츠 종목명</NormalSearchText>
+            </NormalSearch>
+          </Touchable>
 
           <Modal
             visible={modalOpen}
@@ -113,36 +114,28 @@ export default ({ onPress, navigation }) => {
               <Text>ClubName 검색</Text>
               <Text>게임수 검색</Text>
               <ChoiceView>
-                <ChoiceBox onPress={() => setModalOpen(false)}>
-                  <Feather
-                    name="check"
-                    size={30}
-                    color={colors.emerald}
-                  />
-                </ChoiceBox>
-                <ChoiceBox onPress={() => setModalOpen(false)}>
-                  <MaterialCommunityIcons
-                    name="close"
-                    size={30}
-                  />
-                </ChoiceBox>
-
+                <Touchable onPress={() => setModalOpen(false)}>
+                  <ChoiceCheck>
+                    <Feather name="check" size={30} color={colors.emerald} />
+                  </ChoiceCheck>
+                </Touchable>
+                <Touchable onPress={() => setModalOpen(false)}>
+                  <ChoiceCheck>
+                    <MaterialCommunityIcons name="close" size={30} />
+                  </ChoiceCheck>
+                </Touchable>
               </ChoiceView>
             </ModalContent>
           </ModalBG>
           </Modal>
 
-          <DetailSearchView
-            onPress={() => setModalOpen(true)}
-          >
-            <DetailSearchText>Detail Search</DetailSearchText>
-          </DetailSearchView>
-
-
-
-        </Content>
-
-
+          <Touchable onPress={() => setModalOpen(true)}>
+            <DetailSearch>
+              <DetailSearchText>Detail Search</DetailSearchText>
+            </DetailSearch>
+          </Touchable>
+        </SearchContainer>
+        {/*Post*/}
         <MatchCard
           avatar={require('../../data/ImgTest/dddd.jpg')}
           username="Messi"

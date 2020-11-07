@@ -72,20 +72,19 @@ const styles = StyleSheet.create({
     backgroundColor: colors.clBackgroundColor,
   },
   imgWrap: {
-    flex: 1,
     alignItems: 'center',
-    paddingTop: 30,
+    marginTop: 30,
   },
   avatar: {
-    width: 180,
-    height: 180,
+    width: 170,
+    height: 170,
     borderRadius: 100,
   },
   textWrap: {
-    padding: 20,
+    marginVertical: 20,
+    alignItems: 'center',
   },
   btnWrap: {
-    flex: 1,
     alignItems: 'center'
   },
   btn: {

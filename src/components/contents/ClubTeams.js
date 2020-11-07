@@ -1,45 +1,35 @@
 import React from "react";
-import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
+import { TouchableOpacity, Image } from "react-native";
 import PropTypes from "prop-types";
+import styled from "styled-components"
 import colors from '../../../colors';
 
+const Touchable = styled.TouchableOpacity``;
+const ClubTeam = styled.View`
+  align-items: center;
+`;
+const ClubName = styled.Text`
+  font-weight: bold;
+  width: 80px;
+  overflow: hidden;
+`;
 const ClubTeams = ({ onPress, emblem, clubName }) => {
   return (
-    <TouchableOpacity
-      onPress={onPress}
-    >
-      <View style={styles.clubTeamsWrap}>
+    <Touchable onPress={onPress}>
+      <ClubTeam>
         <Image
-          style={styles.emblem}
+          style={{ marginHorizontal: 5, width: 85, height: 85, borderRadius: 100 }}
           source={{ uri: emblem }}
         />
-        <Text style={styles.clubName} numberOfLines={1}>{clubName}</Text>
-      </View>
-    </TouchableOpacity>
+        <ClubName numberOfLines={1}>{clubName}</ClubName>
+      </ClubTeam>
+    </Touchable>
   );
 };
 
 ClubTeams.propTypes = {
   id: PropTypes.string.isRequired,
   clubName: PropTypes.string.isRequired,
-
 };
 
 export default ClubTeams;
-
-const styles = StyleSheet.create({
-  clubTeamsWrap: {
-    alignItems: 'center',
-  },
-  emblem: {
-    marginHorizontal: 5,
-    width: 85,
-    height: 85,
-    borderRadius: 100,
-  },
-  clubName: {
-    fontWeight: 'bold',
-    width: 80,
-    overflow: 'hidden',
-  },
-});

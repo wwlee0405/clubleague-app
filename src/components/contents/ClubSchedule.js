@@ -1,12 +1,26 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, SectionList, TouchableOpacity } from "react-native";
 import { Feather } from '@expo/vector-icons';
+import styled from "styled-components"
 import colors from '../../../colors';
 import ScheduleSectionList from "../items/ScheduleSectionList";
 
+const Container = styled.View`
+  flex: 1;
+  padding-top: 22px;
+`;
+const SectionHeaderText = styled.Text`
+  padding-top: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  font-size: 14px;
+  background-color: ${(props) => props.theme.clBackgroundColor};
+`;
+
 const ClubSchedule = ({ onPress, time }) => {
   return (
-    <View style={styles.sectionList}>
+    <Container>
       <SectionList
         sections={[
           {title: 'SEP 2019', data: ['01', '02', '03']},
@@ -24,28 +38,12 @@ const ClubSchedule = ({ onPress, time }) => {
           />
         }
         renderSectionHeader={({section}) =>
-          <Text style={styles.sectionHeader}>{section.title}</Text>
+          <SectionHeaderText>{section.title}</SectionHeaderText>
         }
         keyExtractor={(item, index) => index}
       />
-    </View>
+    </Container>
   );
 };
 
-
 export default ClubSchedule;
-
-const styles = StyleSheet.create({
-  sectionList: {
-   flex: 1,
-   paddingTop: 22
-  },
-  sectionHeader: {
-    paddingTop: 2,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 2,
-    fontSize: 14,
-    backgroundColor: 'rgba(247,247,247,1.0)',
-  },
-});

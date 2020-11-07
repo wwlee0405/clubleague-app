@@ -13,6 +13,7 @@ import DetailsInfo from "../screens/Home/DetailsInfo";
 import DetailsSetting from "../screens/Home/DetailsSetting";
 import Match from "../screens/Match/Match";
 import FeedDetails from "../screens/Match/FeedDetails";
+import MatchList from "../screens/Match/MatchList";
 import Entry from "../screens/Match/Entry";
 import Writing from "../screens/Match/Writing";
 import Notification from "../screens/Notification/Notification";
@@ -37,7 +38,6 @@ import PushSetting from "../screens/Setting/PushSetting";
 
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from "../../colors"
-
 import { useLogOut } from "../../AuthContext";
 
 const RootStack = createStackNavigator();
@@ -60,7 +60,7 @@ export default function MainNavigation() {
       </NavigationContainer>
    );
 }
-
+/*Bottom Nav*/
 const BottomTabs = ({ navigation }) => (
   <BottomTab.Navigator
      initialRouteName="Home"
@@ -105,7 +105,7 @@ const BottomTabs = ({ navigation }) => (
      />
   </BottomTab.Navigator>
 );
-
+/*Modal Nav*/
 const CreateModalStack = ({ navigation }) => (
   <ModalStack.Navigator
     mode="modal"
@@ -122,7 +122,7 @@ const CreateModalStack = ({ navigation }) => (
     <ModalStack.Screen name="Entry" component={Entry} />
   </ModalStack.Navigator>
 );
-
+/*Stack Nav*/
 const CreateHomeStack = ({ route, navigation }) => {
    const logOut = useLogOut();
 
@@ -225,6 +225,7 @@ const CreateHomeStack = ({ route, navigation }) => {
 						})}
          />
          <MainStack.Screen name="FeedDetails" component={FeedDetails} options={{headerShown: false}} />
+         <MainStack.Screen name="MatchList" component={MatchList} />
          <MainStack.Screen name="Entry" component={Entry} />
          <MainStack.Screen name="DtBasicInfo" component={DtBasicInfo} />
          <MainStack.Screen name="DtCoLeader" component={DtCoLeader} />
@@ -311,6 +312,7 @@ const CreateMatchStack = ({ navigation }) => (
          options={EditProfile.navigationOptions}
       />
       <MainStack.Screen name="FeedDetails" component={FeedDetails} options={{headerShown: false}} />
+      <MainStack.Screen name="MatchList" component={MatchList} />
       <MainStack.Screen name="Entry" component={Entry} />
       <MainStack.Screen name="Setting" component={Setting} />
       <MainStack.Screen name="SearchMatch" component={SearchMatch} options={SearchMatch.navigationOptions} />
@@ -405,7 +407,7 @@ const CreateNotificationStack = ({ navigation }) => (
       <MainStack.Screen name="PushSetting" component={PushSetting} />
    </MainStack.Navigator>
 );
-
+/*Club Detail Stack Nav*/
 const CreateMaterialTopTab = () => (
    <MaterialTopTab.Navigator
       tabBarOptions={{

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import {
-	StyleSheet,
 	TouchableWithoutFeedback,
 	Keyboard,
 	Alert,
@@ -30,10 +29,13 @@ const View = styled.View`
 	justify-content: center;
 	align-items: center;
 	flex: 1;
+	background-color: ${(props) => props.theme.clBackgroundColor};
 `;
 
 const Text = styled.Text`
-	padding: 20px 60px;
+	padding: 40px 60px;
+	font-size: 15px;
+	text-align: center;
 `;
 
 export default ({ navigation }) => {

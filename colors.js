@@ -1,4 +1,7 @@
 export default {
+  clBackgroundColor: "#f5f5f5",
+  modalBackgroundColor: "#000000aa",
+
   blackColor: "#262626",
   white: "#ffffff",
   snow: '#fffafa',
@@ -19,10 +22,4 @@ export default {
   green: "#d7eb94",
   yellowGreen: "#9ACD32",
 
-  grey01: '#f3f3f3',
-  grey02: '#919191',
-  grey03: '#b3b3b3',
-
-  clBackgroundColor: "#f5f5f5",
-  modalBackgroundColor: "#000000aa",
 };

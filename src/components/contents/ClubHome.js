@@ -1,7 +1,51 @@
 import React from "react";
-import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from "react-native";
+import styled from "styled-components"
+import { StyleSheet, ScrollView, Image, TouchableOpacity } from "react-native";
 import PropTypes from "prop-types";
 import colors from '../../../colors';
+
+const View = styled.View`
+`;
+const Text = styled.Text`
+`;
+const ClubProfileWrap = styled.View`
+  flex: 1;
+  flex-direction: row;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-bottom-width: 1px;
+  border-color: ${(props) => props.theme.lightGreyColor};
+`;
+const Touchable = styled.TouchableOpacity``;
+const ClubProfileImgBtn = styled.View`
+  padding-right: 15px;
+`;
+const ClubProfileTextWrap = styled.View`
+  flex: 1;
+  justify-content: center;
+`;
+const ClubNameText = styled.Text`
+font-weight: bold;
+font-size: 20px;
+`;
+const ClubProfileTeamInfoTextWrap = styled.View`
+  flex-direction: row;
+`;
+const ClubProfileTopInfoTextLeft = styled.Text`
+font-size: 12px;
+color: ${(props) => props.theme.darkGreyColor};
+`;
+const ClubProfileTopInfoTextRight = styled.Text`
+font-size: 12px;
+padding-left: 20px;
+color: ${(props) => props.theme.darkGreyColor};
+`;
+const ClubProfileBottomInfoTextLeft = styled.Text`
+font-size: 14px;
+color: ${(props) => props.theme.darkGreyColor};
+`;
 
 const ClubHome = ({
     onPress,
@@ -16,52 +60,47 @@ const ClubHome = ({
   return (
     <View>
       <View>
-        <View style={styles.clubProfileWrap}>
-          <TouchableOpacity
-            style={styles.clubProfileImgButton}
-            onPress={onPress}
-          >
-            <Image
-              source={require('../../data/ImgTest/2bar.jpg')}
-              style={styles.clubProfileImg}
-            />
-          </TouchableOpacity>
-          <View style={styles.clubProfileTextWrap}>
-            <View>
-              <Text style={styles.clubNameText}>{clubName}</Text>
-            </View>
+        <ClubProfileWrap>
+          <Touchable onPress={onPress}>
+            <ClubProfileImgBtn>
+              <Image
+                source={require('../../data/ImgTest/2bar.jpg')}
+                style={{ width: 85, height: 85, borderRadius: 100 }}
+              />
+            </ClubProfileImgBtn>
+          </Touchable>
+          <ClubProfileTextWrap>
+            <ClubNameText>{clubName}</ClubNameText>
             <Text>{sports}</Text>
-            <View style={styles.clubProfileTeamInfoTextWrap}>
-              <Text style={styles.clubProfileTopInfoTextLeft}>Members <Text>{members}</Text></Text>
-              <Text style={styles.clubProfileTopInfoTextRight}>Leader <Text>{clubLeader}</Text></Text>
-            </View>
-            <View style={styles.clubProfileTeamInfoTextWrap}>
-              <Text style={styles.clubProfileBottomInfoTextLeft}>{clubArea}</Text>
-            </View>
-          </View>
-        </View>
+            <ClubProfileTeamInfoTextWrap>
+              <ClubProfileTopInfoTextLeft>Members <Text>{members}</Text></ClubProfileTopInfoTextLeft>
+              <ClubProfileTopInfoTextRight>Leader <Text>{clubLeader}</Text></ClubProfileTopInfoTextRight>
+            </ClubProfileTeamInfoTextWrap>
+            <ClubProfileTeamInfoTextWrap>
+              <ClubProfileBottomInfoTextLeft>{clubArea}</ClubProfileBottomInfoTextLeft>
+            </ClubProfileTeamInfoTextWrap>
+          </ClubProfileTextWrap>
+        </ClubProfileWrap>
       </View>
 
       <View style={{ flex: 2, flexDirection: 'row' }}>
-        <TouchableOpacity
-          style={{ flex: 1, height: 50, backgroundColor: colors.yellowGreen }}
+        <Touchable
           onPress={joinOnPress}
+          style={{ flex: 1, height: 50, backgroundColor: colors.yellowGreen }}
         >
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text style={{ fontSize: 18, color: colors.white }}>Join this Club</Text>
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{ flex: 1, height: 50, backgroundColor: colors.blueColor }}
+        </Touchable>
+        <Touchable
           onPress={() => alert("ask the match!")}
+          style={{ flex: 1, height: 50, backgroundColor: colors.blueColor }}
         >
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text style={{ fontSize: 18, color: colors.white }}>Ask the match</Text>
           </View>
-        </TouchableOpacity>
+        </Touchable>
       </View>
-
-
 
     </View>
   );
@@ -77,48 +116,3 @@ ClubHome.propTypes = {
 };
 
 export default ClubHome;
-
-const styles = StyleSheet.create({
-  clubProfileWrap: {
-    flex: 1,
-    flexDirection: 'row',
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 15,
-    paddingRight: 15,
-    borderBottomWidth: 1,
-    borderColor: colors.lightGreyColor,
-  },
-  clubProfileImgButton: {
-    paddingRight: 15,
-  },
-  clubProfileImg: {
-    width: 85,
-    height: 85,
-    borderRadius: 100,
-  },
-  clubProfileTextWrap: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  clubNameText: {
-    fontWeight: 'bold',
-    fontSize: 20,
-  },
-  clubProfileTeamInfoTextWrap: {
-    flexDirection: 'row',
-  },
-  clubProfileTopInfoTextLeft: {
-    fontSize: 12,
-    color: colors.darkGreyColor,
-  },
-  clubProfileTopInfoTextRight: {
-    fontSize: 12,
-    paddingLeft: 20,
-    color: colors.darkGreyColor,
-  },
-  clubProfileBottomInfoTextLeft: {
-    fontSize: 14,
-    color: colors.darkGreyColor,
-  },
-});

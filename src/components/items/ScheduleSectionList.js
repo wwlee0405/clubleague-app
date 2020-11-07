@@ -1,6 +1,41 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+import { TouchableOpacity, Image } from "react-native";
+import styled from "styled-components"
 import colors from '../../../colors';
+
+const Container = styled.View`
+  flex: 5;
+  flex-direction: row;
+  border-bottom-width: 1px;
+  border-bottom-color: ${(props) => props.theme.lightGreyColor};
+`;
+const LeftWrap = styled.View`
+  flex: 1;
+  align-items: center;
+  padding-vertical: 5px;
+`;
+const ScheduleLeftTop = styled.Text`
+  font-size: 20px;
+  font-weight: bold;
+`;
+const ScheduleLeftBottom = styled.Text`
+  font-size: 12px;
+`;
+const RightWrap = styled.View`
+  flex: 4;
+  justify-content: center;
+`;
+const ScheduleRightTop = styled.Text`
+  font-size: 16px;
+`;
+const ScheduleTime = styled.Text`
+  font-size: 18px;
+  color: ${(props) => props.theme.emerald};
+`;
+const ScheduleRightBottom = styled.Text`
+  font-size: 14px;
+  border-bottom-color: ${(props) => props.theme.darkGreyColor};
+`;
 
 export default ({
   day,
@@ -9,52 +44,15 @@ export default ({
   time,
   area
 }) => (
-  <View style={styles.clubScheduleWrap}>
-    <View style={styles.clubScheduleLeftWrap}>
-      <Text style={styles.clubScheduleLeftTop}>{day}</Text>
-      <Text style={styles.clubScheduleLeftBottom}>{week}</Text>
-    </View>
-    <View style={styles.clubScheduleRightWrap}>
-      <Text style={styles.clubScheduleRightTop}>{title}</Text>
-      <Text style={styles.clubScheduleTime}>{time}</Text>
-      <Text style={styles.clubScheduleRightBottom}>{area}</Text>
-    </View>
-  </View>
+  <Container>
+    <LeftWrap>
+      <ScheduleLeftTop>{day}</ScheduleLeftTop>
+      <ScheduleLeftBottom>{week}</ScheduleLeftBottom>
+    </LeftWrap>
+    <RightWrap>
+      <ScheduleRightTop>{title}</ScheduleRightTop>
+      <ScheduleTime>{time}</ScheduleTime>
+      <ScheduleRightBottom>{area}</ScheduleRightBottom>
+    </RightWrap>
+  </Container>
 );
-
-const styles = StyleSheet.create({
-  clubScheduleWrap: {
-    flex: 5,
-    flexDirection: 'row',
-    borderBottomWidth: 1,
-    borderBottomColor: colors.lightGreyColor,
-  },
-  clubScheduleLeftWrap: {
-    flex: 1,
-    alignItems: 'center',
-    paddingTop: 5,
-    paddingBottom: 5,
-  },
-  clubScheduleLeftTop: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  clubScheduleLeftBottom: {
-    fontSize: 12,
-  },
-  clubScheduleRightTop: {
-    fontSize: 16,
-  },
-  clubScheduleTime: {
-    fontSize: 18,
-    color: colors.yellowGreen,
-  },
-  clubScheduleRightBottom: {
-    fontSize: 14,
-    color: colors.darkGreyColor,
-  },
-  clubScheduleRightWrap: {
-    flex: 4,
-    justifyContent: 'center',
-  },
-});
