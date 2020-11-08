@@ -10,12 +10,9 @@ const Container = styled.View`
   padding-top: 22px;
 `;
 const SectionHeaderText = styled.Text`
-  padding-top: 2px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 2px;
+  padding: 2px 10px;
   font-size: 14px;
-  background-color: ${(props) => props.theme.clBackgroundColor};
+  background-color: ${(props) => props.theme.ghostWhite};
 `;
 
 const ClubSchedule = ({ onPress, time }) => {

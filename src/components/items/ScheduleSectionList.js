@@ -7,7 +7,8 @@ const Container = styled.View`
   flex: 5;
   flex-direction: row;
   border-bottom-width: 1px;
-  border-bottom-color: ${(props) => props.theme.lightGreyColor};
+  border-bottom-color: ${(props) => props.theme.ghostWhite};
+  background-color: ${(props) => props.theme.white};
 `;
 const LeftWrap = styled.View`
   flex: 1;

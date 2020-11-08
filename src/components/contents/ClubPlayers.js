@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, FlatList, ScrollView, TouchableOpacity } from "react-native";
 import { Feather } from '@expo/vector-icons';
 import colors from '../../../colors';
-import PlayersListItem from "../items/PlayersListItem";
+import ViewerListItem from "../items/ViewerListItem";
 
 import clubplayers from "../../data/clubplayers";
 
@@ -25,7 +25,7 @@ const ClubPlayers = ({ onPress }) => {
         <FlatList
           data={clubplayers}
           renderItem={({item}) =>
-            <PlayersListItem
+            <ViewerListItem
               onPress={onPress}
               avatar={item.avatar}
               user={item.user}

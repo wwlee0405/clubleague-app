@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList, ScrollView, TouchableOpacity, Image } from "react-native";
+import { View, FlatList, ScrollView, TouchableOpacity } from "react-native";
 import colors from '../../../colors';
 
-import ViewerListItem from "../../components/items/ViewerListItem";
+import SelectListItem from "../../components/items/SelectListItem";
 import clubplayers from "../../data/clubplayers";
 
 
 export default ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <View style={{ flex: 1, backgroundColor: colors.clBackgroundColor }}>
       <ScrollView>
         <FlatList
           data={clubplayers}
           renderItem={({item}) =>
-            <ViewerListItem
-              onPress={() => navigation.navigate('Profile')}
+            <SelectListItem
+              onPress={() => navigation.navigate('GameMatch')}
               avatar={item.avatar}
               user={item.user}
               area={item.area}
@@ -26,10 +26,3 @@ export default ({ navigation }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-   flex: 1,
-   backgroundColor: colors.clBackgroundColor,
-  },
-});

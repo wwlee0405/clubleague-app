@@ -16,6 +16,8 @@ import FeedDetails from "../screens/Match/FeedDetails";
 import MatchList from "../screens/Match/MatchList";
 import Entry from "../screens/Match/Entry";
 import Writing from "../screens/Match/Writing";
+import GameMatch from "../screens/Match/GameMatch";
+import SetMatchList from "../screens/Match/SetMatchList";
 import Notification from "../screens/Notification/Notification";
 import Profile from "../screens/Profile/Profile";
 import UserDetail from "../screens/Profile/UserDetail";
@@ -55,7 +57,7 @@ export default function MainNavigation() {
           headerMode="none"
         >
           <RootStack.Screen name="BottomTabs" component={BottomTabs} />
-          <RootStack.Screen name="FeedDetails" component={CreateModalStack} />
+          <RootStack.Screen name="Writing" component={CreateModalStack} />
         </RootStack.Navigator>
       </NavigationContainer>
    );
@@ -111,15 +113,9 @@ const CreateModalStack = ({ navigation }) => (
     mode="modal"
     headerMode="float"
   >
-    <ModalStack.Screen name="FeedDetails"
-      component={FeedDetails}
-      options={{
-            headerShown: false,
-            title: "Lionel Messi"
-          }}
-
-    />
-    <ModalStack.Screen name="Entry" component={Entry} />
+    <MainStack.Screen name="Writing" component={Writing} options={Writing.navigationOptions} />
+    <MainStack.Screen name="GameMatch" component={GameMatch} options={GameMatch.navigationOptions} />
+    <MainStack.Screen name="SetMatchList" component={SetMatchList} />
   </ModalStack.Navigator>
 );
 /*Stack Nav*/
@@ -281,11 +277,6 @@ const CreateMatchStack = ({ navigation }) => (
                </TouchableOpacity>
             ),
          }}
-      />
-      <MainStack.Screen
-         name="Writing"
-         component={Writing}
-         options={Writing.navigationOptions}
       />
       <MainStack.Screen name="Details" component={CreateMaterialTopTab} />
       <MainStack.Screen

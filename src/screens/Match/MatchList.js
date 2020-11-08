@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, FlatList, ScrollView, TouchableOpacity } from "react-native";
 import colors from '../../../colors';
 
-import MatchListItem from "../../components/items/MatchListItem";
+import SelectListItem from "../../components/items/SelectListItem";
 import clubplayers from "../../data/clubplayers";
 
 
@@ -13,7 +13,7 @@ export default ({ navigation }) => {
         <FlatList
           data={clubplayers}
           renderItem={({item}) =>
-            <MatchListItem
+            <SelectListItem
               onPress={() => navigation.navigate('FeedDetails')}
               avatar={item.avatar}
               user={item.user}

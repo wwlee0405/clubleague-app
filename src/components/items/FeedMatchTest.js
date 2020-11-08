@@ -18,11 +18,12 @@ const ClubInfoWrap = styled.View`
 `;
 const ClubEmblemWrap = styled.View`
   flex-direction: row;
-  width: 300px;
+  width: 260px;
   height: 50px;
 `;
 const LabelWrap = styled.View`
   padding-left: 10px;
+  width: 200px;
 `;
 const LabelText = styled.Text`
   font-size: 30px;
@@ -89,7 +90,7 @@ export default class FeedMatchTest extends React.Component {
 
               <LabelWrap>
                 <LabelText homeAwayColor={homeAwayColor}>{homeAway}</LabelText>
-                <ClubNameText>{clubName}</ClubNameText>
+                <ClubNameText numberOfLines={1}>{clubName}</ClubNameText>
               </LabelWrap>
             </ClubEmblemWrap>
           </TouchableOpacity>
