@@ -8,34 +8,42 @@ import SetDateForm from "../../components/form/SetDateForm";
 import SetClubForm from "../../components/form/SetClubForm";
 import clubplayers from "../../data/clubplayers";
 
-export default class extends React.Component {
-  static navigationOptions = ({ navigation }) => ({
-    headerRight: () => (
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Writing')}
-        title="Submit"
-      >
-        <Feather name="check" size={25} style={{ paddingRight: 10 }} />
-      </TouchableOpacity>
-    ),
-  });
+function GameMatch({ navigation, route }) {
 
-  render() {
-    const { navigation } = this.props;
-    return (
-      <View style={styles.container}>
-        <ScrollView>
-          <SetSportForm />
-          <SetDateForm title="Date" />
-          <SetDateForm title="Time" />
-          <SetClubForm onPress={() => navigation.navigate('SetMatchList')} homeAway="Home" />
-          <SetClubForm onPress={() => navigation.navigate('SetMatchList')} homeAway="Away" homeAwayColor={colors.darkGreyColor} propertyColor={colors.darkGreyColor} />
-          <SetClubForm onPress={() => navigation.navigate('SetMatchList')} homeAway="Location" homeAwayColor={colors.blueColor} propertyColor={colors.blueColor} />
-        </ScrollView>
-      </View>
-    );
-  }
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity onPress={() => navigation.navigate('Writing')} title="Submit">
+          <Feather name="check" size={25} style={{ paddingRight: 10 }} />
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation]);
+
+  React.useEffect(() => {
+    if (route.params?.post) {
+      // Post updated, do something with `route.params.post`
+      // For example, send the post to the server
+    }
+  }, [route.params?.post]);
+
+
+  return (
+    <View style={styles.container}>
+      <ScrollView>
+        <Text>Post: {route.params?.post}</Text>
+        <SetSportForm />
+        <SetDateForm title="Date" />
+        <SetDateForm title="Time" />
+        <SetClubForm onPress={() => navigation.navigate('SetMatchList')} homeAway="Home" />
+        <SetClubForm onPress={() => navigation.navigate('SetMatchList')} homeAway="Away" homeAwayColor={colors.darkGreyColor} propertyColor={colors.darkGreyColor} />
+        <SetClubForm onPress={() => navigation.navigate('SetMatchList')} homeAway="Location" homeAwayColor={colors.blueColor} propertyColor={colors.blueColor} />
+      </ScrollView>
+    </View>
+  );
 }
+
+export default GameMatch;
 
 
 const styles = StyleSheet.create({
