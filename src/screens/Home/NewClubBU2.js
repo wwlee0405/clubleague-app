@@ -1,11 +1,9 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import {
 	TouchableWithoutFeedback,
 	Keyboard,
 	Alert,
-	TouchableOpacity,
-	TextInput
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import useInput from "../../hooks/useInput";
@@ -40,17 +38,16 @@ const Text = styled.Text`
 	text-align: center;
 `;
 
-function NewClub({ navigation, route }) {
-
-	const [clubName, setClub] = useState("");
-	const [loading, setLoading] = React.useState(false);
+export default ({ navigation }) => {
+	const clubNameInput = useInput("");
+	const [loading, setLoading] = useState(false);
 	const [createClubMutation] = useMutation(CREATE_TEAM, {
 		variables: {
-			teamName: clubName
+			teamName: clubNameInput.value,
 		},
 	});
 	const newClubSubmit = async () => {
-		const clubName = clubName;
+		const { value: clubName } = clubNameInput;
 		if (clubName === "") {
 			return Alert.alert("Please, I need your Club Name.");
 		}
@@ -62,7 +59,6 @@ function NewClub({ navigation, route }) {
 			if (createTeam) {
 				Alert.alert("Club created", "check!");
 				navigation.navigate("Home");
-				setClub(data);
 			}
 		} catch (e) {
 			console.log(e);
@@ -70,28 +66,13 @@ function NewClub({ navigation, route }) {
 			setLoading(false);
 		}
 	};
-
-  React.useLayoutEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-				<TouchableOpacity
-					onPress={() => navigation.navigate('Home', { newClub: clubName })}
-					title="Submit"
-				>
-          <Feather name="check" size={25} style={{ paddingRight: 10 }} />
-        </TouchableOpacity>
-      ),
-    }, [navigation, newClubSubmit]);
-  });
-
-  return (
+	return (
 		<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 			<View>
 				<SelectSportModal />
 
-				<TextInput
-					value={clubName}
-					onChangeText={newClubSubmit}
+				<TextInputField
+					{...clubNameInput}
 					placeholder="Input Club Name"
 					autoCapitalize="words"
 					autoCorrect={false}
@@ -120,12 +101,15 @@ function NewClub({ navigation, route }) {
 				</TouchableOpacity>
 			</View> */}
 
-
+				<AuthButton
+					loading={loading}
+					onPress={newClubSubmit}
+					loading={false}
+					text="Submit"
+				/>
 
 				<Text>You can change club name and picture after you create it.</Text>
 			</View>
 		</TouchableWithoutFeedback>
-  );
-}
-
-export default NewClub;
+	);
+};

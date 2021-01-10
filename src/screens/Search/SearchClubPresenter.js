@@ -46,7 +46,15 @@ const SearchClubPresenter = ({ term, shouldFetch, onPress }) => {
       ) : (
         data &&
         data.searchTeam &&
-        data.searchTeam.map(post => <SearchClubCard onPress={onPress} key={post.id} {...post} />)
+        data.searchTeam.map(post =>
+          <SearchClubCard
+            onPress={onPress}
+            key={post.id}
+            clubName={post.teamName}
+            clubArea={post.teamArea}
+            {...post}
+          />
+        )
       )}
     </ScrollView>
   );

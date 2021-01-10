@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 import colors from "../../../colors";
 
 const SearchClubCard = ({ onPress, navigation, id, clubName, clubInfo, sports, clubArea, members, clubLeader }) => (
-  <View style={styles.container}>
+  <View>
     <TouchableOpacity onPress={onPress}>
-      <View style={styles.clubInfoWrap}>
+      <View style={styles.container}>
 
         <View style={styles.emblemWrap}>
           <Image
@@ -20,11 +20,11 @@ const SearchClubCard = ({ onPress, navigation, id, clubName, clubInfo, sports, c
             <Text style={styles.clubNameText}>{clubName}</Text>
           </View>
           <View>
-            <Text style={{ fontSize: 12 }}>{clubInfo}</Text>
+            <Text style={{ fontSize: 12 }}>{clubArea}</Text>
           </View>
           <View style={styles.clubInfoTextWrap}>
             <Text style={styles.clubInfoTopTextLeft}>{sports}</Text>
-            <Text style={styles.clubInfoTopTextRight}>{clubArea}</Text>
+            <Text style={styles.clubInfoTopTextRight}>{clubInfo}</Text>
           </View>
           <View style={styles.clubInfoTextWrap}>
             <Text style={styles.clubInfoBottomTextLeft}>Members  <Text>{members}</Text></Text>
@@ -51,21 +51,21 @@ export default SearchClubCard;
 const styles = StyleSheet.create({
   container: {
     flex:1,
+    flexDirection: 'row',
     borderRadius: 20,
     backgroundColor: colors.white,
-    marginTop: 5,
-    marginBottom: 5,
+    marginVertical: 5,
+    paddingVertical: 8
   },
   clubInfoWrap: {
     flex: 1,
-    flexDirection: 'row',
     paddingTop: 20,
     paddingBottom: 20,
     paddingLeft: 15,
     paddingRight: 15,
   },
   emblemWrap: {
-    paddingRight: 15,
+    paddingLeft: 8,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
   clubInfoWrap: {
     flex: 1,
     justifyContent: 'center',
+    paddingLeft: 20
   },
   clubNameText: {
     fontWeight: 'bold',
@@ -87,20 +88,20 @@ const styles = StyleSheet.create({
   },
   clubInfoTopTextLeft: {
     fontSize: 12,
-    color: colors.grey03,
+    color: colors.darkGreyColor,
   },
   clubInfoTopTextRight: {
     paddingLeft: 20,
     fontSize: 12,
-    color: colors.grey03,
+    color: colors.darkGreyColor,
   },
   clubInfoBottomTextLeft: {
     fontSize: 12,
-    color: colors.grey03,
+    color: colors.darkGreyColor,
   },
   clubInfoBottomTextRight: {
     fontSize: 12,
     paddingLeft: 20,
-    color: colors.grey03,
+    color: colors.darkGreyColor,
   },
 });

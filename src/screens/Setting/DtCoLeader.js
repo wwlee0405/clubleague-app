@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, FlatList } from "react-native";
 import styled from "styled-components";
-import ViewerListItem from "../../components/items/ViewerListItem";
+import SelectListItem from "../../components/items/SelectListItem";
 import clubplayers from "../../data/clubplayers";
 import colors from '../../../colors';
 
@@ -24,8 +24,8 @@ export default ({ navigation }) => {
         <FlatList
           data={clubplayers}
           renderItem={({item}) =>
-            <ViewerListItem
-              onPress={() => navigation.navigate('Profile')}
+            <SelectListItem
+              onPress={() => navigation.navigate('DetailsSetting')}
               avatar={item.avatar}
               user={item.user}
               area={item.area}

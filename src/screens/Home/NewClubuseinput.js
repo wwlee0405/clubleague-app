@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import {
 	TouchableWithoutFeedback,
@@ -46,11 +46,11 @@ function NewClub({ navigation, route }) {
 	const [loading, setLoading] = React.useState(false);
 	const [createClubMutation] = useMutation(CREATE_TEAM, {
 		variables: {
-			teamName: clubName
+			teamName: clubName.value
 		},
 	});
 	const newClubSubmit = async () => {
-		const clubName = clubName;
+		const { clubName } = clubName;
 		if (clubName === "") {
 			return Alert.alert("Please, I need your Club Name.");
 		}
@@ -62,7 +62,7 @@ function NewClub({ navigation, route }) {
 			if (createTeam) {
 				Alert.alert("Club created", "check!");
 				navigation.navigate("Home");
-				setClub(data);
+				setClub(result);
 			}
 		} catch (e) {
 			console.log(e);
@@ -75,7 +75,7 @@ function NewClub({ navigation, route }) {
     navigation.setOptions({
       headerRight: () => (
 				<TouchableOpacity
-					onPress={() => navigation.navigate('Home', { newClub: clubName })}
+					onPress={() => navigation.navigate('Home', { clubName })}
 					title="Submit"
 				>
           <Feather name="check" size={25} style={{ paddingRight: 10 }} />
@@ -95,6 +95,7 @@ function NewClub({ navigation, route }) {
 					placeholder="Input Club Name"
 					autoCapitalize="words"
 					autoCorrect={false}
+					disabled={loading}
 				/>
 
 				<TextInputField
