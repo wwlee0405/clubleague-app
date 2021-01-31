@@ -66,7 +66,7 @@ const SeeMyTeam = gql`
 	}
 `;
 
-export default ({ navigation }) => {
+export default ({ navigation, route }) => {
 	const [refreshing, setRefreshing] = useState(false);
 	const { loading, data, refetch } = useQuery(SeeMyTeam);
 	const refresh = async () => {
@@ -79,6 +79,12 @@ export default ({ navigation }) => {
 			setRefreshing(false);
 		}
 	};
+	React.useEffect(() => {
+    if (route.params?.newClub) {
+      // Post updated, do something with `route.params.post`
+      // For example, send the post to the server
+    }
+  }, [route.params?.newClub]);
 	return (
 		<Container>
 			<StatusBar backgroundColor={colors.white} barStyle="dark-content" />

@@ -115,7 +115,7 @@ const CreateModalStack = ({ navigation }) => (
   >
     <MainStack.Screen name="Writing" component={Writing} options={Writing.navigationOptions} />
     <MainStack.Screen name="GameMatch" component={GameMatch} options={GameMatch.navigationOptions} />
-    <MainStack.Screen name="SetMatchList" component={SetMatchList} />
+    <MainStack.Screen name="SetMatchList" component={SetMatchList} options={SetMatchList.navigationOptions} />
   </ModalStack.Navigator>
 );
 /*Stack Nav*/
