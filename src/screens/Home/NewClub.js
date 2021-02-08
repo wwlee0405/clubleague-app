@@ -1,21 +1,19 @@
 import React, { useState, useLayoutEffect } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import {
    TouchableWithoutFeedback,
    Keyboard,
    Alert,
-   TouchableOpacity,
-   TextInput
+   TouchableOpacity
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import useInput from "../../hooks/useInput";
-import AuthButton from "../../components/AuthButton";
 import { useMutation } from "react-apollo-hooks";
 import { gql } from "apollo-boost";
+import constants from "../../../constants";
 import colors from "../../../colors";
 
 import SelectSportModal from "../../components/form/SelectSportModal";
-import TextInputField from "../../components/form/TextInputField";
 
 const CREATE_TEAM = gql`
    mutation createTeam(
@@ -28,14 +26,34 @@ const CREATE_TEAM = gql`
 `;
 
 const View = styled.View`
+`;
+
+const Container = styled.View`
    justify-content: center;
    align-items: center;
    flex: 1;
    background-color: ${(props) => props.theme.clBackgroundColor};
 `;
 
-const Text = styled.Text`
-   padding: 40px 60px;
+const Avatar = styled.View`
+   justify-content: center;
+   align-items: center;
+   width: 130px;
+   height: 130px;
+   border-radius: 100px;
+   background-color: ${(props) => props.theme.white};
+`;
+
+const TextInput = styled.TextInput`
+	width: ${constants.width / 1.7}px;
+	padding: 10px;
+	background-color: ${(props) => props.theme.clBackgroundColor};
+	text-align: center;
+	font-size: 20px;
+`;
+
+const ExplanationText = styled.Text`
+   padding: 40px 70px;
    font-size: 15px;
    text-align: center;
 `;
@@ -83,11 +101,17 @@ function NewClub({ navigation, route }) {
     }, []);
   });
 
-
-
   return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-         <View>
+         <Container>
+            <View style={{ paddingBottom: 30 }}>
+              <TouchableOpacity onPress={() => alert("edit img")}>
+                <Avatar>
+                  <Feather name="camera" size={40} style={{ color: colors.lightGreyColor }} />
+                </Avatar>
+              </TouchableOpacity>
+            </View>
+
             <SelectSportModal />
 
             <TextInput
@@ -98,33 +122,14 @@ function NewClub({ navigation, route }) {
             	 value={value}
             />
 
-            <TextInputField
+            <TextInput
                placeholder="Input Club Area"
                autoCapitalize="words"
                autoCorrect={false}
             />
 
-            {/* <View style={styles.imgSectionWrap}>
-            <TouchableOpacity onPress={() => alert("edit img")}>
-               <View style={styles.imgSection}>
-                  <Feather
-                     name="camera"
-                     size={40}
-                     style={{ paddingBottom: 5, color: colors.grey03 }}
-                  />
-                  <Text style={{ color: colors.grey03 }}>사진추가</Text>
-               </View>
-               <Image
-                  source={require("../../data/ImgTest/cccc.jpg")}
-                  style={styles.img}
-               />
-            </TouchableOpacity>
-         </View> */}
-
-
-
-            <Text>You can change club name and picture after you create it.</Text>
-         </View>
+            <ExplanationText>You can change club name and picture after you create it.</ExplanationText>
+         </Container>
       </TouchableWithoutFeedback>
   );
 }
