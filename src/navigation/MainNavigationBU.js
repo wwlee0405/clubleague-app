@@ -128,12 +128,90 @@ const CreateHomeStack = ({ route, navigation }) => {
             headerStyle: { backgroundColor: colors.white },
          }}
       >
-         <MainStack.Screen name="Home" component={Home} options={Home.navigationOptions} />
-         <MainStack.Screen name="Profile" component={Profile} options={Profile.navigationOptions} />
-         <MainStack.Screen name="EditProfile" component={EditProfile} options={EditProfile.navigationOptions} />
+         <MainStack.Screen
+            name="Home"
+            component={Home}
+            options={{
+               headerLeft: () => (
+                  <MaterialCommunityIcons
+                     name="soccer"
+                     size={30}
+                     style={{ paddingLeft: 10 }}
+                     onPress={() => {
+                        logOut(true);
+                     }}
+                  />
+               ),
+               headerTitle: (
+                  <Text
+                     style={{
+                        fontWeight: "bold",
+                        fontSize: 18
+                     }}
+                  >
+                     Clubleague
+                  </Text>
+               ),
+               headerRight: () => (
+                  <View style={{ flexDirection: "row" }}>
+                     <TouchableOpacity
+                        onPress={() => navigation.navigate("SearchClub")}
+                        title="SearchClub"
+                     >
+                        <Feather
+                           name="search"
+                           size={25}
+                           style={{ paddingRight: 20 }}
+                        />
+                     </TouchableOpacity>
+                     <TouchableOpacity
+                        onPress={() => navigation.navigate("Profile")}
+                        title="Profile"
+                     >
+                        <Feather
+                           name="user"
+                           size={25}
+                           style={{ paddingRight: 10 }}
+                        />
+                     </TouchableOpacity>
+                  </View>
+               ),
+            }}
+         />
+         <MainStack.Screen
+            name="Profile"
+            component={Profile}
+            options={{
+               headerRight: () => (
+                  <TouchableOpacity
+                     onPress={() => navigation.navigate("Setting")}
+                     title="Writing"
+                  >
+                     <Feather
+                        name="settings"
+                        size={25}
+                        style={{ paddingRight: 10 }}
+                     />
+                  </TouchableOpacity>
+               ),
+            }}
+         />
+         <MainStack.Screen
+            name="EditProfile"
+            component={EditProfile}
+            options={EditProfile.navigationOptions}
+         />
          <MainStack.Screen name="Setting" component={Setting} />
-         <MainStack.Screen name="SearchClub" component={SearchClub} options={SearchClub.navigationOptions} />
-         <MainStack.Screen name="NewClub" component={NewClub} options={NewClub.navigationOptions} />
+         <MainStack.Screen
+            name="SearchClub"
+            component={SearchClub}
+            options={SearchClub.navigationOptions}
+         />
+         <MainStack.Screen
+            name="NewClub"
+            component={NewClub}
+            options={NewClub.navigationOptions}
+         />
          <MainStack.Screen
             name="Details"
             children={CreateMaterialTopTab}
@@ -165,10 +243,65 @@ const CreateMatchStack = ({ navigation }) => (
          headerStyle: { backgroundColor: colors.white },
       }}
    >
-      <MainStack.Screen name="Match" component={Match} options={Match.navigationOptions} />
+      <MainStack.Screen
+         name="Match"
+         component={Match}
+         options={{
+            headerLeft: () => (
+               <MaterialCommunityIcons
+                  name="soccer"
+                  size={30}
+                  style={{ paddingLeft: 10 }}
+               />
+            ),
+            headerTitle: (
+               <Text
+                  style={{
+                     fontWeight: "bold",
+                     fontSize: 18
+                  }}
+               >
+                  Clubleague
+               </Text>
+            ),
+            headerRight: () => (
+               <TouchableOpacity
+                  onPress={() => navigation.navigate("Writing")}
+                  title="Writing"
+               >
+                  <Feather
+                     name="edit"
+                     size={25}
+                     style={{ paddingRight: 10 }}
+                  />
+               </TouchableOpacity>
+            ),
+         }}
+      />
       <MainStack.Screen name="Details" component={CreateMaterialTopTab} />
-      <MainStack.Screen name="Profile" component={Profile} options={Profile.navigationOptions} />
-      <MainStack.Screen name="EditProfile" component={EditProfile} options={EditProfile.navigationOptions} />
+      <MainStack.Screen
+         name="Profile"
+         component={Profile}
+         options={{
+            headerRight: () => (
+               <TouchableOpacity
+                  onPress={() => navigation.navigate("Setting")}
+                  title="Writing"
+               >
+                  <Feather
+                     name="settings"
+                     size={25}
+                     style={{ paddingRight: 10 }}
+                  />
+               </TouchableOpacity>
+            ),
+         }}
+      />
+      <MainStack.Screen
+         name="EditProfile"
+         component={EditProfile}
+         options={EditProfile.navigationOptions}
+      />
       <MainStack.Screen name="FeedDetails" component={FeedDetails} options={{headerShown: false}} />
       <MainStack.Screen name="MatchList" component={MatchList} />
       <MainStack.Screen name="Entry" component={Entry} />
@@ -228,8 +361,29 @@ const CreateNotificationStack = ({ navigation }) => (
          }}
       />
       <MainStack.Screen name="Details" component={CreateMaterialTopTab} />
-      <MainStack.Screen name="Profile" component={Profile} options={Profile.navigationOptions} />
-      <MainStack.Screen name="EditProfile" component={EditProfile} options={EditProfile.navigationOptions} />
+      <MainStack.Screen
+         name="Profile"
+         component={Profile}
+         options={{
+            headerRight: () => (
+               <TouchableOpacity
+                  onPress={() => navigation.navigate("Setting")}
+                  title="Writing"
+               >
+                  <Feather
+                     name="settings"
+                     size={25}
+                     style={{ paddingRight: 10 }}
+                  />
+               </TouchableOpacity>
+            ),
+         }}
+      />
+      <MainStack.Screen
+         name="EditProfile"
+         component={EditProfile}
+         options={EditProfile.navigationOptions}
+      />
       <MainStack.Screen name="FeedDetails" component={FeedDetails} />
       <MainStack.Screen name="Entry" component={Entry} />
       <MainStack.Screen name="Setting" component={Setting} />

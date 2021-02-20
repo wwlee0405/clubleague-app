@@ -21,23 +21,44 @@ const ME = gql`
   }
 `;
 
-export default ({ navigation }) => {
+function Profile({ navigation, route }) {
+
   const { loading, data } = useQuery(ME);
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+         <TouchableOpacity
+            onPress={() => navigation.navigate("Setting")}
+            title="Writing"
+         >
+            <Feather
+               name="settings"
+               size={25}
+               style={{ paddingRight: 10 }}
+            />
+         </TouchableOpacity>
+      ),
+    }, []);
+  });
+
   return (
-    <ScrollView>
-      {
-        loading ? <Loader /> :
-        data &&
-        data.me &&
-        data.me.user &&
-        <UserProfile
-          key={data.me.user.id}
-          avatar={data.me.user.avatar}
-          username={data.me.user.username}
-          fullName={data.me.user.fullName}
-          onPress={() => navigation.navigate('EditProfile')}
-        />
-      }
-    </ScrollView>
+      <ScrollView>
+        {
+          loading ? <Loader /> :
+          data &&
+          data.me &&
+          data.me.user &&
+          <UserProfile
+            key={data.me.user.id}
+            avatar={data.me.user.avatar}
+            username={data.me.user.username}
+            fullName={data.me.user.fullName}
+            onPress={() => navigation.navigate('EditProfile')}
+          />
+        }
+      </ScrollView>
   );
-};
+}
+
+export default Profile;

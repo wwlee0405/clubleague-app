@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components"
-import { StyleSheet, Text, ScrollView, Modal } from "react-native";
+import { StyleSheet, ScrollView, Modal } from "react-native";
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../../../colors';
 
@@ -12,6 +12,9 @@ import SetSportBox from "../../components/form/SetSportBox";
 import SetAreaBox from "../../components/form/SetAreaBox";
 import SetDateBox from "../../components/form/SetDateBox";
 import CreateMatchBox from "../../components/form/CreateMatchBox";
+
+const Text = styled.Text`
+`;
 
 const Container = styled.View`
   flex: 1;
@@ -25,6 +28,7 @@ const SearchContainer = styled.View`
 `;
 
 const Touchable = styled.TouchableOpacity``;
+
 const NormalSearch = styled.View`
   flex: 1;
   flex-direction: row;
@@ -45,6 +49,7 @@ const ModalBG = styled.View`
   flex: 1;
   background-color: ${(props) => props.theme.modalBackgroundColor};
 `;
+
 const ModalContent = styled.View`
   flex: 1;
   background-color: ${(props) => props.theme.white};
@@ -81,77 +86,109 @@ const DetailSearchText = styled.Text`
   color: ${(props) => props.theme.clBackgroundColor};
 `;
 
-export default ({ onPress, navigation }) => {
+function Match({ navigation, route, onPress }) {
   const [modalOpen, setModalOpen] = useState(false);
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+         <MaterialCommunityIcons
+            name="soccer"
+            size={30}
+            style={{ paddingLeft: 10 }}
+         />
+      ),
+      headerTitle: (
+         <Text style={{ fontWeight: "bold", fontSize: 18 }}>
+            Clubleague
+         </Text>
+      ),
+      headerRight: () => (
+        <Touchable
+           onPress={() => navigation.navigate("Writing")}
+           title="Writing"
+        >
+           <Feather
+              name="edit"
+              size={25}
+              style={{ paddingRight: 10 }}
+           />
+        </Touchable>
+      ),
+    }, []);
+  });
+
   return (
-    <Container>
-      <ScrollView
-        horizontal={false}
-        showsVerticalScrollIndicator={false}
-        style={{ paddingHorizontal: 7 }}
-      >
-        {/*Search*/}
-        <SearchContainer>
-          <Touchable onPress={() => navigation.navigate("SearchMatch")}>
-            <NormalSearch>
-              <Feather name="search" size={20} />
-              <NormalSearchText>클럽명, 지역명, 스포츠 종목명</NormalSearchText>
-            </NormalSearch>
-          </Touchable>
+      <Container>
+        <ScrollView
+          horizontal={false}
+          showsVerticalScrollIndicator={false}
+          style={{ paddingHorizontal: 7 }}
+        >
+          {/*Search*/}
+          <SearchContainer>
+            <Touchable onPress={() => navigation.navigate("SearchMatch")}>
+              <NormalSearch>
+                <Feather name="search" size={20} />
+                <NormalSearchText>클럽명, 지역명, 스포츠 종목명</NormalSearchText>
+              </NormalSearch>
+            </Touchable>
 
-          <Modal
-            visible={modalOpen}
-            transparent={true}
-            animationType="fade"
-          >
-          <ModalBG>
-            <ModalContent>
+            <Modal
+              visible={modalOpen}
+              transparent={true}
+              animationType="fade"
+            >
+            <ModalBG>
+              <ModalContent>
 
-              <SetSportBox />
-              <SetAreaBox title="Area" onPress={() => alert("set place")} />
-              <SetDateBox title="Date" />
-              <SetDateBox title="Time" />
-              <Text>ClubName 검색</Text>
-              <Text>게임수 검색</Text>
-              <ChoiceView>
-                <Touchable onPress={() => setModalOpen(false)}>
-                  <ChoiceCheck>
-                    <Feather name="check" size={30} color={colors.emerald} />
-                  </ChoiceCheck>
-                </Touchable>
-                <Touchable onPress={() => setModalOpen(false)}>
-                  <ChoiceCheck>
-                    <MaterialCommunityIcons name="close" size={30} />
-                  </ChoiceCheck>
-                </Touchable>
-              </ChoiceView>
-            </ModalContent>
-          </ModalBG>
-          </Modal>
+                <SetSportBox />
+                <SetAreaBox title="Area" onPress={() => alert("set place")} />
+                <SetDateBox title="Date" />
+                <SetDateBox title="Time" />
+                <Text>ClubName 검색</Text>
+                <Text>게임수 검색</Text>
+                <ChoiceView>
+                  <Touchable onPress={() => setModalOpen(false)}>
+                    <ChoiceCheck>
+                      <Feather name="check" size={30} color={colors.emerald} />
+                    </ChoiceCheck>
+                  </Touchable>
+                  <Touchable onPress={() => setModalOpen(false)}>
+                    <ChoiceCheck>
+                      <MaterialCommunityIcons name="close" size={30} />
+                    </ChoiceCheck>
+                  </Touchable>
+                </ChoiceView>
+              </ModalContent>
+            </ModalBG>
+            </Modal>
 
-          <Touchable onPress={() => setModalOpen(true)}>
-            <DetailSearch>
-              <DetailSearchText>Detail Search</DetailSearchText>
-            </DetailSearch>
-          </Touchable>
-        </SearchContainer>
-        {/*Post*/}
-        <MatchCard
-          avatar={require('../../data/ImgTest/dddd.jpg')}
-          username="Messi"
-          area="Barcelona, Spain"
-          onPress={() => navigation.navigate('FeedDetails')}
-          profileOnPress={() => navigation.navigate('Profile')}
-        />
-        <DailyPlayerCard
-          avatar={require('../../data/ImgTest/cccc.jpg')}
-          username="son"
-          area="Seoul, Korea"
-          onPress={() => navigation.navigate('FeedDetails')}
-          profileOnPress={() => navigation.navigate('Profile')}
-        />
+            <Touchable onPress={() => setModalOpen(true)}>
+              <DetailSearch>
+                <DetailSearchText>Detail Search</DetailSearchText>
+              </DetailSearch>
+            </Touchable>
+          </SearchContainer>
+          {/*Post*/}
+          <MatchCard
+            avatar={require('../../data/ImgTest/dddd.jpg')}
+            username="Messi"
+            area="Barcelona, Spain"
+            onPress={() => navigation.navigate('FeedDetails')}
+            profileOnPress={() => navigation.navigate('Profile')}
+          />
+          <DailyPlayerCard
+            avatar={require('../../data/ImgTest/cccc.jpg')}
+            username="son"
+            area="Seoul, Korea"
+            onPress={() => navigation.navigate('FeedDetails')}
+            profileOnPress={() => navigation.navigate('Profile')}
+          />
 
-      </ScrollView>
-    </Container>
+        </ScrollView>
+      </Container>
   );
-};
+}
+
+export default Match;
