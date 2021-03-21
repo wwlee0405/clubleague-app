@@ -13,12 +13,12 @@ function GameMatch({ navigation, route }) {
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity onPress={() => navigation.navigate('Writing')} title="Submit">
+        <TouchableOpacity onPress={() => navigation.navigate('Match')} title="Submit">
           <Feather name="check" size={25} style={{ paddingRight: 10 }} />
         </TouchableOpacity>
       ),
-    });
-  }, [navigation]);
+    }, [navigation,]);
+  });
 
   React.useEffect(() => {
     if (route.params?.post) {

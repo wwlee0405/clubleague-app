@@ -57,7 +57,7 @@ export default function MainNavigation() {
           headerMode="none"
         >
           <RootStack.Screen name="BottomTabs" component={BottomTabs} />
-          <RootStack.Screen name="Writing" component={CreateModalStack} />
+          <RootStack.Screen name="GameMatch" component={CreateModalStack} />
         </RootStack.Navigator>
       </NavigationContainer>
    );
@@ -113,9 +113,9 @@ const CreateModalStack = ({ navigation }) => (
     mode="modal"
     headerMode="float"
   >
-    <MainStack.Screen name="Writing" component={Writing} options={Writing.navigationOptions} />
     <MainStack.Screen name="GameMatch" component={GameMatch} options={GameMatch.navigationOptions} />
     <MainStack.Screen name="SetMatchList" component={SetMatchList} options={SetMatchList.navigationOptions} />
+    <MainStack.Screen name="Writing" component={Writing} options={Writing.navigationOptions} />
   </ModalStack.Navigator>
 );
 /*Stack Nav*/

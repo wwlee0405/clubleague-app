@@ -105,7 +105,7 @@ function Match({ navigation, route, onPress }) {
       ),
       headerRight: () => (
         <Touchable
-           onPress={() => navigation.navigate("Writing")}
+           onPress={() => navigation.navigate("GameMatch")}
            title="Writing"
         >
            <Feather

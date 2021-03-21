@@ -1,13 +1,53 @@
-import React, { Component } from 'react';
-import { View, FlatList, ScrollView, TouchableOpacity,Button, Text, TextInput } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, FlatList, ScrollView, TouchableOpacity,Button, Text, TextInput, Alert, ActivityIndicator  } from "react-native";
 import { Feather } from '@expo/vector-icons';
 import colors from '../../../colors';
+import { gql } from "apollo-boost";
+import { useQuery } from "react-apollo-hooks";
 
 import SelectListItem from "../../components/items/SelectListItem";
 import clubplayers from "../../data/clubplayers";
 
 
+const SeeMyTeam = gql`
+	{
+		seeMyTeam {
+			id
+			teamEmblem
+			teamName
+			teamArea
+			teamInfo
+		}
+	}
+`;
+
+const LIMIT = 11;
+
 function SetMatchList({ navigation, route }) {
+
+	const [data, setData] = useState([]);
+  const [offset, setOffset] = useQuery(SeeMyTeam);
+  const [loading, setLoading] = useState(false);
+
+	const getData = () => {
+    setLoading(true);
+    fetch(SeeMyTeam)
+      .then((res) => res.json())
+      .then((res) => setData(data.concat(res.slice(offset, offset + LIMIT))))
+      .then(() => {
+        setOffset(offset + LIMIT);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        Alert.alert("Error");
+      });
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
 
   const [postText, setPostText] = React.useState('');
 
@@ -23,31 +63,18 @@ function SetMatchList({ navigation, route }) {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.clBackgroundColor }}>
-      <TextInput
-        multiline
-        placeholder="What's on your mind?"
-        style={{ height: 200, padding: 10, backgroundColor: 'white' }}
-        value={postText}
-        onChangeText={setPostText}
-      />
-      <Button
-      title="Done"
-      onPress={() => {
-        // Pass params back to home screen
-        navigation.navigate('GameMatch', { post: postText });
-      }}
-    />
       <FlatList
-        data={clubplayers}
+        data={SeeMyTeam}
         renderItem={({item}) =>
           <SelectListItem
             onPress={() => navigation.navigate('GameMatch')}
-            avatar={item.avatar}
-            user={item.user}
-            area={item.area}
+            avatar={item.teamEmblem}
+            user={item.teamName}
+            area={item.teamArea}
           />
         }
-        keyExtractor={(item, index) => index}
+        keyExtractor={(item) => String(item.id)}
+
       />
     </View>
   );
