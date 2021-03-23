@@ -15,7 +15,7 @@ export default ({ navigation }) => {
           renderItem={({item}) =>
             <SelectListItem
               onPress={() => navigation.navigate('FeedDetails')}
-              avatar={item.avatar}
+              
               user={item.user}
               area={item.area}
             />
