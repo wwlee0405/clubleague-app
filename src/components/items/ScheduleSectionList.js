@@ -4,7 +4,6 @@ import styled from "styled-components"
 import colors from '../../../colors';
 
 const Container = styled.View`
-  flex: 5;
   flex-direction: row;
   border-bottom-width: 1px;
   border-bottom-color: ${(props) => props.theme.ghostWhite};

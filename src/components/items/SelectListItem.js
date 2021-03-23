@@ -4,7 +4,6 @@ import styled from "styled-components";
 import colors from '../../../colors';
 
 const Container = styled.View`
-  flex: 1;
   flex-direction: row;
   padding-vertical: 5px;
   margin-vertical: 3px;
@@ -37,13 +36,13 @@ export default ({
     <Container>
       <LeftWrap>
         <Image
-          source={avatar}
           style={{ width: 60, height: 60, borderRadius: 100 }}
+          source={{ uri: avatar }}
         />
       </LeftWrap>
       <RightWrap>
         <RightTextTop>{user}</RightTextTop>
-        <RightTextBottom>{area}</RightTextBottom>
+        <RightTextBottom>Texas{area}</RightTextBottom>
       </RightWrap>
     </Container>
   </TouchableOpacity>
